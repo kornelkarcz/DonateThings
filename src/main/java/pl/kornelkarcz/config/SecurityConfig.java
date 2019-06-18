@@ -20,7 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private DataSource dataSource;
 
-    
+
     protected void configure(HttpSecurity http) throws Exception {
 
         http.
