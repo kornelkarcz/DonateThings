@@ -11,6 +11,7 @@ public class HomeController {
     public ModelAndView showHomePage() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");
+        modelAndView.addObject("welcome", "Welcome to DonateThings Homepage!");
         return modelAndView;
     }
 }
