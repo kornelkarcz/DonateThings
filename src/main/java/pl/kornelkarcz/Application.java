@@ -1,4 +1,4 @@
-package pl.kornelkarcz.app;
+package pl.kornelkarcz;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
