@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>DonateThings</title>
@@ -8,10 +8,15 @@
 <body>
 <p th:text="${welcome}"></p>
 <br>
-<br>
-<a th:href="@{/login}">Login</a>
-<br>
-<br>
 <a th:href="@{/register}">Register</a>
+<br>
+
+<form th:action="@{/logout}" method="post">
+    <button sec:authorize="isAuthenticated()" type="submit">Logout</button>
+    <a sec:authorize="isAnonymous()" th:href="@{/login}" type="submit">Login</a>
+</form>
+    <p sec:authorize="isAuthenticated()">Profile - available only for logged users</p>
+    <p sec:authorize="hasAuthority('ADMIN')">Manage - option visible only for admins</p>
+
 </body>
 </html>
