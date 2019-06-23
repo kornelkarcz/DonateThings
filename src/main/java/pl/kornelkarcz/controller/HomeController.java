@@ -1,12 +1,15 @@
 package pl.kornelkarcz.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,52 +18,89 @@ import pl.kornelkarcz.model.User;
 import pl.kornelkarcz.service.UserService;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.security.Principal;
 
 @Controller
-@SessionAttributes("loggedUser")
+@RequiredArgsConstructor
+@SessionAttributes({"loggedUser"})
 public class HomeController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
     @GetMapping("/")
-    public ModelAndView showHomePage(Model model, HttpSession session, Principal principal) {
+    public String showHomepage(Model model) {
+        String message = "Hello Anonymous User!";
+        model.addAttribute("helloMessage", message);
+        return "index";
+    }
+
+    @GetMapping("/login")
+    public String getLoginPage() {
+        return "login";
+    }
+
+    @GetMapping("/register")
+    public String getRegisterPage(Model model) {
+        User user = new User();
+        model.addAttribute("user", user);
+        return "register";
+    }
+
+    @PostMapping("/register")
+    public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("welcome", "Welcome to DonateThings Homepage!");
-
-        //TODO Uporządkować nazwy
-        //TODO Ogarnąć if statement, żeby mnie nie wyrzucało z homepage jak nie jestem zalogowany
-
-        User user = (User) session.getAttribute("loggedUser");
-//        model.addAttribute("loggedUser", user);
-        modelAndView.addObject("loggedUser", user);
-
-//        boolean isLogged;
-//
-//        User sessionUser2 = userService.findUserByEmail(principal.getName());
-//
-//        if (sessionUser2 == null) {
-//            isLogged = false;
-//            session.setAttribute("isLogged", isLogged);
-//            modelAndView.addObject("noSession", "Nie ma sesji i nie będzie");
-//        } else {
-//            isLogged = true;
-//            session.setAttribute("isLogged", isLogged);
-//            session.setAttribute("loggedUser2", sessionUser2);
-//            model.addAttribute("loggedUser2", sessionUser2);
-//            modelAndView.addObject("yesSession", "Jest sesja");
-//        }
-
-
-        modelAndView.setViewName("index");
+        User userExists = userService.findUserByEmail(user.getEmail());
+        if (userExists != null) {
+            bindingResult
+                    .rejectValue("email", "error.user", "There is already a user registered with the email provided");
+        }
+        if (bindingResult.hasErrors()) {
+            modelAndView.setViewName("register");
+        } else {
+            userService.saveUser(user);
+            modelAndView.addObject("successMessage", "User has been registered successfully.");
+            modelAndView.addObject("user", new User());
+            modelAndView.setViewName("index");
+        }
         return modelAndView;
     }
 
-    @GetMapping("/show")
-    @ResponseBody
-    public String showLoggedUserDetails(@AuthenticationPrincipal CurrentUser customUser) {
-        User entityUser = customUser.getUser();
-        return "This is user: " + entityUser.getId();
+    @GetMapping("/loginSuccess")
+    public String loginSuccess(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
+        User loggedUser = currentUser.getUser();
+        model.addAttribute("loggedUser", loggedUser);
+        Long id = loggedUser.getId();
+        String successLogin = "Hello, " + id + ", you have successfully logged in";
+        model.addAttribute("logSuccessMessage", successLogin);
+        return "loginSuccess";
+    }
+
+    @GetMapping("/userDetails")
+    public String showDetails(Model model, Principal principal) {
+
+        CurrentUser loggedUser = (CurrentUser) ((Authentication) principal).getPrincipal();
+        String userInfo = loggedUser.toString();
+        model.addAttribute("userInfo", userInfo);
+        return "userDetails";
+    }
+
+    @GetMapping("/403")
+    public String accessDenied(Model model, Principal principal) {
+
+        if (principal != null) {
+            CurrentUser loggedUser = (CurrentUser) ((Authentication) principal).getPrincipal();
+
+            String userInfo = loggedUser.toString();
+
+            model.addAttribute("userInfo", userInfo);
+
+            String message = "Hi " + principal.getName()
+                    + "<br> You do not have permission to access this page!";
+            model.addAttribute("message", message);
+
+        }
+
+        return "403";
     }
 }
