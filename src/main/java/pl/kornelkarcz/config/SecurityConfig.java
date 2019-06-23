@@ -1,16 +1,13 @@
 package pl.kornelkarcz.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.sql.DataSource;
 
@@ -18,67 +15,55 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final SpringDataUserDetailsService springDataUserDetailsService;
+    private final DataSource dataSource;
 
-    @Autowired
-    private DataSource dataSource;
-
-    @Autowired
-    private CustomAuthenticationSuccessHandler successHandler;
+    public SecurityConfig(SpringDataUserDetailsService springDataUserDetailsService,
+                          DataSource dataSource) {
+        this.springDataUserDetailsService = springDataUserDetailsService;
+        this.dataSource = dataSource;
+    }
 
     @Bean
-    public SpringDataUserDetailsService customUserDetailsService() {
-        return new SpringDataUserDetailsService();
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
-    @Value("${spring.queries.users-query}")
-    private String usersQuery;
-
-    @Value("${spring.queries.roles-query}")
-    private String rolesQuery;
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(springDataUserDetailsService).passwordEncoder(passwordEncoder());
+    }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth)
-            throws Exception {
-        auth.
-                jdbcAuthentication()
-                .usersByUsernameQuery(usersQuery)
-                .authoritiesByUsernameQuery(rolesQuery)
-                .dataSource(dataSource)
-                .passwordEncoder(bCryptPasswordEncoder);
-    }
+    protected void configure(final HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+                .antMatchers("/", "/login", "/perform_login", "/logout", "/perform_logout", "/register")
+                .permitAll();
 
-    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+                .antMatchers("/user_info", "/userDetails").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
 
-        http.
-                authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/show").permitAll()
-                .antMatchers("/login").permitAll()
-                .antMatchers("/register").permitAll()
-                .antMatchers("/admin/**").hasAuthority("ADMIN")
-                .antMatchers("/profile/**").hasAnyAuthority("ADMIN", "USER").anyRequest()
-                .authenticated().and().csrf().disable()
+        http.authorizeRequests()
+                .antMatchers("/admin").access("hasRole('ROLE_ADMIN')");
+
+        http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
+
+        http.authorizeRequests().and()
                 .formLogin()
+                .loginProcessingUrl("/perform_login")
                 .loginPage("/login")
-//                    .permitAll().successHandler(successHandler)
+                .defaultSuccessUrl("/loginSuccess")
                 .failureUrl("/login?error=true")
-                .defaultSuccessUrl("/profile/")
                 .usernameParameter("email")
                 .passwordParameter("password")
-                .and()
-                .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/").and().exceptionHandling()
-                .accessDeniedPage("/access-denied");
-    }
+                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/logout_success");
 
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web
-                .ignoring()
-                .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
+        http.authorizeRequests()
+                .antMatchers("/console/**")
+                .permitAll();
+
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
     }
 
 }
