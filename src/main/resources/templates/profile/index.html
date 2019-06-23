@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+<p>Hello <span sec:authentication="name"></span></p>
+<span sec:authentication="principal.authorities"></span>
+
+<span th:text="${hello}"></span>
+</body>
+</html>
