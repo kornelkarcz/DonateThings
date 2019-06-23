@@ -37,7 +37,7 @@ public class User {
     private String password;
 
     @Column(name = "active")
-    private int active;
+    private Boolean enabled;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
