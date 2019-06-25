@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 import pl.kornelkarcz.validator.PasswordMatches;
 import pl.kornelkarcz.validator.ValidEmail;
+import pl.kornelkarcz.validator.ValidPassword;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -32,6 +33,7 @@ public class UserDto {
 
     @NotNull
     @NotEmpty
+    @ValidPassword
     private String password;
     private String matchingPassword;
     private Boolean enabled;

@@ -24,7 +24,7 @@
     Role(s): <sec:authentication property="principal.authorities"/>
     <br><br>
 </sec:authorize>
-        
+
         ${firstName}
 
 <br>
