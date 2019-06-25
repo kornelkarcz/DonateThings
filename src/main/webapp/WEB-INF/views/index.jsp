@@ -24,16 +24,7 @@
     Role(s): <sec:authentication property="principal.authorities"/>
     <br><br>
 </sec:authorize>
-
-    <%--<c:choose>--%>
-        <%--<c:when test="${logged == true}">--%>
-            <%--<p>Jest sesja</p>--%>
-        <%--</c:when>--%>
-        <%--<c:otherwise>--%>
-            <%--<p>Nic tu nie ma</p>--%>
-        <%--</c:otherwise>--%>
-    <%--</c:choose>--%>
-
+        
         ${firstName}
 
 <br>
