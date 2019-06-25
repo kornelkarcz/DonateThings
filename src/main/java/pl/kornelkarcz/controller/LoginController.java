@@ -5,10 +5,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.kornelkarcz.config.CurrentUser;
 import pl.kornelkarcz.dto.UserDto;
@@ -33,6 +30,7 @@ public class LoginController {
 
     @GetMapping("/loginSuccess")
     public String loginSuccess(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
+
         User loggedUser = currentUser.getUser();
         model.addAttribute("loggedUser", loggedUser);
         Long id = loggedUser.getId();

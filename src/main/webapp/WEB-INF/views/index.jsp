@@ -19,12 +19,23 @@
 <sec:authorize access="isAuthenticated()">
     <a href="/logout">Logout</a>
     <p>
-        User: <sec:authentication property="principal.username" />
-        <br><br>
-        Role(s): <sec:authentication property="principal.authorities" />
-    </p>
-
+    User: <sec:authentication property="principal.username"/>
+    <br><br>
+    Role(s): <sec:authentication property="principal.authorities"/>
+    <br><br>
 </sec:authorize>
+
+    <%--<c:choose>--%>
+        <%--<c:when test="${logged == true}">--%>
+            <%--<p>Jest sesja</p>--%>
+        <%--</c:when>--%>
+        <%--<c:otherwise>--%>
+            <%--<p>Nic tu nie ma</p>--%>
+        <%--</c:otherwise>--%>
+    <%--</c:choose>--%>
+
+        ${firstName}
+
 <br>
 <a href="/register">Register Page</a><br>
 <a href="/">Back to homepage</a><br>
