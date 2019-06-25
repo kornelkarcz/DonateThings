@@ -8,27 +8,31 @@
 <body>
 <h1>Please register biatch</h1>
 
-<form:form method="post" modelAttribute="user">
+<form method="post" modelAttribute="user" action="/register">
     <table>
         <tr>
             <td>First name:</td>
-            <td><form:input type='text' path="firstName" name='firstName' value=''/></td>
+            <td><input type='text' name='firstName' value=''/></td>
         </tr>
         <tr>
             <td>Last name:</td>
-            <td><form:input type='text' path="lastName" name='lastName' value=''/></td>
+            <td><input type='text' name='lastName' value=''/></td>
         </tr>
         <tr>
             <td>Email:</td>
-            <td><form:input type='text' path="email" name='email' value=''/></td>
+            <td><input type='text' name='email' value=''/></td>
         </tr>
         <tr>
             <td>Password:</td>
-            <td><form:input type='password' path="password" name='password'/></td>
+            <td><input type='password' name='password'/></td>
+        </tr>
+        <tr>
+            <td>Confirm password:</td>
+            <td><input type='password' name='matchingPassword'/></td>
         </tr>
         <td><input name="submit" type="submit" value="submit"/></td>
     </table>
-</form:form>
+</form>
 
 
 <a href="/login">Login Page</a><br>

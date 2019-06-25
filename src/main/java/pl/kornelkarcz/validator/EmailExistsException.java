@@ -1,4 +1,9 @@
 package pl.kornelkarcz.validator;
 
-public class EmailExistsException {
+@SuppressWarnings("serial")
+public class EmailExistsException extends Throwable {
+
+    public EmailExistsException(final String message) {
+        super(message);
+    }
 }

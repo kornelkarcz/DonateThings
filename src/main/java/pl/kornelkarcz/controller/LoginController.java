@@ -6,12 +6,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import pl.kornelkarcz.config.CurrentUser;
+import pl.kornelkarcz.dto.UserDto;
 import pl.kornelkarcz.model.User;
 import pl.kornelkarcz.service.UserService;
+import pl.kornelkarcz.validator.EmailExistsException;
 
 import javax.validation.Valid;
 
@@ -40,28 +43,38 @@ public class LoginController {
 
     @GetMapping("/register")
     public String getRegisterPage(Model model) {
-        User user = new User();
-        model.addAttribute("user", user);
+        UserDto userDto = new UserDto();
+        model.addAttribute("user", userDto);
         return "register";
     }
 
     @PostMapping("/register")
-    public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
+    public ModelAndView createNewUser(@ModelAttribute("user") @Valid UserDto userDto, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView();
-        User userExists = userService.findUserByEmail(user.getEmail());
-        if (userExists != null) {
-            bindingResult
-                    .rejectValue("email", "error.user", "There is already a user registered with the email provided");
+
+        User registered = new User();
+        if (!bindingResult.hasErrors()) {
+            System.out.println(userDto.toString());
+            registered = createUserAccount(userDto, bindingResult);
+        }
+        if (registered == null) {
+            bindingResult.rejectValue("email", "message.regError");
         }
         if (bindingResult.hasErrors()) {
-            modelAndView.setViewName("register");
+            return new ModelAndView("register", "user", userDto);
         } else {
-            userService.saveUser(user);
-            modelAndView.addObject("successMessage", "User has been registered successfully.");
-            modelAndView.addObject("user", new User());
-            modelAndView.setViewName("index");
+            return new ModelAndView("index", "user", userDto);
         }
-        return modelAndView;
+    }
+
+    private User createUserAccount(UserDto accountDto, BindingResult bindingResult) {
+        User registered = null;
+        try {
+            registered = userService.saveUser(accountDto);
+        } catch (EmailExistsException e) {
+            return null;
+        }
+        return registered;
     }
 
 }
