@@ -2,6 +2,7 @@ package pl.kornelkarcz.model;
 
 import lombok.Data;
 import lombok.ToString;
+import pl.kornelkarcz.validator.ValidPassword;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -19,6 +20,7 @@ public class User {
     private String email;
     private String firstName;
     private String lastName;
+//    @ValidPassword
     private String password;
     private Boolean enabled;
 
