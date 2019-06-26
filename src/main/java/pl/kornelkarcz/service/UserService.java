@@ -38,7 +38,7 @@ public class UserService {
         user.setLastName(userDto.getLastName());
         user.setEmail(userDto.getEmail());
         user.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
-        user.setEnabled(true);
+        user.setEnabled(false);
 //        user.setRoleSet(user.getRoleSet().add(roleRepository.getOne(1L)));
 //        user.getRoleSet().add(roleRepository.getOne(1L));
 //
