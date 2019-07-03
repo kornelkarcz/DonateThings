@@ -18,10 +18,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final SpringDataUserDetailsService springDataUserDetailsService;
     private final DataSource dataSource;
 
+//    private  final CustomAuthenticationFailureHandler authenticationFailureHandler;
+
+
     public SecurityConfig(SpringDataUserDetailsService springDataUserDetailsService,
                           DataSource dataSource) {
         this.springDataUserDetailsService = springDataUserDetailsService;
         this.dataSource = dataSource;
+//        this.authenticationFailureHandler = authenticationFailureHandler;
     }
 
     @Bean
