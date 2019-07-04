@@ -20,6 +20,7 @@ import pl.kornelkarcz.repository.UserRepository;
 import pl.kornelkarcz.service.UserService;
 import pl.kornelkarcz.validator.EmailExistsException;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.util.Calendar;
@@ -28,7 +29,7 @@ import java.util.Locale;
 
 @Controller
 @RequiredArgsConstructor
-@SessionAttributes({"loggedUser"})
+@SessionAttributes({"loggedUser", "token"})
 public class LoginController {
 
     private final UserService userService;
