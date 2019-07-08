@@ -24,11 +24,11 @@
             <td><input name="submit" type="submit" value="submit"/></td>
         </tr>
     </table>
-
+    <a href="/forgot-password">Forgot your password?</a>
 </form>
 
 <a href="/register">Register Page</a><br>
-<a href="/">Back to homepage</a><br>
+<a href="/forgot-password">Back to homepage</a><br>
 
 </body>
 </html>
