@@ -4,15 +4,16 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.kornelkarcz.dto.UserDto;
+import pl.kornelkarcz.model.PasswordResetToken;
 import pl.kornelkarcz.model.Role;
 import pl.kornelkarcz.model.User;
 import pl.kornelkarcz.model.VerificationToken;
+import pl.kornelkarcz.repository.PasswordResetTokenRepository;
 import pl.kornelkarcz.repository.RoleRepository;
 import pl.kornelkarcz.repository.UserRepository;
 import pl.kornelkarcz.repository.VerificationTokenRepository;
 import pl.kornelkarcz.validator.EmailExistsException;
 
-import javax.validation.constraints.Email;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -24,6 +25,7 @@ public class UserService implements IUserService {
     private final RoleRepository roleRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final VerificationTokenRepository tokenRepository;
+    private final PasswordResetTokenRepository resetTokenRepository;
 
     public User findUserByEmail(String email) {
         return userRepository.findUserByEmail(email);
@@ -100,5 +102,22 @@ public class UserService implements IUserService {
     @Override
     public VerificationToken getVerificationToken(String verificationToken) {
         return tokenRepository.findByToken(verificationToken);
+    }
+
+    @Override
+    public void createResetPasswordToken(User user, String token) {
+        PasswordResetToken myToken = new PasswordResetToken(token, user);
+        resetTokenRepository.save(myToken);
+
+    }
+
+    @Override
+    public PasswordResetToken getPasswordResetToken(String passwordResetToken) {
+        return resetTokenRepository.findByToken(passwordResetToken);
+    }
+
+    @Override
+    public void updatePassword(String password, Long id) {
+        userRepository.updatePassword(password, id);
     }
 }

@@ -1,6 +1,7 @@
 package pl.kornelkarcz.service;
 
 import pl.kornelkarcz.dto.UserDto;
+import pl.kornelkarcz.model.PasswordResetToken;
 import pl.kornelkarcz.model.User;
 import pl.kornelkarcz.model.VerificationToken;
 import pl.kornelkarcz.validator.EmailExistsException;
@@ -16,4 +17,10 @@ public interface IUserService {
     void createVerificationToken(User user, String token);
 
     VerificationToken getVerificationToken(String verificationToken);
+
+    void createResetPasswordToken(User user, String token);
+
+    PasswordResetToken getPasswordResetToken(String passwordResetToken);
+
+    void updatePassword(String password, Long id);
 }
