@@ -222,12 +222,12 @@ public class LoginController {
 
         modelAndView.addObject("message", "Your password has been successfully reset");
 
-        return "redirect:/check";
+        return "redirect:/success-reset-password";
     }
 
-    @GetMapping("/check")
+    @GetMapping("/success-reset-password")
     public String getCheckView() {
-        return "check";
+        return "successResetPassword";
     }
 
 }
