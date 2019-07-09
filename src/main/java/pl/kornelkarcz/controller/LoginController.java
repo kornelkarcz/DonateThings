@@ -230,4 +230,11 @@ public class LoginController {
         return "successResetPassword";
     }
 
+    @GetMapping("/logout_success")
+    public ModelAndView getLogout(ModelAndView modelAndView) {
+        modelAndView.addObject("message", "See you again soon!");
+        modelAndView.setViewName("logout");
+        return modelAndView;
+    }
+
 }
