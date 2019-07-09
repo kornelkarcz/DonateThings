@@ -1,6 +1,5 @@
-package pl.kornelkarcz.event;
+package pl.kornelkarcz.event.registration;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -11,7 +10,6 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Component;
 import pl.kornelkarcz.model.User;
 import pl.kornelkarcz.service.UserService;
-import org.springframework.mail.javamail.JavaMailSender;
 
 import java.util.UUID;
 
@@ -24,7 +22,6 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
     private final UserService userService;
     private final MailSender mailSender;
     private final MessageSource messages;
-
 
     @Override
     public void onApplicationEvent(OnRegistrationCompleteEvent event) {

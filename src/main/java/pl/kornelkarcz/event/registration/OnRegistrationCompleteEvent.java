@@ -1,4 +1,4 @@
-package pl.kornelkarcz.event;
+package pl.kornelkarcz.event.registration;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -24,19 +24,19 @@ public class OnRegistrationCompleteEvent extends ApplicationEvent {
         this.appUrl = appUrl;
     }
 
-    public String getAppUrl() {
-        return appUrl;
-    }
-
-    public void setAppUrl(String appUrl) {
-        this.appUrl = appUrl;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    public String getAppUrl() {
+//        return appUrl;
+//    }
+//
+//    public void setAppUrl(String appUrl) {
+//        this.appUrl = appUrl;
+//    }
+//
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 }
