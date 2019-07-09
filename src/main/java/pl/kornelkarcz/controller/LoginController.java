@@ -3,10 +3,10 @@ package pl.kornelkarcz.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.MessageSource;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -15,6 +15,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 import pl.kornelkarcz.config.CurrentUser;
 import pl.kornelkarcz.dto.EmailDto;
+import pl.kornelkarcz.dto.PasswordForgotDto;
 import pl.kornelkarcz.dto.UserDto;
 import pl.kornelkarcz.event.resetPassword.OnResetPassword;
 import pl.kornelkarcz.model.PasswordResetToken;
@@ -23,10 +24,10 @@ import pl.kornelkarcz.model.VerificationToken;
 import pl.kornelkarcz.event.registration.OnRegistrationCompleteEvent;
 import pl.kornelkarcz.repository.PasswordResetTokenRepository;
 import pl.kornelkarcz.repository.UserRepository;
-import pl.kornelkarcz.service.EmailService;
 import pl.kornelkarcz.service.UserService;
 import pl.kornelkarcz.validator.EmailExistsException;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Calendar;
 import java.util.Locale;
@@ -34,15 +35,13 @@ import java.util.Locale;
 
 @Controller
 @RequiredArgsConstructor
-@SessionAttributes({"loggedUser", "token"})
+@SessionAttributes({"loggedUser", "token", "resetToken"})
 public class LoginController {
 
     private final UserService userService;
     private final ApplicationEventPublisher eventPublisher;
     private final MessageSource messages;
     private final PasswordResetTokenRepository resetTokenRepository;
-    private final EmailService emailService;
-//    private final JavaMailSender mailSender;
 
     private final BCryptPasswordEncoder encoder;
     private final UserRepository userRepository;
@@ -171,57 +170,64 @@ public class LoginController {
         }
 
         return modelAndView;
-//        else {
-//
-//            model.addAttribute("email", emailDto.getEmail());
-//            System.out.println(emailDto.getEmail());
-//
-//            User existingUser = userService.findUserByEmail("XD jestem tutaj XD" + emailDto.getEmail());
-//            System.out.println(existingUser.getEmail());
-//
-//            if (existingUser == null) {
-//
-//                try {
-//                    String appUrl = request.getContextPath();
-//                    eventPublisher.publishEvent(new OnResetPassword(existingUser, request.getLocale(), appUrl));
-//                } catch (Exception me) {
-//                    me.printStackTrace();
-//                    return new ModelAndView("successForgotPassword", "user", existingUser);
-//                }
-//            }
-//            modelAndView.setViewName("index");
-//            return modelAndView;
-//        }
     }
 
     @GetMapping("/confirm-reset")
-    public ModelAndView validateResetToken(ModelAndView modelAndView, @RequestParam("token") String confirmationToken) {
-        PasswordResetToken token = resetTokenRepository.findByToken(confirmationToken);
-        if (token != null) {
-            User user = userService.findUserByEmail(token.getUser().getEmail());
-            userRepository.save(user);
-            modelAndView.addObject("user", user);
-            modelAndView.addObject("email", user.getEmail());
-            modelAndView.setViewName("resetPassword");
-        } else {
-            modelAndView.addObject("message", "The link is invalid or broken!");
-            modelAndView.setViewName("403");
+    public ModelAndView validateResetToken(WebRequest request, ModelAndView modelAndView,
+                                           @RequestParam("token") String resetToken, Model model) {
+
+        Locale locale = request.getLocale();
+        model.addAttribute("resetToken", resetToken);
+
+        PasswordResetToken token = userService.getPasswordResetToken(resetToken);
+
+        if (token == null) {
+            String message = messages.getMessage("auth.message.invalidToken", null, locale);
+            modelAndView.addObject("message", message);
+            return new ModelAndView("403");
         }
-        return modelAndView;
+
+        User user = token.getUser();
+        Calendar calendar = Calendar.getInstance();
+
+        if ((token.getExpiryDate().getTime() - calendar.getTime().getTime()) <= 0) {
+            String messageValue = messages.getMessage("auth.message.expired", null, locale);
+            modelAndView.addObject("message", messageValue);
+            modelAndView.setViewName("403");
+            return modelAndView;
+        }
+
+
+        modelAndView.addObject("email", user.getEmail());
+        modelAndView.setViewName("resetPassword");
+
+        return new ModelAndView("resetPassword", "passwordForgotDto", new PasswordForgotDto());
     }
 
     @PostMapping("/reset-password")
-    public ModelAndView resetUserPassword(ModelAndView modelAndView, User user) {
-        if (user.getEmail() != null) {
-            User tokenUser = userRepository.findUserByEmail(user.getEmail());
-            tokenUser.setPassword(encoder.encode(user.getPassword()));
-            modelAndView.addObject("message", "Password has been reset succesfully");
-            modelAndView.setViewName("successResetPassword");
-        } else {
-            modelAndView.addObject("message", "The link is invalid or broken");
-            modelAndView.setViewName("403");
-        }
-        return modelAndView;
+    @Transactional
+    public String resetUserPassword(@Valid @ModelAttribute("passwordForgotDto") PasswordForgotDto passwordForgotDto, BindingResult result,
+                                    ModelAndView modelAndView, HttpSession session) {
+
+        String resetToken = (String) session.getAttribute("resetToken");
+        //TODO Usunac pozniej
+        modelAndView.addObject("resetToken", resetToken);
+        //TODO dopisac binding result i flow poprawic
+
+        PasswordResetToken token = userService.getPasswordResetToken(resetToken);
+        User user = token.getUser();
+        String resetPassword = encoder.encode(passwordForgotDto.getNewPassword());
+        userService.updatePassword(resetPassword, user.getId());
+        resetTokenRepository.delete(token);
+
+        modelAndView.addObject("message", "Your password has been successfully reset");
+
+        return "redirect:/check";
+    }
+
+    @GetMapping("/check")
+    public String getCheckView() {
+        return "check";
     }
 
 }
