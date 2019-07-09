@@ -8,12 +8,15 @@
 <body>
 <h1>Please pass your new pass</h1>
 
-
-<form name="r" action="/reset-password" modelAttribute="user" method="post">
+<form name="r" action="/reset-password" modelAttribute="passwordForgotDto" method="post">
     <table>
         <tr>
             <td>Password</td>
-            <td><input type="password" name="password" value=""/></td>
+            <td><input type="password" name="newPassword" value=""/></td>
+        </tr>
+        <tr>
+            <td>Matching Password</td>
+            <td><input type="password" name="matchingPassword" value=""/></td>
         </tr>
         <tr>
             <td><input type="reset" value="Clear"/></td>

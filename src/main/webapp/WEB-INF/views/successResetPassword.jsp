@@ -8,7 +8,7 @@
 <body>
 <h1>Success</h1>
 
-<p>${message}</p>
+<p>Your password has been reset successfully!</p>
 
 <a href="/">Back to homepage</a><br>
 
