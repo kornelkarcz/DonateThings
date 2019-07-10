@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>User Details</title>
+    <link rel="stylesheet" href="css/style.css"/>
 </head>
 
 <body>

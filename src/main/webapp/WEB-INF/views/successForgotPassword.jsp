@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>Succ Forgot Pass</title>
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
