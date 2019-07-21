@@ -26,10 +26,10 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item px-2">
-                    <a href="/login" class="nav-link">Log In</a>
+                    <a href="/profile/" class="nav-link">Hello, ${firstName}!</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a href="/register" class="nav-link">Register</a>
+                    <a href="/logout" class="nav-link">Logout</a>
                 </li>
             </ul>
         </div>

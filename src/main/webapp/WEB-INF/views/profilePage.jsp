@@ -3,7 +3,6 @@
 <html>
 <head>
     <title>Profile Page</title>
-    <link rel="stylesheet" href="css/style.css"/>
 </head>
 
 <body>

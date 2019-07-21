@@ -5,11 +5,16 @@
 <head>
     <title>Homepage</title>
     <%@ include file="dependencies.jsp" %>
-    <%--<link rel="stylesheet" href="css/style.css" />--%>
 </head>
 
 <body>
-<%@ include file="header.jsp" %>
+<sec:authorize access="isAnonymous()">
+    <%@ include file="header.jsp" %>
+</sec:authorize>
+
+<sec:authorize access="isAuthenticated()">
+    <%@ include file="loggedHeader.jsp" %>
+</sec:authorize>
 
 
 <h1>Welcome again</h1>

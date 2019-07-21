@@ -29,6 +29,7 @@ import pl.kornelkarcz.validator.EmailExistsException;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -57,13 +58,21 @@ public class LoginController {
         User loggedUser = currentUser.getUser();
         model.addAttribute("loggedUser", loggedUser);
         Long id = loggedUser.getId();
-        String successLogin = "Hello, " + id + ", you have successfully logged in";
+        String name = loggedUser.getFirstName();
+        model.addAttribute("firstName", name);
+        String successLogin = "Hello, " + id + "," + name + ", you have successfully logged in";
         model.addAttribute("logSuccessMessage", successLogin);
         return "loginSuccess";
     }
 
     @GetMapping("/register")
-    public String getRegisterPage(Model model) {
+    public String getRegisterPage(Model model, @AuthenticationPrincipal Principal principal) {
+
+        if (principal != null) {
+            String username = principal.getName();
+            model.addAttribute("firstName", userService.findUserByEmail(username).getFirstName());
+        }
+
         UserDto userDto = new UserDto();
         model.addAttribute("user", userDto);
         return "register";
