@@ -4,10 +4,14 @@
 <html>
 <head>
     <title>Homepage</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <%@ include file="dependencies.jsp" %>
+    <%--<link rel="stylesheet" href="css/style.css" />--%>
 </head>
 
 <body>
+<%@ include file="header.jsp" %>
+
+
 <h1>Welcome again</h1>
 <p>${helloMessage}</p>
 
@@ -18,19 +22,24 @@
 </sec:authorize>
 
 <sec:authorize access="isAuthenticated()">
-    <a href="/logout">Logout</a>
-    <p>
-    User: <sec:authentication property="principal.username"/>
+<a href="/logout">Logout</a>
+<a href="/profile/">My Profile</a>
+<p>
+    User:
+        <sec:authentication property="principal.username"/>
     <br><br>
-    Role(s): <sec:authentication property="principal.authorities"/>
+    Role(s):
+        <sec:authentication property="principal.authorities"/>
     <br><br>
-</sec:authorize>
+    </sec:authorize>
 
-        ${firstName}
+    ${firstName}
 
-<br>
-<a href="/register">Register Page</a><br>
-<a href="/">Back to homepage</a><br>
+    <br>
+    <a href="/register">Register Page</a><br>
+    <a href="/">Back to homepage</a><br>
 
+
+    <%@ include file="scripts.jsp" %>
 </body>
 </html>

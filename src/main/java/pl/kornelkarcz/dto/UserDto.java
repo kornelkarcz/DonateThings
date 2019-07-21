@@ -23,7 +23,7 @@ public class UserDto {
     private String firstName;
 
     @NotNull
-    @NotEmpty
+    @NotEmpty(message = "Last name cannot be empty UserDto")
     private String lastName;
 
     @ValidEmail

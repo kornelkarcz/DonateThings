@@ -2,14 +2,13 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>User Details</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="css/style.css"/>
 </head>
 
 <body>
-<h1>Error</h1>
+<h1>Profile Page</h1>
 
-<p>${message}</p>
 
 <a href="/">Back to homepage</a><br>
 

@@ -1,0 +1,14 @@
+body {
+    margin-top: 120px;
+}
+
+.navbar {
+    border-bottom: 2px solid #ffc107;
+    background: #ffffff;
+    opacity: 0.9;
+
+}
+
+.navbar-light .navbar-nav .active > .nav-link {
+    color: #ffc107;
+}
