@@ -27,6 +27,7 @@ public class ProfileController {
         System.out.println(isEnabled);
 
         if (isEnabled) {
+            modelAndView.addObject("firstName", loggedUser.getFirstName());
             modelAndView.setViewName("profilePage");
         } else {
             modelAndView.setViewName("403");
