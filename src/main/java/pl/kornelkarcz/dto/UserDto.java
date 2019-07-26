@@ -19,21 +19,21 @@ import javax.validation.constraints.NotNull;
 public class UserDto {
 
     @NotNull
-    @NotEmpty
+    @NotEmpty(message = "First name cannot be empty")
     private String firstName;
 
     @NotNull
-    @NotEmpty(message = "Last name cannot be empty UserDto")
+    @NotEmpty(message = "Last name cannot be empty")
     private String lastName;
 
-    @ValidEmail
+    @ValidEmail(message = "Invalid email pattern")
     @NotNull
-    @NotEmpty
+    @NotEmpty(message = "Email cannot be empty")
     private String email;
 
     @NotNull
-    @NotEmpty
-    @ValidPassword
+    @NotEmpty(message = "Password cannot be empty")
+    @ValidPassword(message = "Invalid password/Passwords do not matches")
     private String password;
     private String matchingPassword;
     private Boolean enabled;
