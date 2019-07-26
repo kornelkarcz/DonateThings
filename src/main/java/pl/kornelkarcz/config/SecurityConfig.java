@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 import javax.sql.DataSource;
 
@@ -18,19 +19,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final SpringDataUserDetailsService springDataUserDetailsService;
     private final DataSource dataSource;
 
-//    private  final CustomAuthenticationFailureHandler authenticationFailureHandler;
-
-
     public SecurityConfig(SpringDataUserDetailsService springDataUserDetailsService,
                           DataSource dataSource) {
         this.springDataUserDetailsService = springDataUserDetailsService;
         this.dataSource = dataSource;
-//        this.authenticationFailureHandler = authenticationFailureHandler;
     }
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler myAuthenticationSuccessHandler() {
+        return new CustomAuthenticationSuccessHandler();
     }
 
     @Autowired
@@ -56,7 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginProcessingUrl("/perform_login")
                 .loginPage("/login")
-                .defaultSuccessUrl("/loginSuccess")
+                .successHandler(myAuthenticationSuccessHandler())
                 .failureUrl("/login?error=true")
                 .usernameParameter("email")
                 .passwordParameter("password")
