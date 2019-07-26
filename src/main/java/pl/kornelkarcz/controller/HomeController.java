@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import pl.kornelkarcz.config.CurrentUser;
+import pl.kornelkarcz.repository.UserRepository;
 import pl.kornelkarcz.service.UserService;
 
 import java.security.Principal;
@@ -16,9 +17,12 @@ import java.security.Principal;
 public class HomeController {
 
     private final UserService userService;
+    private final UserRepository userRepository;
 
     @GetMapping("/")
     public String showHomepage(Model model, @AuthenticationPrincipal Principal principal) {
+
+        long count = userRepository.count();
 
         if (principal != null) {
             String username = principal.getName();
@@ -27,6 +31,7 @@ public class HomeController {
 
         String message = "Hello Anonymous User!";
         model.addAttribute("helloMessage", message);
+        model.addAttribute("countUser", count);
         return "index";
     }
 
