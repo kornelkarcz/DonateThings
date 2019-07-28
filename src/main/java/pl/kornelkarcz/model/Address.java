@@ -1,6 +1,7 @@
 package pl.kornelkarcz.model;
 
 import lombok.Data;
+import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -18,9 +19,10 @@ public class Address {
     @NotEmpty(message = "Street name cannot be empty")
     private String street;
 
-    @NotEmpty(message = "House number cannot be empty")
-    private int houseNumber;
-    private int flatNumber;
+    @NumberFormat
+    private Integer houseNumber;
+    @NumberFormat
+    private Integer flatNumber;
 
     @NotEmpty(message = "City cannot be empty")
     private String city;
