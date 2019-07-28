@@ -1,14 +1,345 @@
 body {
-    margin-top: 120px;
+    margin-top: 8.2rem;
+    height: 100%;
 }
 
 .navbar {
     border-bottom: 2px solid #ffc107;
     background: #ffffff;
     opacity: 0.9;
+}
+
+#navigation-content a.active {
+    color: #ffc107;
+}
+
+#navigation-content li.nav-item.active {
+    color: #ffc107;
+}
+
+#home-section {
+    position: relative;
+    min-height: 650px;
+    background-size: 85%;
+    background: #fff url(../images/header-form-bg.jpg) no-repeat fixed top left;
+}
+
+#home-section .overlay {
+    background: rgba(255, 255, 255, 0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#home-section h1 {
+    font-weight: 200;
+    color: #000000;
+}
+
+#home-section h2 {
+    font-weight: 200;
+    color: #000000;
+}
+
+.option {
+    color: #333333;
+    border: 1px solid #000000;
+    width: 45%;
+    height: 90%;
+    font-size: 1.4rem;
+}
+
+.option:hover {
+    border: 2px solid #ffc107;
+    color: #ffc107;
+}
+
+#home-icons {
+    background-image: url(../images/stats-bg.jpg);
+}
+
+#home-icons .col-md-4:hover {
+    color: rgba(234,242,237,1);
+}
+
+#instruction .container {
+    background-color: rgba(213,218,215,1);
+}
+
+#instruction h3 {
+    font-weight: 200;
+}
+
+#instruction h4::after {
+    border-bottom: #000000 1px solid;
+    content: "";
+    display: block;
+    width: 60%;
+    height: 30px;
+    background-size: contain;
+    margin-left: 20%;
+}
+
+#create {
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #000000;
+    border-radius: 0;
+    font-size: 2rem;
+}
+
+#create:hover {
+    background-color: #ffc107;
+    color: #ffffff;
+    border-color: #000000;
+    border-radius: 0;
+}
+
+#about-us {
+    background-color: #c2bdbd;
+}
+
+#about-us h3 {
+    font-weight: 300;
+    border-bottom: 1px solid #000000;
+}
+
+#support .nav-link {
+    border: none;
+    color: #000000;
+}
+
+#support .nav-link.active {
+    border: 1px solid #000000;
+    color: #ffffff;
+    background-color: #ffc107;
+}
+
+#support .nav-link:hover {
+    border: 1px solid #000000;
+}
+
+#support .nav-link:focus {
+    border: 1px solid #000000;
+    color: #ffffff;
+    background-color: #ffc107;
+}
+
+#support .tab-content {
+    border: none;
+}
+
+#support h2::after {
+    border-bottom: #000000 1px solid;
+    content: "";
+    display: block;
+    width: 70%;
+    height: 30px;
+    background-size: contain;
+    margin-left: 15%;
+}
+
+#main-footer {
+    background-image: url(/images/footer-bg.jpg);
+    position: relative;
+    min-height: 400px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#main-footer input:not([type="submit"]) {
+    border: none;
+    border-bottom: 1px solid #000000;
+    border-radius: 0;
+    background: transparent;
+    resize: none;
+    outline: none;
+    width: 100%;
+}
+
+#main-footer input:focus {
+    border: none;
+    border-bottom: 3px solid #ffc107;
+    border-radius: 0;
+    background: transparent;
+    resize: none;
+    outline: none !important;
+    -webkit-appearance: none;
+    box-shadow: none !important;
+    width: 100%;
+    transition-duration: 0ms;
+}
+
+#main-footer .submit {
+    border-radius: 0;
+    border-color: #000000;
+    background-color: transparent;
+}
+
+#main-footer .submit:hover {
+    border-radius: 0;
+    border-color: #ffc107;
+    background-color: transparent;
+}
+
+#copyright {
+    color: #ffffff;
+}
+
+#twitter-icon, #facebook-icon, #instagram-icon {
+    color: #000000;
+}
+#twitter-icon:hover {
+    color: #00aced;
+}
+
+#facebook-icon:hover {
+    color: #3C5A99;
+}
+
+#instagram-icon:hover {
+    color: #C13584;
+}
+
+/*Register Page*/
+
+#register-page {
+    position: relative;
+    background-image: url("../images/stats-bg.jpg");
+    min-height: 500px;
+}
+
+#register-page h2 {
+    font-weight: 200;
+}
+
+#register-page h2::after {
+    border-bottom: #000000 1px solid;
+    content: "";
+    display: block;
+    width: 90%;
+    height: 30px;
+    background-size: contain;
+    margin-left: 5%;
+}
+
+#register-page input:not([type="submit"]) {
+    border: none;
+    border-bottom: 1px solid #000000;
+    border-radius: 0;
+    background: transparent;
+    resize: none;
+    outline: none;
+    width: 100%;
+}
+
+#register-page input:focus {
+    border: none;
+    border-bottom: 2px solid #000000;
+    border-radius: 0;
+    background: transparent;
+    resize: none;
+    outline: none !important;
+    -webkit-appearance: none;
+    box-shadow: none !important;
+    width: 100%;
+    transition-duration: 0ms;
+}
+
+
+#register-page .submit {
+    border-radius: 0;
+    border-color: #000000;
+    background-color: transparent;
+}
+
+#register-page .submit:hover {
+    border-radius: 0;
+    background-color: transparent;
+    border: 2px solid #000000;
+    font-weight: bold;
+}
+
+.error {
+    color: red;
+}
+
+#adding-institution-section {
+    background-image: url("../images/form-bg.jpg");
+    background-position: bottom left 20vh;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: 90vw;
+    min-height: 650px;
+    padding-bottom: 45px;
+}
+
+#adding-institution-section .add-institution-form {
+    background: transparent;
+    margin-top: 60px;
+    position: relative;
+}
+
+#adding-institution-section .add-institution-form h2 {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+#adding-institution-section .form-institution {
+    border-bottom: 2px solid #adadad;
+    position: relative;
+    margin: 30px 0;
+}
+
+#adding-institution-section .form-institution input {
+    font-size: 15px;
+    color: #000000;
+    border: none;
+    width: 100%;
+    outline: none;
+    background: none;
+    padding: 0 5px;
+    height: 40px;
 
 }
 
-.navbar-light .navbar-nav .active > .nav-link {
-    color: #ffc107;
+#adding-institution-section .form-institution span::before {
+    content: attr(data-placeholder);
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #adadad;
+    transform: translateY(-50%);
+    z-index: 1;
+    transition: .5s;
+}
+
+#adding-institution-section .form-institution span::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #ffc107;
+    transition: .5s;
+    /*color: #adadad;*/
+}
+
+#adding-institution-section .form-institution .focus + span::before {
+    top: -5px;
+
+}
+
+#adding-institution-section .form-institution .focus + span::after {
+    width: 100%;
+}
+
+#all-user-section, #all-institutions-section {
+    background-image: url("../images/form-bg.jpg");
+    background-position: bottom left 20vh;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: 90vw;
+    min-height: 600px;
 }
