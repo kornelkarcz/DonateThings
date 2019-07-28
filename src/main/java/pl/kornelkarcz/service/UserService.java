@@ -16,6 +16,7 @@ import pl.kornelkarcz.validator.EmailExistsException;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -78,6 +79,10 @@ public class UserService implements IUserService {
         user.setRoleSet(new HashSet<Role>(Arrays.asList(userRole)));
         return userRepository.save(user);
 
+    }
+
+    public List<User> findAll() {
+        return userRepository.findAll();
     }
 
     @Override
