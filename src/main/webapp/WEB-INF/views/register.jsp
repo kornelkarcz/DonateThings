@@ -87,73 +87,64 @@
         </div>
     </nav>
 </sec:authorize>
-<h1>Please register biatch</h1>
 
-<section class="login-page" style="text-align: center">
-    <h2>Create an account</h2>
-    <form:form method="post" modelAttribute="user" action="/register">
-        <div class="form-group">
-            <form:input path="firstName" type='text' name='firstName' placeholder='First Name'
-                        style="max-width: 300px"/>
-        </div>
-        <div class="form-group">
-            <form:input path="lastName" type='text' name='lastName' placeholder='Last Name'
-                        style="max-width: 300px"/>
-            <form:errors path="lastName"/>
-        </div>
-        <div class="form-group">
-            <form:input path="email" type='text' name='email' placeholder='Email' style="max-width: 300px"/>
-        </div>
-        <div class="form-group">
-            <form:input path="password" type='password' name='password' placeholder="Password"
-                        style="max-width: 300px"/>
-        </div>
-        <div class="form-group">
-            <form:input path="matchingPassword" type='password' name='matchingPassword' placeholder="Confirm Password"
-                        style="max-width: 300px"/>
-        </div>
-        <div class="form-group form-group--buttons" style="display: inline-block">
-            <button class="btn" type="submit">Sign up</button>
-        </div>
+<section id="register-page" class="text-center p-4">
+    <div class="container">
+        <div class="row align-items-center my-5">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h2 class="display-4">Create an account</h2>
+                <form:form method="post" modelAttribute="user" action="/register">
+                <div class="row justify-content-center mt-5">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <form:input class="form-control" path="firstName" type='text' name='firstName'
+                                        placeholder='First Name'/>
+                            <form:errors path="firstName" cssClass="error" element="div"/>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <form:input class="form-control" path="lastName" type='text' name='lastName'
+                                        placeholder='Last Name'/>
+                            <form:errors path="lastName" cssClass="error" element="div"/>
+                        </div>
+                    </div>
 
-    </form:form>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <form:input class="form-control" path="email" type='text' name='email' placeholder='Email'/>
+                            <form:errors path="email" cssClass="error" element="div"/>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <form:input class="form-control" path="password" type='password' name='password'
+                                        placeholder="Password"/>
+                            <form:errors path="password" cssClass="error" element="div"/>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <form:input class="form-control" path="matchingPassword" type='password'
+                                        name='matchingPassword'
+                                        placeholder="Confirm Password"/>
+                            <form:errors path="matchingPassword" cssClass="error" element="div"/>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <button class="submit btn btn-block" type="submit">Sign up</button>
+                        </div>
+                    </div>
+                    </form:form>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
 </section>
-<br><br><br>
-
-<%--<section class="login-page" style="text-align: center">--%>
-<%--<h2>Create an account</h2>--%>
-<%--<form:form method="post" modelAttribute="user" action="/register">--%>
-<%--<div class="form-group">--%>
-<%--<tr>--%>
-<%--<td>First name:</td>--%>
-<%--<td><form:input path="firstName" type='text' name='firstName' value='' style="max-width: 300px"/></td>--%>
-<%--</tr>--%>
-<%--<tr>--%>
-<%--<td>Last name:</td>--%>
-<%--<td><form:input path="lastName" type='text' name='lastName' value=''/></td>--%>
-<%--<form:errors path="lastName"/>--%>
-<%--</tr>--%>
-<%--<tr>--%>
-<%--<td>Email:</td>--%>
-<%--<td><form:input path="email" type='text' name='email' value=''/></td>--%>
-<%--</tr>--%>
-<%--<tr>--%>
-<%--<td>Password:</td>--%>
-<%--<td><form:input path="password" type='password' name='password'/></td>--%>
-<%--</tr>--%>
-<%--<tr>--%>
-<%--<td>Confirm password:</td>--%>
-<%--<td><form:input path="matchingPassword" type='password' name='matchingPassword'/></td>--%>
-<%--</tr>--%>
-<%--<td><input name="submit" type="submit" value="submit"/></td>--%>
-
-<%--</div>--%>
-<%--</form:form>--%>
-<%--</section>--%>
-
-
-<a href="/login">Login Page</a><br>
-<a href="/">Back to homepage</a><br>
+<%@ include file="footer.jsp" %>
 <%@ include file="scripts.jsp" %>
 </body>
 </html>

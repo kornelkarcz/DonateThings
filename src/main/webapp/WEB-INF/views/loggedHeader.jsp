@@ -1,24 +1,24 @@
 <!-- NAVBAR SECTION -->
-<nav class="navbar navbar-expand-md fixed-top navbar-light py-4"
+<nav class="navbar navbar-expand-md fixed-top navbar-light fixed-top py-4"
      id="main-nav">
     <div class="container">
         <a href="/" class="navbar-brand">
-            <img src="../../images/logo.png" width="75" height="75" alt=""/>
+            <img src="${pageContext.request.contextPath}/images/logo.png" width="75" height="75" alt=""/>
             <h3 class="d-inline align-middle">Donate Things</h3>
         </a>
-        <div class="collapse navbar-collapse">
+        <div id="navigation-content" class="collapse navbar-collapse">
             <ul class="navbar-nav">
-                <li class="nav-item active px-2">
-                    <a href="" class="nav-link">Home</a>
+                <li class="nav-item px-2">
+                    <a href="#home-section" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a href="" class="nav-link">How Does It Work?</a>
+                    <a href="#instruction" class="nav-link">How Does It Work?</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a href="" class="nav-link">Fundations</a>
+                    <a href="#support" class="nav-link">Fundations</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a href="" class="nav-link">About Us</a>
+                    <a href="#about-us" class="nav-link">About Us</a>
                 </li>
                 <li class="nav-item px-2">
                     <a href="" class="nav-link">Contact</a>
