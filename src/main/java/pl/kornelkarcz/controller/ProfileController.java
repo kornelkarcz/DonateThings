@@ -1,6 +1,7 @@
 package pl.kornelkarcz.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ import java.security.Principal;
 public class ProfileController {
 
     private final UserService userService;
+    private final ApplicationEventPublisher eventPublisher;
 
     @GetMapping("/")
     public ModelAndView showProfilePage(@AuthenticationPrincipal Principal principal) {
@@ -30,7 +32,7 @@ public class ProfileController {
             modelAndView.addObject("firstName", loggedUser.getFirstName());
             modelAndView.setViewName("profilePage");
         } else {
-            modelAndView.setViewName("403");
+            return new ModelAndView("redirect:/resend-token");
         }
 
         return modelAndView;
