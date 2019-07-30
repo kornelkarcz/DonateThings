@@ -91,6 +91,7 @@
 
 
 <a href="/">Back to homepage</a><br>
+<a href="${pageContext.request.contextPath}/change-password">Change password</a>
 <%@ include file="scripts.jsp" %>
 </body>
 </html>

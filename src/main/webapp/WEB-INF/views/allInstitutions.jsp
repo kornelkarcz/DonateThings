@@ -44,8 +44,9 @@
                             <td>${institution.address.flatNumber}</td>
                             <td>${institution.address.city}</td>
                             <td>${institution.address.postalCode}</td>
-                            <td>
-                                <button class="button-edit btn btn-warning">Edit</button>
+                            <td class="d-flex align-items-center">
+                                <button class="button-edit btn btn-warning mr-1">Edit</button>
+                                <button class="button-delete btn btn-danger">Delete</button>
                             </td>
                         </tr>
                     </c:forEach>
