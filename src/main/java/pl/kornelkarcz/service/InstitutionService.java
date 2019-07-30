@@ -26,8 +26,12 @@ public class InstitutionService {
         institutionRepository.save(institution);
     }
 
-    public void delete(Institution institution) {
-        institutionRepository.delete(institution);
+//    public void delete(Optional<Institution> institution) {
+//        institutionRepository.delete(institution);
+//    }
+
+    public void delete(Long id) {
+        institutionRepository.deleteById(id);
     }
 
 }

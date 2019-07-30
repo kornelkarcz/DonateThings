@@ -85,23 +85,27 @@ public class UserService implements IUserService {
         return userRepository.findAll();
     }
 
+    public boolean verifyUser(User user, String passwordCandidate) {
+        String passwordDB = user.getPassword();
+        return bCryptPasswordEncoder.matches(passwordCandidate, passwordDB);
+    }
+
     @Override
     public User getUser(String verificationToken) {
         User user = tokenRepository.findByToken(verificationToken).getUser();
         return user;
     }
 
+
     @Override
     public void saveRegisteredUser(User user) {
         userRepository.save(user);
-
     }
 
     @Override
     public void createVerificationToken(User user, String token) {
         VerificationToken myToken = new VerificationToken(token, user);
         tokenRepository.save(myToken);
-
     }
 
     @Override
