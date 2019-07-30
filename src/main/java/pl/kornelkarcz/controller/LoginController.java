@@ -14,14 +14,16 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 import pl.kornelkarcz.config.CurrentUser;
+import pl.kornelkarcz.dto.ChangePasswordDto;
 import pl.kornelkarcz.dto.EmailDto;
 import pl.kornelkarcz.dto.PasswordForgotDto;
 import pl.kornelkarcz.dto.UserDto;
+import pl.kornelkarcz.event.registration.OnRegistrationCompleteEvent;
+import pl.kornelkarcz.event.resendToken.OnResendTokenEvent;
 import pl.kornelkarcz.event.resetPassword.OnResetPassword;
 import pl.kornelkarcz.model.PasswordResetToken;
 import pl.kornelkarcz.model.User;
 import pl.kornelkarcz.model.VerificationToken;
-import pl.kornelkarcz.event.registration.OnRegistrationCompleteEvent;
 import pl.kornelkarcz.repository.PasswordResetTokenRepository;
 import pl.kornelkarcz.repository.UserRepository;
 import pl.kornelkarcz.service.UserService;
@@ -213,24 +215,23 @@ public class LoginController {
         return new ModelAndView("resetPassword", "passwordForgotDto", new PasswordForgotDto());
     }
 
-    @PostMapping("/reset-password")
     @Transactional
+    @PostMapping("/reset-password")
     public String resetUserPassword(@Valid @ModelAttribute("passwordForgotDto") PasswordForgotDto passwordForgotDto, BindingResult result,
                                     ModelAndView modelAndView, HttpSession session) {
 
         String resetToken = (String) session.getAttribute("resetToken");
-        //TODO Usunac pozniej
         modelAndView.addObject("resetToken", resetToken);
-        //TODO dopisac binding result i flow poprawic
 
-        PasswordResetToken token = userService.getPasswordResetToken(resetToken);
-        User user = token.getUser();
-        String resetPassword = encoder.encode(passwordForgotDto.getNewPassword());
-        userService.updatePassword(resetPassword, user.getId());
-        resetTokenRepository.delete(token);
+        if (!result.hasErrors()) {
+            PasswordResetToken token = userService.getPasswordResetToken(resetToken);
+            User user = token.getUser();
+            String resetPassword = encoder.encode(passwordForgotDto.getNewPassword());
+            userService.updatePassword(resetPassword, user.getId());
+            resetTokenRepository.delete(token);
 
-        modelAndView.addObject("message", "Your password has been successfully reset");
-
+            modelAndView.addObject("message", "Your password has been successfully reset");
+        }
         return "redirect:/success-reset-password";
     }
 
@@ -246,4 +247,83 @@ public class LoginController {
         return modelAndView;
     }
 
+    @GetMapping("/change-password")
+    public String changePassword(Model model) {
+        model.addAttribute("changePasswordDto", new ChangePasswordDto());
+        return "changePassword";
+    }
+
+    @Transactional
+    @PostMapping("/change-password")
+    public String changePassword(@Valid @ModelAttribute("changePasswordDto") ChangePasswordDto changePasswordDto,
+                                 BindingResult bindingResult, @AuthenticationPrincipal CurrentUser currentUser, Model model) {
+
+        if (userService.verifyUser(currentUser.getUser(), changePasswordDto.getOldPassword()) && !bindingResult.hasErrors()) {
+            userService.updatePassword(encoder.encode(changePasswordDto.getNewPassword()), currentUser.getUser().getId());
+            return "redirect:/profile/";
+        } else {
+            model.addAttribute("errors", bindingResult.getAllErrors());
+            System.out.println(bindingResult.getAllErrors().toString());
+            return "changePassword";
+        }
+    }
+
+
+    @GetMapping("/resend-token")
+    public String showResendTokenPage() {
+        return "resendToken";
+    }
+
+    @Transactional
+    @PostMapping("/resend-token")
+    public ModelAndView tokenResent(@AuthenticationPrincipal CurrentUser currentUser,
+                                    ModelMap model, WebRequest request) {
+
+        ModelAndView modelAndView = new ModelAndView();
+
+        String email = currentUser.getUser().getEmail();
+        model.addAttribute("email", email);
+        modelAndView.setViewName("successResendToken");
+
+        User user = userService.findUserByEmail(email);
+        modelAndView.addObject("user", user.getFirstName());
+
+        try {
+            String appUrl = request.getContextPath();
+            eventPublisher.publishEvent(new OnResendTokenEvent(user, request.getLocale(), appUrl));
+        } catch (Exception me) {
+            me.printStackTrace();
+            return new ModelAndView("successResendToken", "user", user);
+        }
+        return modelAndView;
+    }
+
+    @GetMapping("/activate-account")
+    public String activateAccount(WebRequest request, ModelAndView modelAndView,
+                                        @RequestParam("token") String token, Model model) {
+
+        Locale locale = request.getLocale();
+        model.addAttribute("token", token);
+
+        VerificationToken activationToken = userService.getVerificationToken(token);
+
+        if (activationToken == null) {
+            String message = messages.getMessage("auth.message.invalidToken", null, locale);
+            model.addAttribute("message", message);
+            return "403";
+        }
+
+        User user = activationToken.getUser();
+        Calendar calendar = Calendar.getInstance();
+
+        if ((activationToken.getExpiryDate().getTime() - calendar.getTime().getTime()) <= 0) {
+            String messageValue = messages.getMessage("auth.message.expired", null, locale);
+            model.addAttribute("message", messageValue);
+            return "403";
+        }
+
+        user.setEnabled(true);
+        userService.saveRegisteredUser(user);
+        return "redirect:/activationSuccess";
+    }
 }
