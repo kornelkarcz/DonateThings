@@ -63,8 +63,18 @@ public class AdminController {
     }
 
     @PostMapping("/admin/institution/edit")
-    public String updateInstitutiion(@Valid Institution institution, BindingResult bindingResult) {
-        institutionService.save(institution);
+    public String updateInstitution(@Valid Institution institution, BindingResult bindingResult) {
+        if (!bindingResult.hasErrors()) {
+            institutionService.save(institution);
+            return "redirect:/admin/allInstitutions";
+        }
+
+        return "redirect:/admin/";
+    }
+
+    @GetMapping("/admin/institution/delete/{id}")
+    public String deleteInstitution(@PathVariable Long id) {
+        institutionService.delete(id);
         return "redirect:/admin/allInstitutions";
     }
 
