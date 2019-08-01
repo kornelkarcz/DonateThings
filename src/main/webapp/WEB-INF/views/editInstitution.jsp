@@ -28,26 +28,32 @@
                 <div class="form-institution">
                     <form:input path="name" type="text"/>
                     <span data-placeholder="Institution name"></span>
+                    <form:errors path="name" cssClass="error" element="div"/>
                 </div>
                 <div class="form-institution">
                     <form:input path="address.street" type="text"/>
                     <span data-placeholder="Street name"></span>
+                    <form:errors path="address.street" cssClass="error" element="div"/>
                 </div>
                 <div class="form-institution">
                     <form:input path="address.houseNumber" type="number"/>
                     <span data-placeholder="House number"></span>
+                    <form:errors path="address.houseNumber" cssClass="error" element="div"/>
                 </div>
                 <div class="form-institution">
                     <form:input path="address.flatNumber" type="number"/>
                     <span data-placeholder="Flat number"></span>
+                    <form:errors path="address.flatNumber" cssClass="error" element="div"/>
                 </div>
                 <div class="form-institution">
                     <form:input path="address.city" type="text"/>
                     <span data-placeholder="City"></span>
+                    <form:errors path="address.city" cssClass="error" element="div"/>
                 </div>
                 <div class="form-institution">
                     <form:input path="address.postalCode" type="text"/>
                     <span data-placeholder="Postal code"></span>
+                    <form:errors path="address.postalCode" cssClass="error" element="div"/>
                 </div>
                 <button class="submit btn btn-warning btn-block mt-5" type="submit">Update Institution</button>
             </div>

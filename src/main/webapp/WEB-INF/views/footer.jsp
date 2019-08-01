@@ -5,21 +5,24 @@
             <div class="col-md-7"></div>
             <div class="col-md-5">
                 <h2 class="display-4">Contact Us</h2>
-                <form action="#" method="post">
+                <form action="#" method="post" class="form-footer">
                     <div class="row mt-5">
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="First Name"/>
+                            <div class="form-footer-item">
+                                <input type="text"/>
+                                <span data-placeholder="First Name"></span>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Last Name"/>
+                            <div class="form-footer-item">
+                                <input type="text"/>
+                                <span data-placeholder="Last Name"></span>
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Message"/>
+                            <div class="form-footer-item">
+                                <input type="text"/>
+                                <span data-placeholder="Message"></span>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -46,4 +49,15 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        $(".form-footer-item input").on("focus", function () {
+            $(this).addClass("focus");
+        });
+
+        $(".form-footer-item input").on("blur", function () {
+            if ($(this).val() == "")
+                $(this).removeClass("focus");
+        });
+
+    </script>
 </footer>

@@ -1,7 +1,6 @@
 package pl.kornelkarcz.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +17,6 @@ import java.security.Principal;
 public class ProfileController {
 
     private final UserService userService;
-    private final ApplicationEventPublisher eventPublisher;
 
     @GetMapping("/")
     public ModelAndView showProfilePage(@AuthenticationPrincipal Principal principal) {

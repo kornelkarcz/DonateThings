@@ -3,26 +3,47 @@
 <html>
 <head>
     <title>Forgot Password</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <%@ include file="dependencies.jsp" %>
 </head>
 
 <body>
-<h1>Please pass your email</h1>
 
+<%@ include file="header.jsp" %>
 
-<form:form name="r" action="/forgot-password" modelAttribute="emailDto" method="post">
-    <table>
-        <tr>
-            <td>Email:</td>
-            <td><form:input path="email" type='text' name='email' value=''/></td>
-        </tr>
+<section id="forgot-password-section" class="p-4">
+    <div class="container text-center">
+        <h2 class="display-4">Please Provide Your Email</h2>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 text-center">
+                <form:form class="form-forgot-password" action="/forgot-password" modelAttribute="emailDto"
+                           method="post">
+                    <div class="form-forgot-password-item">
+                        <form:input path="email" type='text' name='email'/>
+                        <span data-placeholder="Email"></span>
+                    </div>
+                    <input class="btn btn-block btn-secondary" name="submit" type="submit" value="Send"/>
+                </form:form>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
 
-        <td><input name="submit" type="submit" value="submit"/></td>
-    </table>
-</form:form>
+</section>
 
-<a href="/register">Register Page</a><br>
-<a href="/forgot-password">Back to homepage</a><br>
+<%@ include file="footer.jsp" %>
+
+<script type="text/javascript">
+    $(".form-forgot-password-item input").on("focus", function () {
+        $(this).addClass("focus");
+    });
+
+    $(".form-forgot-password-item input").on("blur", function () {
+        if ($(this).val() == "")
+            $(this).removeClass("focus");
+    });
+
+</script>
 
 </body>
 </html>

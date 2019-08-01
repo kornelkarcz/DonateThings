@@ -15,13 +15,10 @@
                     <a href="#instruction" class="nav-link">How Does It Work?</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a href="#support" class="nav-link">Fundations</a>
-                </li>
-                <li class="nav-item px-2">
                     <a href="#about-us" class="nav-link">About Us</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a href="" class="nav-link">Contact</a>
+                    <a href="#support" class="nav-link">Fundations</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
