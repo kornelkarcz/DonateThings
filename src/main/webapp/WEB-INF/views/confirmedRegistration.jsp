@@ -3,7 +3,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
-    <title>Error</title>
+    <title>Registration Confirmed</title>
     <%@ include file="dependencies.jsp"%>
 </head>
 <body>
@@ -14,11 +14,11 @@
 <sec:authorize access="isAuthenticated()">
     <%@ include file="loggedHeader.jsp" %>
 </sec:authorize>
-<h1>Error</h1>
+<h1>Success</h1>
 
-<p>${message}</p>
+<p>Your account has been created successfully!</p>
 
-<a href="/">Back to homepage</a><br>
+<a class="btn btn-warning" href="/">Back to homepage</a><br>
 
 <%@ include file="footer.jsp" %>
 </body>

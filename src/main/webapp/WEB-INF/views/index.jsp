@@ -163,8 +163,7 @@
                             porro voluptate odit minima.</p>
                     </div>
                     <div class="tab-pane fade" id="ngos">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta
-                            doloribus
+                        <p>Ngos ngos ngos
                             reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora,
                             placeat ratione
                             porro voluptate odit minima.</p>
@@ -195,6 +194,6 @@
 
 <!-- FOOTER -->
 <%@ include file="footer.jsp"%>
-    <%@ include file="scripts.jsp" %>
+<%@ include file="scripts.jsp" %>
 </body>
 </html>

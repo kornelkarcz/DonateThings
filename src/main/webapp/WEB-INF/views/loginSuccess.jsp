@@ -53,5 +53,6 @@
 
 <a href="/">Back to homepage</a><br>
 <%@ include file="scripts.jsp" %>
+<%@ include file="footer.jsp" %>
 </body>
 </html>

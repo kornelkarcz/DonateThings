@@ -87,11 +87,86 @@
         </div>
     </nav>
 </sec:authorize>
-<h1>Profile Page</h1>
 
+<section id="profile-page" class="p-5 my-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <h4>Profile Page</h4>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="nav flex-column nav-pills" id="pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link mb-2" id="pills-user-details-tab" data-toggle="pill" href="#user-details" role="tab"
+                       aria-controls="user-details" aria-selected="true">My
+                        Details</a>
+                    <a class="nav-link mb-2" id="pills-user-donations-tab" data-toggle="pill" href="#user-donations" role="tab"
+                     aria-controls="user-donations" aria-selected="false">My Donations</a>
+                    <a class="nav-link" id="pills-user-collection-tab" data-toggle="pill" href="#user-collections" role="tab"
+                     aria-controls="user-collections" aria-selected="false">My Collections</a>
+                </div>
+            </div>
+            <div class="col-md-10 text-center my-auto">
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade my-auto" id="user-details" role="tabpanel" aria-labelledby="pills-user-details-tab">
+                        <table class="table mx-auto w-50">
+                            <tr>
+                                <td>First Name</td>
+                                <td>Kornel</td>
+                            </tr>
+                            <tr>
+                                <td>Last Name</td>
+                                <td>Karcz</td>
+                            </tr>
+                            <tr>
+                                <td>Last Name</td>
+                                <td>Karcz</td>
+                            </tr><tr>
+                                <td>Last Name</td>
+                                <td>Karcz</td>
+                            </tr><tr>
+                                <td>Last Name</td>
+                                <td>Karcz</td>
+                            </tr><tr>
+                                <td>Last Name</td>
+                                <td>Karcz</td>
+                            </tr><tr>
+                                <td>Last Name</td>
+                                <td>Karcz</td>
+                            </tr><tr>
+                                <td>Last Name</td>
+                                <td>Karcz</td>
+                            </tr><tr>
+                                <td>Last Name</td>
+                                <td>Karcz</td>
+                            </tr><tr>
+                                <td>Last Name</td>
+                                <td>Karcz</td>
+                            </tr><tr>
+                                <td>Last Name</td>
+                                <td>Karcz</td>
+                            </tr><tr>
+                                <td>Last Name</td>
+                                <td>Karcz</td>
+                            </tr><tr>
+                                <td>Last Name</td>
+                                <td>Karcz</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="user-donations" role="tabpanel" aria-labelledby="pills-user-donations-tab">
+                        <p>Tutaj beda donations uzytkownika</p>
+                    </div>
+                    <div class="tab-pane fade" id="user-collections" role="tabpanel" aria-labelledby="pills-user-donations-tab">
+                        <p>Tutaj beda collections uzytkownika</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<a href="/">Back to homepage</a><br>
 <a href="${pageContext.request.contextPath}/change-password">Change password</a>
 <%@ include file="scripts.jsp" %>
+<%@ include file="footer.jsp" %>
 </body>
 </html>

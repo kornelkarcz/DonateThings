@@ -107,7 +107,7 @@ public class LoginController {
         }
     }
 
-    @GetMapping("/registerConfirm")
+    @GetMapping("/registration-confirmed")
     public String confirmRegistration(WebRequest request, Model model, @RequestParam("token") String token) {
 
         Locale locale = request.getLocale();
@@ -131,12 +131,12 @@ public class LoginController {
 
         user.setEnabled(true);
         userService.saveRegisteredUser(user);
-        return "redirect:/activationSuccess";
+        return "redirect:/activation-success";
     }
 
-    @GetMapping("/activationSuccess")
+    @GetMapping("/activation-success")
     public String showRegistrationSuccessPage() {
-        return "registerConfirm";
+        return "confirmedRegistration";
     }
 
     private User createUserAccount(UserDto accountDto, BindingResult bindingResult) {
@@ -324,6 +324,6 @@ public class LoginController {
 
         user.setEnabled(true);
         userService.saveRegisteredUser(user);
-        return "redirect:/activationSuccess";
+        return "redirect:/activation-success";
     }
 }

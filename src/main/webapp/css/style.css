@@ -381,3 +381,16 @@ body {
     background-size: contain;
     margin-left: 20%;
 }
+
+#profile-page {
+    min-height: 600px;
+}
+
+#pills-tab a {
+    color: black;
+    border-radius: 0;
+}
+
+#pills-tab a.active {
+    background: #ffc107;
+}
