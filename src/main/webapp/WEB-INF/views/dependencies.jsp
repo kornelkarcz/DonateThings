@@ -13,6 +13,7 @@
         integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
         crossorigin="anonymous"
 />
-<link rel="stylesheet" href="../../css/style.css"/>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css"/>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
