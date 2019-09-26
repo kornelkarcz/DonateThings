@@ -6,7 +6,9 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import pl.kornelkarcz.config.CurrentUser;
+import pl.kornelkarcz.repository.DonationRepository;
 import pl.kornelkarcz.repository.UserRepository;
 import pl.kornelkarcz.service.UserService;
 
@@ -18,11 +20,10 @@ public class HomeController {
 
     private final UserService userService;
     private final UserRepository userRepository;
+    private final DonationRepository donationRepository;
 
     @GetMapping("/")
     public String showHomepage(Model model, @AuthenticationPrincipal Principal principal) {
-
-        long count = userRepository.count();
 
         if (principal != null) {
             String username = principal.getName();
@@ -31,7 +32,6 @@ public class HomeController {
 
         String message = "Hello Anonymous User!";
         model.addAttribute("helloMessage", message);
-        model.addAttribute("countUser", count);
         return "index";
     }
 
@@ -61,5 +61,15 @@ public class HomeController {
         }
 
         return "403";
+    }
+
+    @ModelAttribute("numberOfUsers")
+    public long getNumberOfUsers() {
+        return userRepository.count();
+    }
+
+    @ModelAttribute("numberOfDonations")
+    public long getNumberOfDonations() {
+        return donationRepository.count();
     }
 }

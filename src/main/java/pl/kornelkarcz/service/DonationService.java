@@ -25,4 +25,8 @@ public class DonationService {
     public void save(Donation donation) {
         donationRepository.save(donation);
     }
+
+    public Donation findByUserIdLastDonation(Long id) {
+        return donationRepository.findByUserIdLastDonation(id);
+    }
 }

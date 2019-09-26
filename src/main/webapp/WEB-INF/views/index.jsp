@@ -44,7 +44,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 my-4 text-center">
-                <i class="fas fa-users fa-3x align-self-center px-2 mb-4"> ${countUser}</i>
+                <i class="fas fa-users fa-3x align-self-center px-2 mb-4"> ${numberOfUsers}</i>
                 <h3 class="mb-4">Active Users</h3>
                 <p>
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero,
@@ -52,7 +52,7 @@
                 </p>
             </div>
             <div class="col-md-4 my-4 text-center">
-                <i class="fas fa-building fa-3x align-self-center px-2 mb-4"> 45</i>
+                <i class="fas fa-building fa-3x align-self-center px-2 mb-4"> ${numberOfDonations}</i>
                 <h3 class="mb-4">Supported Fundations</h3>
                 <p>
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero,
@@ -103,7 +103,9 @@
     <div class="row align-items-center p-5 mt-3">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <p id="create" class="btn btn-outline-dark btn-block p-4">Register Now</p>
+            <p id="create" class="btn btn-outline-dark btn-block p-4">
+                <a href="/register" class="link">Register</a>
+            </p>
         </div>
         <div class="col-md-4"></div>
     </div>
