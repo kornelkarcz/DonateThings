@@ -134,4 +134,9 @@ public class UserService implements IUserService {
     public void updatePassword(String password, Long id) {
         userRepository.updatePassword(password, id);
     }
+
+    @Override
+    public void updatePersonalDetails(String firstName, String lastName, Long id) {
+        userRepository.updatePersonalDetails(firstName, lastName, id);
+    }
 }

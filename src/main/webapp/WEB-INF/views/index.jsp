@@ -52,8 +52,8 @@
                 </p>
             </div>
             <div class="col-md-4 my-4 text-center">
-                <i class="fas fa-building fa-3x align-self-center px-2 mb-4"> ${numberOfDonations}</i>
-                <h3 class="mb-4">Supported Fundations</h3>
+                <i class="fas fa-building fa-3x align-self-center px-2 mb-4"> ${numberOfSupportedInstitutions}</i>
+                <h3 class="mb-4">Supported Institutions</h3>
                 <p>
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero,
                     veniam.

@@ -3,13 +3,22 @@ package pl.kornelkarcz.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import pl.kornelkarcz.model.Donation;
 import pl.kornelkarcz.model.User;
+import pl.kornelkarcz.repository.UserRepository;
+import pl.kornelkarcz.service.DonationService;
 import pl.kornelkarcz.service.UserService;
 
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 @RequestMapping("/profile")
@@ -17,6 +26,8 @@ import java.security.Principal;
 public class ProfileController {
 
     private final UserService userService;
+    private final UserRepository userRepository;
+    private final DonationService donationService;
 
     @GetMapping("/")
     public ModelAndView showProfilePage(@AuthenticationPrincipal Principal principal) {
@@ -34,5 +45,42 @@ public class ProfileController {
         }
 
         return modelAndView;
+    }
+
+    @GetMapping("/edit-personal-details")
+    public String getEditPersonalDetailsPage(Model model, @AuthenticationPrincipal Principal principal) {
+        User loggedUser = userService.findUserByEmail(principal.getName());
+        model.addAttribute("user", loggedUser);
+        return "editPersonalDetails";
+    }
+
+    @Transactional
+    @PostMapping("/edit-personal-details")
+    public String savePersonalDetailsChanges(@ModelAttribute("user") User user, BindingResult result, Model model, @AuthenticationPrincipal Principal principal) {
+        System.out.println(user.getFirstName());
+        System.out.println(user.getLastName());
+        User currentUser = userService.findUserByEmail(principal.getName());
+        System.out.println(currentUser.getId());
+
+        if (!result.hasErrors()) {
+            userService.updatePersonalDetails(user.getFirstName(), user.getLastName(), currentUser.getId());
+        }
+        return "profilePage";
+    }
+
+    @ModelAttribute("userDetails")
+    public User getUserDetails(@AuthenticationPrincipal Principal principal) {
+        return userService.findUserByEmail(principal.getName());
+    }
+
+    @ModelAttribute("firstName")
+    public String getUserFirstName(@AuthenticationPrincipal Principal principal) {
+        return userService.findUserByEmail(principal.getName()).getFirstName();
+    }
+
+    @ModelAttribute("donations")
+    public List<Donation> getUserDonations(@AuthenticationPrincipal Principal principal) {
+        Long userId = userService.findUserByEmail(principal.getName()).getId();
+        return donationService.getUserAllDonations(userId);
     }
 }

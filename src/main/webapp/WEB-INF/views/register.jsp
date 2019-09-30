@@ -134,7 +134,7 @@
                         </div>
                     </div>
                     <div class="col-md-8">
-                        <div">
+                        <div>
                             <button class="submit btn btn-warning btn-block" type="submit">Sign up</button>
                         </div>
                     </div>

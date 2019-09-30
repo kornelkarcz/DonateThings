@@ -29,4 +29,12 @@ public class DonationService {
     public Donation findByUserIdLastDonation(Long id) {
         return donationRepository.findByUserIdLastDonation(id);
     }
+
+    public Long countDistinctByInstitution() {
+        return donationRepository.countDistinctByInstitution();
+    }
+
+    public List<Donation> getUserAllDonations(Long id) {
+        return donationRepository.getUserAllDonations(id);
+    }
 }

@@ -23,4 +23,6 @@ public interface IUserService {
     PasswordResetToken getPasswordResetToken(String passwordResetToken);
 
     void updatePassword(String password, Long id);
+
+    void updatePersonalDetails(String firstName, String lastName, Long id);
 }

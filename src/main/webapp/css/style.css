@@ -310,6 +310,7 @@ body {
 
 #register-page .form-register,
 #login-section .form-login,
+#edit-personal-details-section .form-edit-personal-details,
 #forgot-password-section .form-forgot-password,
 #main-footer .form-footer {
     background: transparent;
@@ -319,6 +320,7 @@ body {
 
 #register-page .form-register-item,
 #login-section  .form-login-item,
+#edit-personal-details-section .edit-personal-details-item,
 #forgot-password-section .form-forgot-password-item,
 #main-footer .form-footer-item {
     border-bottom: 2px solid #adadad;
@@ -328,6 +330,7 @@ body {
 
 #register-page .form-register-item input,
 #login-section .form-login-item input,
+#edit-personal-details-section .edit-personal-details-item input,
 #forgot-password-section .form-forgot-password-item input,
 #main-footer .form-footer-item input {
     font-size: 15px;
@@ -342,6 +345,7 @@ body {
 
 #register-page .form-register-item span::before,
 #login-section .form-login-item span::before,
+#edit-personal-details-section .edit-personal-details-item span::before,
 #forgot-password-section .form-forgot-password-item span::before,
 #main-footer .form-footer-item span::before {
     content: attr(data-placeholder);
@@ -356,6 +360,7 @@ body {
 
 #register-page .form-register-item span::after,
 #login-section .form-login-item span::after,
+#edit-personal-details-section .edit-personal-details-item span::after,
 #forgot-password-section .form-forgot-password-item span::after,
 #main-footer .form-footer-item span::after {
     content: '';
@@ -370,6 +375,7 @@ body {
 
 #register-page .form-register-item .focus + span::before,
 #login-section .form-login-item .focus + span::before,
+#edit-personal-details-section .edit-personal-details-item .focus + span::before,
 #forgot-password-section .form-forgot-password-item .focus + span::before,
 #main-footer .form-footer-item .focus + span::before {
     top: -5px;
@@ -377,6 +383,7 @@ body {
 
 #register-page .form-register-item .focus + span::after,
 #login-section .form-login-item .focus + span::after,
+#edit-personal-details-section .edit-personal-details-item .focus + span::after,
 #forgot-password-section .form-forgot-password-item .focus + span::after,
 #main-footer .form-footer-item .focus + span::after {
     width: 100%;
@@ -397,10 +404,6 @@ body {
     margin-left: 20%;
 }
 
-#profile-page {
-    min-height: 600px;
-}
-
 #pills-tab a {
     color: black;
     border-radius: 0;
@@ -410,11 +413,11 @@ body {
     background: #ffc107;
 }
 
+/*Make donation section*/
 #donation-section {
     min-height: 600px;
 }
 
-/*Make donation section*/
 #make-donation-form-section {
     width: 70%;
     min-width: 300px;
@@ -665,4 +668,100 @@ body {
 
 #slogan-container .slogan-steps {
     padding-left: 40px;
+}
+
+/*Profile page*/
+#profile-page {
+    position: relative;
+    background-position: -20% 50% !important;
+    min-height: 800px !important;
+    background-size: 70vw;
+    background: url("../images/toy-car.jpeg") no-repeat;
+}
+
+.profile-options-container {
+    padding-left: 120px;
+    padding-bottom: 40px;
+}
+
+.profile-options-container ul {
+    list-style: none;
+    padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 60px;
+}
+
+.profile-options-container ul li {
+    border: 1px solid #3c3c3c;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    width: 125px;
+    height: 125px;
+    margin: 0 14px;
+}
+
+.profile-options-container ul li div {
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 125px;
+    height: 125px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.profile-options-container ul li span {
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 45px;
+}
+
+.profile-element {
+    display: none;
+    padding-bottom: 40px;
+}
+
+.make-visible {
+    display: block !important;
+}
+
+.paint-yellow {
+    border: 2px solid #ffc107 !important;
+}
+
+/*Edit personal details page*/
+#edit-personal-details-section {
+    position: relative;
+    min-height: 700px;
+    background: url("../images/toy-car.jpeg") no-repeat;
+    background-position: -20% 50% !important;
+    background-size: 45vw;
+}
+
+#edit-personal-details-section h1 {
+    font-weight: 300;
+}
+
+#edit-personal-details-section h1::after {
+    border-bottom: #000000 1px solid;
+    content: "";
+    display: block;
+    width: 80%;
+    height: 30px;
+    background-size: contain;
+    margin-left: 10%;
 }

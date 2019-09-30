@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import pl.kornelkarcz.config.CurrentUser;
 import pl.kornelkarcz.repository.DonationRepository;
 import pl.kornelkarcz.repository.UserRepository;
+import pl.kornelkarcz.service.DonationService;
 import pl.kornelkarcz.service.UserService;
 
 import java.security.Principal;
@@ -21,6 +22,7 @@ public class HomeController {
     private final UserService userService;
     private final UserRepository userRepository;
     private final DonationRepository donationRepository;
+    private final DonationService donationService;
 
     @GetMapping("/")
     public String showHomepage(Model model, @AuthenticationPrincipal Principal principal) {
@@ -71,5 +73,10 @@ public class HomeController {
     @ModelAttribute("numberOfDonations")
     public long getNumberOfDonations() {
         return donationRepository.count();
+    }
+
+    @ModelAttribute("numberOfSupportedInstitutions")
+    public long getCountOfSupportedInstitutions() {
+        return donationService.countDistinctByInstitution();
     }
 }
