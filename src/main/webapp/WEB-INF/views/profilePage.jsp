@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"/>
     <link rel="stylesheet" href="../../css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="../../css/buttons.bootstrap4.min.css">
     <%@ include file="dependencies.jsp" %>
 </head>
 <body>
@@ -174,17 +173,8 @@
 <%@ include file="scripts.jsp" %>
 <%@ include file="footer.jsp" %>
 
-
-<script
-        src="http://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous">
-
-</script>
 <script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="../../js/dataTables.bootstrap4.min.js"></script>
-<script type="text/javascript" src="../../js/buttons.jqueryui.min.js"></script>
-<script type="text/javascript" src="../../js/buttons.bootstrap4.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $("#table").DataTable({

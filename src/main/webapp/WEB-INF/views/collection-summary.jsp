@@ -4,7 +4,7 @@
 <%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>Donation Summary</title>
+    <title>Collection Summary</title>
     <%@ include file="dependencies.jsp" %>
 </head>
 <body>
@@ -15,19 +15,17 @@
 <sec:authorize access="isAuthenticated()">
     <%@ include file="loggedHeader.jsp" %>
 </sec:authorize>
-<h1>Thank you for your generous donation!</h1>
-<br>
-<p>Donation ID:</p>
-<br>
-${lastDonation.id}
-<br>
-<p>Institution name:</p>
-<br>
-${lastDonation.institution.name}
-<br>
-<p>Number of donated bags</p>
-<br>
-${lastDonation.numberOfBags}
-<%@ include file="footer.jsp" %>
+<p>Thank you for your time and effort to organize collection</p>
+
+<p>Donation ID: ${lastCollection.id}</p><br>
+<p>Institution name: ${lastCollection.institution.name}</p><br>
+<p>Content desc: ${lastCollection.contentDescription}</p><br>
+<p>Phone number: ${lastCollection.phoneNumber}</p><br>
+<p>Street name: ${lastCollection.streetName}</p><br>
+<p>House number: ${lastCollection.houseNumber}</p><br>
+<p>City: ${lastCollection.city}</p><br>
+<p>User first name: ${lastCollection.user.firstName}</p>
+
+<%@ include file="footer.jsp"%>
 </body>
 </html>

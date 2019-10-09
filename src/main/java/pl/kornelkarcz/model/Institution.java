@@ -1,6 +1,6 @@
 package pl.kornelkarcz.model;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -8,6 +8,8 @@ import javax.validation.constraints.NotEmpty;
 @Data
 @Entity
 @Table(name = "institution")
+@ToString
+@RequiredArgsConstructor
 public class Institution {
 
     @Id

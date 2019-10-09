@@ -139,4 +139,9 @@ public class UserService implements IUserService {
     public void updatePersonalDetails(String firstName, String lastName, Long id) {
         userRepository.updatePersonalDetails(firstName, lastName, id);
     }
+
+    @Override
+    public List<String> getUsersEmails() {
+        return userRepository.getUsersEmails();
+    }
 }

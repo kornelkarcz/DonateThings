@@ -25,37 +25,38 @@
                            class="add-institution-form">
                 <h2 class="display-4">Edit Institution</h2>
                 <form:hidden path="id"/>
-                <div class="form-institution">
+                <div class="add-institution-form-item">
                     <form:input path="name" type="text"/>
                     <span data-placeholder="Institution name"></span>
                     <form:errors path="name" cssClass="error" element="div"/>
                 </div>
-                <div class="form-institution">
+                <div class="add-institution-form-item">
                     <form:input path="address.street" type="text"/>
                     <span data-placeholder="Street name"></span>
                     <form:errors path="address.street" cssClass="error" element="div"/>
                 </div>
-                <div class="form-institution">
+                <div class="add-institution-form-item">
                     <form:input path="address.houseNumber" type="number"/>
                     <span data-placeholder="House number"></span>
                     <form:errors path="address.houseNumber" cssClass="error" element="div"/>
                 </div>
-                <div class="form-institution">
+                <div class="add-institution-form-item">
                     <form:input path="address.flatNumber" type="number"/>
                     <span data-placeholder="Flat number"></span>
                     <form:errors path="address.flatNumber" cssClass="error" element="div"/>
                 </div>
-                <div class="form-institution">
+                <div class="add-institution-form-item">
                     <form:input path="address.city" type="text"/>
                     <span data-placeholder="City"></span>
                     <form:errors path="address.city" cssClass="error" element="div"/>
                 </div>
-                <div class="form-institution">
+                <div class="add-institution-form-item">
                     <form:input path="address.postalCode" type="text"/>
                     <span data-placeholder="Postal code"></span>
                     <form:errors path="address.postalCode" cssClass="error" element="div"/>
                 </div>
                 <button class="submit btn btn-warning btn-block mt-5" type="submit">Update Institution</button>
+                <a href="/admin" class="submit btn btn-secondary btn-block">Back</a>
             </div>
             </form:form>
         </div>
@@ -68,14 +69,14 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $(".form-institution input").addClass("focus");
+        $(".add-institution-form-item input").addClass("focus");
     });
 
-    $(".form-institution input").on("focus", function () {
+    $(".add-institution-form-item input").on("focus", function () {
         $(this).addClass("focus");
     });
 
-    $(".form-institution input").on("blur", function () {
+    $(".add-institution-form-item input").on("blur", function () {
         if ($(this).val() == "")
             $(this).removeClass("focus");
     });

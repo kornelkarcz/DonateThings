@@ -29,4 +29,7 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private Set<Donation> donationSet = new HashSet<>();
+
+    @OneToMany(mappedBy = "user")
+    private Set<Collection> collectionSet = new HashSet<>();
 }

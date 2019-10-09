@@ -32,10 +32,7 @@ function nextPrev(n) {
     // if you have reached the end of the form... :
     if (currentTab >= x.length) {
         //...the form gets submitted:
-        document.getElementById("donate-form").submit(function (event) {
-            $("#test-span").text("The form is being submitted").show();
-            return;
-        });
+        document.getElementById("organize-collection-form").submit();
         return false;
     }
     // Otherwise, display the correct tab:

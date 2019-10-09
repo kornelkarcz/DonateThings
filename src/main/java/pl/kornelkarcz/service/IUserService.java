@@ -6,6 +6,8 @@ import pl.kornelkarcz.model.User;
 import pl.kornelkarcz.model.VerificationToken;
 import pl.kornelkarcz.validator.EmailExistsException;
 
+import java.util.List;
+
 public interface IUserService {
 
     User registerNewUserAccount(UserDto userDto) throws EmailExistsException;
@@ -25,4 +27,6 @@ public interface IUserService {
     void updatePassword(String password, Long id);
 
     void updatePersonalDetails(String firstName, String lastName, Long id);
+
+    List<String> getUsersEmails();
 }

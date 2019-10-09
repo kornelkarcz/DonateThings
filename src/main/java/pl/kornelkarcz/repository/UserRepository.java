@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import pl.kornelkarcz.model.User;
 
+import java.util.List;
+
 public interface UserRepository extends JpaRepository<User, Long> {
 
     User findUserByEmail(String email);
@@ -17,4 +19,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Modifying
     @Query(value = "update User u set u.firstName = :firstName, u.lastName = :lastName where u.id = :id")
     void updatePersonalDetails(@Param("firstName") String firstName, @Param("lastName") String lastName, @Param("id") Long id);
+
+    @Query(value = "select email from user", nativeQuery = true)
+    List<String> getUsersEmails();
 }

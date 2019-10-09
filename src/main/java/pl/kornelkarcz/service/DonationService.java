@@ -37,4 +37,8 @@ public class DonationService {
     public List<Donation> getUserAllDonations(Long id) {
         return donationRepository.getUserAllDonations(id);
     }
+
+    public void delete(Long id) {
+        donationRepository.deleteById(id);
+    }
 }

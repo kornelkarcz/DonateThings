@@ -15,10 +15,37 @@
     <%@ include file="loggedHeader.jsp" %>
 </sec:authorize>
 
-<h1>User Details</h1>
-<p>${loggedUser}</p>
+<section id="user-details-page">
+<div class="overlay">
+    <div class="container p-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h1 class="display-4">${user.lastName}</h1>
+                <h2 class="display-5">${user.firstName}</h2>
+                <table class="table">
+                    <tr>
+                        <td>ID</td>
+                        <td>${user.id}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>${user.email}</td>
+                    </tr>
+                    <tr>
+                        <td>Active</td>
+                        <td>${user.enabled}</td>
+                    </tr>
+                </table>
+                <br>
+                <a href="/admin/user/edit/${user.id}" class="btn btn-warning btn-block">Edit</a>
+                <a href="/admin" class="btn btn-secondary btn-block">Back</a>
+            </div>
+            <div class="col-md-6"></div>
+        </div>
+    </div>
+</div>
+</section>
 
-<a href="/">Back to homepage</a><br>
 <%@ include file="footer.jsp" %>
 </body>
 </html>

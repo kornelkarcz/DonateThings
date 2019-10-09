@@ -226,15 +226,18 @@ body {
     color: red;
 }
 
-#adding-institution-section {
+#adding-institution-section,
+#edit-collection-section,
+#edit-donation-section {
     background-image: url("../images/form-bg.jpg");
-    background-position: bottom left 20vh;
+    background-position: 50% 50%;
     position: relative;
     background-repeat: no-repeat;
-    background-size: 90vw;
-    min-height: 650px;
+    background-size: 110vw;
+    min-height: 700px;
     padding-bottom: 45px;
 }
+
 
 #register-page .form-register,
 #login-section .form-login,
@@ -251,52 +254,10 @@ body {
 }
 
 #register-page .form-register-item,
-#login-section .form-login-item,
-#adding-institution-section .form-institution {
+#login-section .form-login-item {
     border-bottom: 2px solid #adadad;
     position: relative;
     margin: 30px 0;
-}
-
-#adding-institution-section .form-institution input {
-    font-size: 15px;
-    color: #000000;
-    border: none;
-    width: 100%;
-    outline: none;
-    background: none;
-    padding: 0 5px;
-    height: 40px;
-
-}
-
-#adding-institution-section .form-institution span::before {
-    content: attr(data-placeholder);
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    color: #adadad;
-    transform: translateY(-50%);
-    z-index: 1;
-    transition: .5s;
-}
-
-#adding-institution-section .form-institution span::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    background: #ffc107;
-    transition: .5s;
-}
-
-#adding-institution-section .form-institution .focus + span::before {
-    top: -5px;
-
-}
-
-#adding-institution-section .form-institution .focus + span::after {
-    width: 100%;
 }
 
 #all-user-section, #all-institutions-section, #login-section {
@@ -311,6 +272,9 @@ body {
 #register-page .form-register,
 #login-section .form-login,
 #edit-personal-details-section .form-edit-personal-details,
+#edit-donation-section .edit-donation-form,
+#edit-collection-section .edit-collection-form,
+#adding-institution-section .add-institution-form,
 #forgot-password-section .form-forgot-password,
 #main-footer .form-footer {
     background: transparent;
@@ -319,8 +283,11 @@ body {
 }
 
 #register-page .form-register-item,
-#login-section  .form-login-item,
+#login-section .form-login-item,
 #edit-personal-details-section .edit-personal-details-item,
+#edit-donation-section .edit-donation-form-item,
+#edit-collection-section .edit-collection-form-item,
+#adding-institution-section .add-institution-form-item,
 #forgot-password-section .form-forgot-password-item,
 #main-footer .form-footer-item {
     border-bottom: 2px solid #adadad;
@@ -331,6 +298,9 @@ body {
 #register-page .form-register-item input,
 #login-section .form-login-item input,
 #edit-personal-details-section .edit-personal-details-item input,
+#edit-donation-section .edit-donation-form-item input,
+#edit-collection-section .edit-collection-form-item input,
+#adding-institution-section .add-institution-form-item input,
 #forgot-password-section .form-forgot-password-item input,
 #main-footer .form-footer-item input {
     font-size: 15px;
@@ -346,6 +316,9 @@ body {
 #register-page .form-register-item span::before,
 #login-section .form-login-item span::before,
 #edit-personal-details-section .edit-personal-details-item span::before,
+#edit-donation-section .edit-donation-form-item span::before,
+#edit-collection-section .edit-collection-form-item span::before,
+#adding-institution-section .add-institution-form-item span::before,
 #forgot-password-section .form-forgot-password-item span::before,
 #main-footer .form-footer-item span::before {
     content: attr(data-placeholder);
@@ -361,6 +334,9 @@ body {
 #register-page .form-register-item span::after,
 #login-section .form-login-item span::after,
 #edit-personal-details-section .edit-personal-details-item span::after,
+#edit-donation-section .edit-donation-form-item span::after,
+#edit-collection-section .edit-collection-form-item span::after,
+#adding-institution-section .add-institution-form-item span::after,
 #forgot-password-section .form-forgot-password-item span::after,
 #main-footer .form-footer-item span::after {
     content: '';
@@ -376,6 +352,9 @@ body {
 #register-page .form-register-item .focus + span::before,
 #login-section .form-login-item .focus + span::before,
 #edit-personal-details-section .edit-personal-details-item .focus + span::before,
+#edit-donation-section .edit-donation-form-item .focus + span::before,
+#edit-collection-section .edit-collection-form-item .focus + span::before,
+#adding-institution-section .add-institution-form-item .focus + span::before,
 #forgot-password-section .form-forgot-password-item .focus + span::before,
 #main-footer .form-footer-item .focus + span::before {
     top: -5px;
@@ -384,6 +363,9 @@ body {
 #register-page .form-register-item .focus + span::after,
 #login-section .form-login-item .focus + span::after,
 #edit-personal-details-section .edit-personal-details-item .focus + span::after,
+#edit-donation-section .edit-donation-form-item .focus + span::after,
+#edit-collection-section .edit-collection-form-item .focus + span::after,
+#adding-institution-section .add-institution-form-item .focus + span::after,
 #forgot-password-section .form-forgot-password-item .focus + span::after,
 #main-footer .form-footer-item .focus + span::after {
     width: 100%;
@@ -418,23 +400,27 @@ body {
     min-height: 600px;
 }
 
+#organize-collection-form-section,
 #make-donation-form-section {
     width: 70%;
     min-width: 300px;
 }
 
+#organize-collection-form,
 #donate-form {
     background: transparent;
     margin-top: 60px;
     position: relative;
 }
 
+#organize-collection-form .collect-form-item,
 #donate-form .donate-form-item {
     border-bottom: 2px solid #adadad;
     position: relative;
     margin: 20px 0;
 }
 
+#organize-collection-form .collect-form-item input,
 #donate-form .donate-form-item input {
     font-size: 15px;
     color: #000000;
@@ -446,6 +432,7 @@ body {
     height: 40px;
 }
 
+#organize-collection-form .collect-form-item span::before,
 #donate-form .donate-form-item span::before {
     content: attr(data-placeholder);
     position: absolute;
@@ -457,6 +444,7 @@ body {
     transition: .5s;
 }
 
+#organize-collection-form .collect-form-item span::after,
 #donate-form .donate-form-item span::after {
     content: '';
     position: absolute;
@@ -468,10 +456,12 @@ body {
     top: 40px;
 }
 
+#organize-collection-form .collect-form-item .focus + span::before,
 #donate-form .donate-form-item .focus + span::before {
     top: -5px;
 }
 
+#organize-collection-form .collect-form-item .focus + span::after,
 #donate-form .donate-form-item .focus + span::after {
     width: 100%;
 }
@@ -518,7 +508,6 @@ body {
     background: #fff url("../images/header-form-bg.jpg") no-repeat;
     background-position: -50% 50%;
     background-size: 60vw;
-
 }
 
 #make-donation-message-section {
@@ -526,24 +515,29 @@ body {
     min-height: 100px;
 }
 
+#organize-collection-form-section h1,
 #make-donation-form-section h1 {
     text-align: center;
 }
 
+#organize-collection-form-section input,
 #make-donation-form-section input {
     padding: 10px;
     width: 100%;
     font-size: 17px;
 }
 
+#organize-collection-form-section input.invalid,
 #make-donation-form-section input.invalid {
-    background-color: #ffdddd;
+    background-color: #ff8482;
 }
 
+#organize-collection-form .tab,
 #make-donation-form-section .tab {
     display: none;
 }
 
+#organize-collection-form-section button,
 #make-donation-form-section button {
     background-color: #ffffff;
     color: #000000;
@@ -554,17 +548,20 @@ body {
     cursor: pointer;
 }
 
+#organize-collection-form-section button:hover,
 #make-donation-form-section button:hover {
     background-color: #ffc107;
     color: #ffffff;
 }
 
+#organize-collection-form-section #prevBtn,
 #make-donation-form-section #prevBtn {
     background-color: #bbbbbb;
     border: none;
     margin-right: 4px;
 }
 
+#organize-collection-form-section .step,
 #make-donation-form-section .step {
     height: 15px;
     width: 15px;
@@ -576,12 +573,14 @@ body {
     opacity: 0.5;
 }
 
+#organize-collection-form-section .step.active,
 #make-donation-form-section .step.active {
     opacity: 1;
 }
 
+#organize-collection-form-section .step.finish,
 #make-donation-form-section .step.finish {
-    background-color: #ffc107;
+    background-color: #4CAF50;
 }
 
 #slogan-container {
@@ -670,7 +669,8 @@ body {
     padding-left: 40px;
 }
 
-/*Profile page*/
+/*Profile page + Admin page*/
+#admin-page,
 #profile-page {
     position: relative;
     background-position: -20% 50% !important;
@@ -679,11 +679,13 @@ body {
     background: url("../images/toy-car.jpeg") no-repeat;
 }
 
+.admin-options-container,
 .profile-options-container {
     padding-left: 120px;
     padding-bottom: 40px;
 }
 
+.admin-options-container ul,
 .profile-options-container ul {
     list-style: none;
     padding: 0;
@@ -693,6 +695,7 @@ body {
     margin-top: 60px;
 }
 
+.admin-options-container ul li,
 .profile-options-container ul li {
     border: 1px solid #3c3c3c;
     -webkit-transform: rotate(45deg);
@@ -703,6 +706,7 @@ body {
     margin: 0 14px;
 }
 
+.admin-options-container ul li div,
 .profile-options-container ul li div {
     -webkit-transform: rotate(-45deg);
     -ms-transform: rotate(-45deg);
@@ -724,12 +728,14 @@ body {
     font-style: normal;
 }
 
+.admin-options-container ul li span,
 .profile-options-container ul li span {
     text-align: center;
     font-size: 1rem;
     margin-top: 45px;
 }
 
+.admin-element,
 .profile-element {
     display: none;
     padding-bottom: 40px;
@@ -764,4 +770,44 @@ body {
     height: 30px;
     background-size: contain;
     margin-left: 10%;
+}
+
+.test-visible {
+    display: block;
+    border: 2px solid red;
+}
+
+.test-invisible {
+    display: none;
+}
+
+/*Institution details page*/
+#user-details-page,
+#institution-details-page {
+    position: relative;
+    min-height: 650px;
+    background: #F6F4F5 url("../images/shoes.jpeg") no-repeat;
+    background-position: 10% 50%;
+    background-size: 110vw;
+}
+
+#user-details-page .overlay,
+#institution-details-page .overlay {
+    background: rgba(246, 244, 245, 0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#user-details-page h1 {
+    font-weight: 200 !important;
+    align-self: start;
+}
+
+#user-details-page h2 {
+    font-weight: 200;
+    margin-top: -15px;
+    align-self: start;
 }

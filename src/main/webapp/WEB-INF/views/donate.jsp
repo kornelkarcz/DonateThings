@@ -78,7 +78,7 @@
 
                     <div class="tab">
                         <p>Krok 2</p>
-                        <p>Wybierz instytucje</p>
+                        <p>Choose an Institutions</p>
 
                         <div class="select-test pb-5">
                             <div class="dropdown">
@@ -93,7 +93,6 @@
 
                             <span class="msg"></span>
                         </div>
-
 
                         <form:select path="institution">
                             <form:option value="0"/>
@@ -147,6 +146,8 @@
                     </div>
 
                 </form:form>
+
+                <span id="test-span"></span>
             </div>
             <div class="col-md-4"></div>
         </div>
@@ -166,6 +167,6 @@
     });
 
 </script>
-<script src="../../js/test.js"></script>
+<script src="../../js/test.js" type="text/javascript"></script>
 </body>
 </html>
