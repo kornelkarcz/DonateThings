@@ -47,23 +47,23 @@
                             <table class="table">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Surname</th>
-                                    <th>Actions</th>
-                                    <th></th>
+                                    <th class="text-center">ID</th>
+                                    <th class="text-center">Name</th>
+                                    <th class="text-center">Surname</th>
+                                    <th class="text-center">Actions</th>
+                                    <th class="text-center"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <c:forEach items="${users}" var="user">
                                 <tr>
-                                    <td>${user.id}</td>
-                                    <td>${user.firstName}</td>
-                                    <td>${user.lastName}</td>
-                                    <td>
+                                    <td class="align-middle text-center">${user.id}</td>
+                                    <td class="align-middle text-center">${user.firstName}</td>
+                                    <td class="align-middle text-center">${user.lastName}</td>
+                                    <td class="align-middle text-center">
                                         <button class="user-button-details btn btn-warning">Details</button>
                                     </td>
-                                    <td>
+                                    <td class="align-middle text-center">
                                         <a href="" class="btn btn-primary">Edit</a>
                                     </td>
                                 </tr>
@@ -75,18 +75,18 @@
                             <table class="table">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th></th>
-                                    <th>Actions</th>
-                                    <th></th>
+                                    <th class="text-center">ID</th>
+                                    <th class="text-center">Name</th>
+                                    <th class="text-center"></th>
+                                    <th class="text-center">Actions</th>
+                                    <th class="text-center"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <c:forEach items="${institutions}" var="institution">
                                 <tr>
-                                    <td>${institution.id}</td>
-                                    <td>${institution.name}</td>
+                                    <td class="align-middle text-center">${institution.id}</td>
+                                    <td class="align-middle text-center">${institution.name}</td>
                                     <td>
                                         <button class="button-details btn btn-outline-primary">Details</button>
                                     </td>
@@ -106,20 +106,20 @@
                             <table class="table">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Content Description</th>
-                                    <th>User Last Name</th>
-                                    <th></th>
-                                    <th>Actions</th>
-                                    <th></th>
+                                    <th class="text-center">ID</th>
+                                    <th class="text-center">Content Description</th>
+                                    <th class="text-center">User Last Name</th>
+                                    <th class="text-center"></th>
+                                    <th class="text-center">Actions</th>
+                                    <th class="text-center"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <c:forEach items="${donations}" var="donation">
                                 <tr>
-                                    <td>${donation.id}</td>
-                                    <td>${donation.contentDescription}</td>
-                                    <td>${donation.user.lastName}</td>
+                                    <td class="align-middle text-center">${donation.id}</td>
+                                    <td class="align-middle text-center">${donation.contentDescription}</td>
+                                    <td class="align-middle text-center">${donation.user.lastName}</td>
                                     <td>
                                         <button class="donation-button-details btn btn-outline-primary">Details</button>
                                     </td>
@@ -138,20 +138,20 @@
                             <table class="table">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Content Description</th>
-                                    <th>User Last Name</th>
+                                    <th class="text-center">ID</th>
+                                    <th class="text-center">Content Description</th>
+                                    <th class="text-center">User Last Name</th>
                                     <th></th>
-                                    <th>Actions</th>
+                                    <th class="text-center">Actions</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <c:forEach items="${collections}" var="collection">
                                 <tr>
-                                    <td>${collection.id}</td>
-                                    <td>${collection.contentDescription}</td>
-                                    <td>${collection.user.lastName}</td>
+                                    <td class="align-middle text-center">${collection.id}</td>
+                                    <td class="align-middle text-center">${collection.contentDescription}</td>
+                                    <td class="align-middle text-center">${collection.user.lastName}</td>
                                     <td>
                                         <button class="collection-button-details btn btn-outline-primary">Details</button>
                                     </td>

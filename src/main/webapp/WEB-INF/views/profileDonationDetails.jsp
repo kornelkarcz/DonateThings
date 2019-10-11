@@ -15,17 +15,13 @@
     <%@ include file="loggedHeader.jsp" %>
 </sec:authorize>
 
-<section id="donation-details-page">
+<section id="profile-donation-details-page">
     <div class="overlay">
         <div class="container p-5">
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <h1 class="display-4 mb-5">#${donation.id}</h1>
                     <table class="table">
-                        <tr>
-                            <td>User</td>
-                            <td>${donation.user.firstName} ${donation.user.lastName}</td>
-                        </tr>
                         <tr>
                             <td>Content Description</td>
                             <td>${donation.contentDescription}</td>
@@ -46,12 +42,12 @@
                             <td>Street Name</td>
                             <td>${donation.streetName}</td>
                         </tr><tr>
-                        <td>House Number</td>
-                        <td>${donation.houseNumber}</td>
-                    </tr><tr>
-                        <td>Flat Number</td>
-                        <td>${donation.flatNumber}</td>
-                    </tr>
+                            <td>House Number</td>
+                            <td>${donation.houseNumber}</td>
+                        </tr><tr>
+                            <td>Flat Number</td>
+                            <td>${donation.flatNumber}</td>
+                        </tr>
                         <tr>
                             <td>City</td>
                             <td>${donation.city}</td>
@@ -66,8 +62,7 @@
                         </tr>
                     </table>
                     <br>
-                    <a href="/admin/donation/edit/${donation.id}" class="btn btn-warning btn-block">Edit</a>
-                    <a href="/admin" class="btn btn-secondary btn-block">Back</a>
+                    <a href="/profile/" class="btn btn-secondary btn-block">Back</a>
                 </div>
                 <div class="col-md-6"></div>
             </div>
@@ -76,5 +71,6 @@
 </section>
 
 <%@ include file="footer.jsp" %>
+<%@ include file="scripts.jsp" %>
 </body>
 </html>

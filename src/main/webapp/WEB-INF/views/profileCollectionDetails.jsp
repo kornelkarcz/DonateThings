@@ -3,7 +3,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
-    <title>Donation Details</title>
+    <title>Collection Details</title>
     <%@ include file="dependencies.jsp" %>
 </head>
 <body>
@@ -15,59 +15,52 @@
     <%@ include file="loggedHeader.jsp" %>
 </sec:authorize>
 
-<section id="donation-details-page">
+<section id="profile-collection-details-page">
     <div class="overlay">
         <div class="container p-5">
             <div class="row justify-content-center">
                 <div class="col-md-6">
-                    <h1 class="display-4 mb-5">#${donation.id}</h1>
+                    <h1 class="display-4 mb-4">#${collection.id}</h1>
                     <table class="table">
                         <tr>
-                            <td>User</td>
-                            <td>${donation.user.firstName} ${donation.user.lastName}</td>
-                        </tr>
-                        <tr>
                             <td>Content Description</td>
-                            <td>${donation.contentDescription}</td>
+                            <td>${collection.contentDescription}</td>
                         </tr>
                         <tr>
-                            <td>Number of Bags</td>
-                            <td>${donation.numberOfBags}</td>
-                        </tr>
-                        <tr>
-                            <td>Phone number</td>
-                            <td>${donation.phoneNumber}</td>
+                            <td>Phone Number</td>
+                            <td>${collection.phoneNumber}</td>
                         </tr>
                         <tr>
                             <td>Institution</td>
-                            <td>${donation.institution.name}</td>
+                            <td>${collection.institution.name}</td>
                         </tr>
                         <tr>
                             <td>Street Name</td>
-                            <td>${donation.streetName}</td>
-                        </tr><tr>
-                        <td>House Number</td>
-                        <td>${donation.houseNumber}</td>
-                    </tr><tr>
-                        <td>Flat Number</td>
-                        <td>${donation.flatNumber}</td>
-                    </tr>
+                            <td>${collection.streetName}</td>
+                        </tr>
+                        <tr>
+                            <td>House Number</td>
+                            <td>${collection.houseNumber}</td>
+                        </tr>
+                        <tr>
+                            <td>Flat Number</td>
+                            <td>${collection.flatNumber}</td>
+                        </tr>
                         <tr>
                             <td>City</td>
-                            <td>${donation.city}</td>
+                            <td>${collection.city}</td>
                         </tr>
                         <tr>
                             <td>Postal Code</td>
-                            <td>${donation.postalCode}</td>
+                            <td>${collection.postalCode}</td>
                         </tr>
                         <tr>
                             <td>Comment</td>
-                            <td>${donation.comment}</td>
+                            <td>${collection.comment}</td>
                         </tr>
                     </table>
                     <br>
-                    <a href="/admin/donation/edit/${donation.id}" class="btn btn-warning btn-block">Edit</a>
-                    <a href="/admin" class="btn btn-secondary btn-block">Back</a>
+                    <a href="/profile/" class="btn btn-secondary btn-block">Back</a>
                 </div>
                 <div class="col-md-6"></div>
             </div>
@@ -76,5 +69,6 @@
 </section>
 
 <%@ include file="footer.jsp" %>
+<%@ include file="scripts.jsp" %>
 </body>
 </html>

@@ -811,3 +811,17 @@ body {
     margin-top: -15px;
     align-self: start;
 }
+
+.logout-article {
+    width: 100%;
+}
+
+.logout-article .jumbotron {
+    padding: 120px 60px;
+    margin: 0;
+    background: url("../images/charity.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    color: #f3f3f3;
+}

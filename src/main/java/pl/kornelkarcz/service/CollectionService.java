@@ -34,7 +34,7 @@ public class CollectionService {
         return collectionRepository.countDistinctByInstitution();
     }
 
-    public List<Collection> getUserAllDonations(Long id) {
+    public List<Collection> getUserAllCollections(Long id) {
         return collectionRepository.getUserAllCollections(id);
     }
 

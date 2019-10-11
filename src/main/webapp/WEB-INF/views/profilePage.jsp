@@ -140,28 +140,57 @@
                             </div>
                         </div>
                         <div id="ele-2" class="profile-element">
-                                <table class="table" id="table">
-                                    <thead>
+                            <table class="table" id="table">
+                                <thead>
+                                <tr>
+                                    <th class="text-center">ID</th>
+                                    <th class="text-center">Number of Bags</th>
+                                    <th class="text-center">Content</th>
+                                    <th class="text-center">Institution</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach items="${donations}" var="donation">
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Number of Bags</th>
-                                        <th>Content</th>
-                                        <th>Institution</th>
+                                        <td class="align-middle text-center">${donation.id}</td>
+                                        <td class="align-middle text-center">${donation.numberOfBags}</td>
+                                        <td class="align-middle text-center">${donation.contentDescription}</td>
+                                        <td class="align-middle text-center">${donation.institution.name}</td>
+                                        <td>
+                                            <button class="donation-button-details btn btn-primary">Details
+                                            </button>
+                                        </td>
                                     </tr>
-                                    </thead>
-                                    <tbody>
-                                    <c:forEach items="${donations}" var="donation">
-                                        <tr>
-                                            <td>${donation.id}</td>
-                                            <td>${donation.numberOfBags}</td>
-                                            <td>${donation.contentDescription}</td>
-                                            <td>${donation.institution.name}</td>
-                                        </tr>
-                                    </c:forEach>
-                                    </tbody>
-                                </table>
+                                </c:forEach>
+                                </tbody>
+                            </table>
                         </div>
-                        <div id="ele-3" class="profile-element">Show Collections data 3</div>
+                        <div id="ele-3" class="profile-element">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="text-center">Id</th>
+                                    <th class="text-center">Content</th>
+                                    <th class="text-center">Institution</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach items="${collections}" var="collection">
+                                    <tr>
+                                        <td class="align-middle text-center">${collection.id}</td>
+                                        <td class="align-middle text-center">${collection.contentDescription}</td>
+                                        <td class="align-middle text-center">${collection.institution.name}</td>
+                                        <td>
+                                            <button class="collection-button-details btn btn-outline-primary">Details
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -175,6 +204,8 @@
 
 <script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="../../js/dataTables.bootstrap4.min.js"></script>
+<script type="text/javascript" src="../../js/profileDonation.js"></script>
+<script type="text/javascript" src="../../js/profileCollection.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $("#table").DataTable({
