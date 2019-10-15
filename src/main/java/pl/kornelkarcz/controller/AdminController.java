@@ -45,6 +45,8 @@ public class AdminController {
         if (!result.hasErrors()) {
             addressService.save(institution.getAddress());
             institutionService.save(institution);
+        } else {
+            return "redirect:/403";
         }
         return "redirect:/admin";
     }

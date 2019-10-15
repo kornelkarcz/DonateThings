@@ -9,83 +9,11 @@
 
 <body>
 <sec:authorize access="isAnonymous()">
-    <%--UNLOGGED HEADER--%>
-    <nav class="navbar navbar-expand-md fixed-top navbar-light py-4"
-         id="main-nav">
-        <div class="container">
-            <a href="/" class="navbar-brand">
-                <img src="../../images/logo.png" width="75" height="75" alt=""/>
-                <h3 class="d-inline align-middle">Donate Things</h3>
-            </a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav">
-                    <li class="nav-item px-2">
-                        <a href="" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="" class="nav-link">How Does It Work?</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="" class="nav-link">Fundations</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="" class="nav-link">About Us</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="" class="nav-link">Contact</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item px-2">
-                        <a href="/login" class="nav-link">Log In</a>
-                    </li>
-                    <li class="nav-item active px-2">
-                        <a href="/register" class="nav-link">Register</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <%@ include file="header.jsp" %>
 </sec:authorize>
 
 <sec:authorize access="isAuthenticated()">
-    <%--LOGGED HEADER--%>
-    <nav class="navbar navbar-expand-md fixed-top navbar-light py-4"
-         id="main-nav">
-        <div class="container">
-            <a href="/" class="navbar-brand">
-                <img src="../../images/logo.png" width="75" height="75" alt=""/>
-                <h3 class="d-inline align-middle">Donate Things</h3>
-            </a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav">
-                    <li class="nav-item px-2">
-                        <a href="" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="" class="nav-link">How Does It Work?</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="" class="nav-link">Fundations</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="" class="nav-link">About Us</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="" class="nav-link">Contact</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item px-2">
-                        <a href="/profile/" class="nav-link">Hello, ${firstName}!</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="/logout" class="nav-link">Logout</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <%@ include file="loggedHeader.jsp" %>
 </sec:authorize>
 
 <section id="register-page" class="text-center p-4">
@@ -147,6 +75,9 @@
 </section>
 <%@ include file="footer.jsp" %>
 <%@ include file="scripts.jsp" %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.js" type="text/javascript"></script>
+<script src="../../js/validation.js" type="text/javascript"></script>
 
 <script type="text/javascript">
     $(".form-register-item input").on("focus", function () {

@@ -22,36 +22,36 @@
             <div class="col-md-2"></div>
             <div class="col-md-7">
                 <form:form action="/admin/addInstitution" method="post" modelAttribute="institution"
-                           class="add-institution-form">
+                           id="add-institution-form" cssClass="addInstitutionForm">
                 <h2 class="display-4">Add Institution</h2>
                 <form:hidden path="id"/>
-                <div class="form-institution">
-                    <form:input path="name" type="text"/>
+                <div class="add-institution-form-item">
+                    <form:input path="name" type="text" id="institution-name"/>
                     <span data-placeholder="Institution name"></span>
                     <form:errors path="name" cssClass="error" element="div"/>
                 </div>
-                <div class="form-institution">
-                    <form:input path="address.street" type="text"/>
+                <div class="add-institution-form-item">
+                    <form:input path="address.street" name="addressStreet" type="text"/>
                     <span data-placeholder="Street name"></span>
                     <form:errors path="address.street" cssClass="error" element="div"/>
                 </div>
-                <div class="form-institution">
-                    <form:input path="address.houseNumber" type="number"/>
+                <div class="add-institution-form-item">
+                    <form:input path="address.houseNumber" type="text"/>
                     <span data-placeholder="House number"></span>
                     <form:errors path="address.houseNumber" cssClass="error" element="div"/>
                 </div>
-                <div class="form-institution">
-                    <form:input path="address.flatNumber" type="number"/>
+                <div class="add-institution-form-item">
+                    <form:input path="address.flatNumber" type="text"/>
                     <span data-placeholder="Flat number"></span>
                     <form:errors path="address.flatNumber" cssClass="error" element="div"/>
                 </div>
-                <div class="form-institution">
+                <div class="add-institution-form-item">
                     <form:input path="address.city" type="text"/>
                     <span data-placeholder="City"></span>
                     <form:errors path="address.city" cssClass="error" element="div"/>
                 </div>
-                <div class="form-institution">
-                    <form:input path="address.postalCode" type="text"/>
+                <div class="add-institution-form-item">
+                    <form:input path="address.postalCode" type="text" id="institutionPostalCode"/>
                     <span data-placeholder="Postal code"></span>
                     <form:errors path="address.postalCode" cssClass="error" element="div"/>
                 </div>
@@ -65,17 +65,23 @@
 
 <%@ include file="footer.jsp" %>
 <%@ include file="scripts.jsp" %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js" type="text/javascript"></script>
+<script src="../../js/validation.js" type="text/javascript"></script>
 
 <script type="text/javascript">
-    $(".form-institution input").on("focus", function () {
+    $(".add-institution-form-item input").on("focus", function () {
         $(this).addClass("focus");
     });
 
-    $(".form-institution input").on("blur", function () {
+    $(".add-institution-form-item input").on("blur", function () {
         if ($(this).val() == "")
             $(this).removeClass("focus");
     });
 
 </script>
+
+
 </body>
 </html>

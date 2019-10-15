@@ -879,3 +879,8 @@ body {
     border-color: #ffc107;
     color: #ffffff;
 }
+
+.custom-error-class {
+    color: #ff4444;
+    font-style: italic;
+}
