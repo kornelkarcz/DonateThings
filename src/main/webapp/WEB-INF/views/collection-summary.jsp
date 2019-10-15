@@ -15,16 +15,61 @@
 <sec:authorize access="isAuthenticated()">
     <%@ include file="loggedHeader.jsp" %>
 </sec:authorize>
-<p>Thank you for your time and effort to organize collection</p>
 
-<p>Donation ID: ${lastCollection.id}</p><br>
-<p>Institution name: ${lastCollection.institution.name}</p><br>
-<p>Content desc: ${lastCollection.contentDescription}</p><br>
-<p>Phone number: ${lastCollection.phoneNumber}</p><br>
-<p>Street name: ${lastCollection.streetName}</p><br>
-<p>House number: ${lastCollection.houseNumber}</p><br>
-<p>City: ${lastCollection.city}</p><br>
-<p>User first name: ${lastCollection.user.firstName}</p>
+<section id="collection-summary-section" class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 py-5">
+                <h1 class="pb-4">Thank you for organizing collection!</h1>
+                <table class="table">
+                    <tr>
+                        <td>Id</td>
+                        <td>${lastCollection.id}</td>
+                    </tr>
+                    <tr>
+                        <td>Content</td>
+                        <td>${lastCollection.contentDescription}</td>
+                    </tr>
+                    <tr>
+                        <td>Phone Number</td>
+                        <td>${lastCollection.phoneNumber}</td>
+                    </tr>
+                    <tr>
+                        <td>Institution</td>
+                        <td>${lastCollection.institution.name}</td>
+                    </tr>
+                    <tr>
+                        <td>Street</td>
+                        <td>${lastCollection.streetName}</td>
+                    </tr>
+                    <tr>
+                        <td>House number</td>
+                        <td>${lastCollection.houseNumber}</td>
+                    </tr>
+                    <tr>
+                        <td>Flat number</td>
+                        <td>${lastCollection.flatNumber}</td>
+                    </tr>
+                    <tr>
+                        <td>City</td>
+                        <td>${lastCollection.city}</td>
+                    </tr>
+                    <tr>
+                        <td>Postal Code</td>
+                        <td>${lastCollection.postalCode}</td>
+                    </tr>
+                    <tr>
+                        <td>Comment</td>
+                        <td>${lastCollection.comment}</td>
+                    </tr>
+                </table>
+                <a href="/profile/" class="btn btn-secondary btn-block">See All Collections</a>
+
+            </div>
+            <div class="col-md-6"></div>
+        </div>
+    </div>
+</section>
 
 <%@ include file="footer.jsp"%>
 </body>

@@ -6,6 +6,7 @@
 <head>
     <title>Collect</title>
     <%@ include file="dependencies.jsp" %>
+    <link rel="stylesheet" href="../../css/nice-select.css">
 </head>
 <body>
 <sec:authorize access="isAnonymous()">
@@ -26,21 +27,17 @@
                         <h1>Donate things to those in</h1>
                         <span class="uppercase">in dire need</span>
                     </div>
-                    <div class="slogan-title">It take only #steps</div>
-                    <ul class="slogan-steps">
+                    <div class="slogan-title">It takes only 3 steps</div>
+                    <ul class="slogan-steps" style="margin-left: 100px">
                         <li>
-                            <div><em>1</em><span>Choose staff</span></div>
+                            <div><em>1</em><span>Choose type of collection</span></div>
                         </li>
                         <li>
-                            <div><em>2</em><span>Choose your fav insti</span></div>
+                            <div><em>2</em><span>Choose address of collection</span></div>
                         </li>
                         <li>
-                            <div><em>3</em><span>Choose staff</span></div>
+                            <div><em>3</em><span>Submit!</span></div>
                         </li>
-                        <li>
-                            <div><em>4</em><span>Choose staff</span></div>
-                        </li>
-
                     </ul>
                 </div>
             </div>
@@ -62,28 +59,27 @@
             <div class="col-md-8 justify-content-start">
                 <form:form id="organize-collection-form" class="ml-5" method="post" action="/organize-collection"
                            modelAttribute="collection">
-                    <h1 class="display-5">Organize collection</h1>
-
-                    <div class="tab">
-                        <p>Step 1</p>
-                        <div class="collect-form-item">
-                            <form:input path="contentDescription" type="text"/>
-                            <span data-placeholder="Description of collection"></span>
-                        </div>
-                        <div class="collect-form-item">
-                            <form:input path="phoneNumber" type="text"/>
-                            <span data-placeholder="Phone number"></span>
-                        </div>
-                        <div class="collect-form-item">
-                            <form:input path="comment" type="text"/>
-                            <span data-placeholder="Comment"></span>
-                        </div>
-                        <form:select path="institution">
-                            <form:option value="0"/>
-                            <form:options items="${institutions}" itemLabel="name" itemValue="id"/>
-                        </form:select>
+                <h1 class="display-5">Organize collection</h1>
+                <div class="tab pb-3">
+                    <p>Step 1</p>
+                    <div class="collect-form-item">
+                        <form:input path="contentDescription" type="text"/>
+                        <span data-placeholder="Description of collection"></span>
                     </div>
-                    <div class="tab">
+                    <div class="collect-form-item">
+                        <form:input path="phoneNumber" type="text"/>
+                        <span data-placeholder="Phone number"></span>
+                    </div>
+                    <div class="collect-form-item">
+                        <form:input path="comment" type="text"/>
+                        <span data-placeholder="Comment"></span>
+                    </div>
+                    <form:select path="institution" cssClass="wide">
+                        <form:option value="Choose an institution"/>
+                        <form:options cssClass="my-option" items="${institutions}" itemLabel="name" itemValue="id"/>
+                    </form:select>
+
+                    <div class="tab pb-3">
                         <p>Step 2</p>
                         <div class="collect-form-item">
                             <form:input path="streetName" type="text"/>
@@ -118,11 +114,11 @@
                     </div>
 
 
-                </form:form>
+                    </form:form>
+                </div>
+                <div class="col-md-4"></div>
             </div>
-            <div class="col-md-4"></div>
         </div>
-    </div>
 </section>
 
 <%@ include file="footer.jsp" %>
@@ -139,5 +135,12 @@
 
 </script>
 <script src="../../js/collect.js" type="text/javascript"></script>
+<script src="../../js/jquery.nice-select.js" type="text/javascript"></script>
+
+<script>
+    $(document).ready(function () {
+        $('select').niceSelect();
+    });
+</script>
 </body>
 </html>

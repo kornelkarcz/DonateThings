@@ -11,83 +11,11 @@
 </head>
 <body>
 <sec:authorize access="isAnonymous()">
-    <%--UNLOGGED HEADER--%>
-    <nav class="navbar navbar-expand-md fixed-top navbar-light py-4"
-         id="main-nav">
-        <div class="container">
-            <a href="/" class="navbar-brand">
-                <img src="../../images/logo.png" width="75" height="75" alt=""/>
-                <h3 class="d-inline align-middle">Donate Things</h3>
-            </a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav">
-                    <li class="nav-item px-2">
-                        <a href="" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="" class="nav-link">How Does It Work?</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="" class="nav-link">Fundations</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="" class="nav-link">About Us</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="" class="nav-link">Contact</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item px-2">
-                        <a href="/login" class="nav-link">Log In</a>
-                    </li>
-                    <li class="nav-item active px-2">
-                        <a href="/register" class="nav-link">Register</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <%@ include file="header.jsp" %>
 </sec:authorize>
 
 <sec:authorize access="isAuthenticated()">
-    <%--LOGGED HEADER--%>
-    <nav class="navbar navbar-expand-md fixed-top navbar-light py-4"
-         id="main-nav">
-        <div class="container">
-            <a href="/" class="navbar-brand">
-                <img src="../../images/logo.png" width="75" height="75" alt=""/>
-                <h3 class="d-inline align-middle">Donate Things</h3>
-            </a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav">
-                    <li class="nav-item px-2">
-                        <a href="" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="" class="nav-link">How Does It Work?</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="" class="nav-link">Fundations</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="" class="nav-link">About Us</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="" class="nav-link">Contact</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item px-2">
-                        <a href="/profile/" class="nav-link">Hello, ${firstName}!</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="/logout" class="nav-link">Logout</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <%@ include file="loggedHeader.jsp" %>
 </sec:authorize>
 
 <section id="profile-page" class="p-5 my-5">
@@ -140,11 +68,10 @@
                             </div>
                         </div>
                         <div id="ele-2" class="profile-element">
-                            <table class="table" id="table">
+                            <table class="table user-tables">
                                 <thead>
                                 <tr>
                                     <th class="text-center">ID</th>
-                                    <th class="text-center">Number of Bags</th>
                                     <th class="text-center">Content</th>
                                     <th class="text-center">Institution</th>
                                     <th class="text-center">Action</th>
@@ -154,11 +81,10 @@
                                 <c:forEach items="${donations}" var="donation">
                                     <tr>
                                         <td class="align-middle text-center">${donation.id}</td>
-                                        <td class="align-middle text-center">${donation.numberOfBags}</td>
                                         <td class="align-middle text-center">${donation.contentDescription}</td>
                                         <td class="align-middle text-center">${donation.institution.name}</td>
                                         <td>
-                                            <button class="donation-button-details btn btn-primary">Details
+                                            <button class="user-donation-button-details btn align-middle text-center">Details
                                             </button>
                                         </td>
                                     </tr>
@@ -167,7 +93,7 @@
                             </table>
                         </div>
                         <div id="ele-3" class="profile-element">
-                            <table class="table">
+                            <table class="table user-tables">
                                 <thead>
                                 <tr>
                                     <th class="text-center">Id</th>
@@ -183,7 +109,7 @@
                                         <td class="align-middle text-center">${collection.contentDescription}</td>
                                         <td class="align-middle text-center">${collection.institution.name}</td>
                                         <td>
-                                            <button class="collection-button-details btn btn-outline-primary">Details
+                                            <button class="user-collection-button-details btn align-middle text-center">Details
                                             </button>
                                         </td>
                                     </tr>
@@ -206,13 +132,22 @@
 <script type="text/javascript" src="../../js/dataTables.bootstrap4.min.js"></script>
 <script type="text/javascript" src="../../js/profileDonation.js"></script>
 <script type="text/javascript" src="../../js/profileCollection.js"></script>
-<script type="text/javascript">
+
+<script>
     $(document).ready(function () {
-        $("#table").DataTable({
-            "ordering": true
+        $(".user-tables").DataTable({
+            "ordering": true,
+            "searching": true,
+            "columnDefs": [
+                {
+                    "targets": 3,
+                    "sorting": false
+                }
+            ]
         });
     });
 </script>
+
 <script>
     function showDiv(data) {
         $("#ele-" + data).addClass('make-visible');
@@ -240,6 +175,5 @@
         }
     }
 </script>
-
 </body>
 </html>

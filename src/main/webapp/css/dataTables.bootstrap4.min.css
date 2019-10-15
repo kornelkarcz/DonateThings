@@ -1,4 +1,4 @@
-/*Glowne cialo tabeli*/
+/*Main table body*/
 table.dataTable {
     clear: both;
     margin-top: 6px !important;
@@ -8,17 +8,17 @@ table.dataTable {
     border-spacing: 0
 }
 
-/*Tak jak wyzej?*/
+/*Same as above*/
 table.dataTable td, table.dataTable th {
     -webkit-box-sizing: content-box;
     box-sizing: content-box
 }
 
-/*Jak jest puste*/
+/*In case search doesn't find a thing*/
 table.dataTable td.dataTables_empty, table.dataTable th.dataTables_empty {
     text-align: center;
     color: red;
-    background-color: blue
+    background-color: #ffffff;
 }
 
 /*niewiadomo*/
@@ -91,8 +91,9 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination > li > a {
 /*}*/
 
 .page-item.active .page-link {
-    color: red !important;
-    background-color: black !important;
+    color: #ffffff !important;
+    background-color: #ffc107 !important;
+    border-color: #b6ccd4 !important;
 }
 
 .page-item.disabled .page-link {
@@ -100,31 +101,35 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination > li > a {
     background-color: black !important;
 }
 
-/*Przycisk next aktywny*/
+/*Next button active*/
 .page-item:last-child .page-link {
     color: #ffc107 !important;
-    background-color: #00aced !important;
+    border-color: #ffc107 !important;
+    background-color: #ffffff !important;
 }
 
-/*Przycisk next nieaktywny*/
+/*Next button inactive*/
 .page-item:last-child.disabled .page-link {
-    color: #00aced !important;
-    background-color: #ffc107 !important;
+    color: #b6ccd4 !important;
+    border-color: #b6ccd4 !important;
+    background-color: #ffffff !important;
 }
 
-/*Przycisk previous aktywny*/
+/*Prev button active*/
 .page-item:first-child .page-link {
     color: #ffc107 !important;
-    background-color: #00aced !important;
+    border-color: #ffc107 !important;
+    background-color: #ffffff !important;
 }
 
-/*Przycisk previous nieaktywny*/
+/*Prev button inactive*/
 .page-item:first-child.disabled .page-link {
-    color: #00aced !important;
-    background-color: #ffc107 !important;
+    color: #b6ccd4 !important;
+    border-color: #b6ccd4 !important;
+    background-color: #ffffff !important;
 }
 
-/*????????*/
+/*No idea*/
 div.dataTables_wrapper div.dataTables_processing {
     position: absolute;
     top: 50%;
@@ -133,75 +138,76 @@ div.dataTables_wrapper div.dataTables_processing {
     margin-left: -100px;
     margin-top: -26px;
     text-align: center;
+}
 
-padding:
-
-1
-em
-
-0
 
 /*??????*/
 table.dataTable thead > tr > th.sorting_asc, table.dataTable thead > tr > th.sorting_desc, table.dataTable thead > tr > th.sorting, table.dataTable thead > tr > td.sorting_asc, table.dataTable thead > tr > td.sorting_desc, table.dataTable thead > tr > td.sorting {
-    padding-right: 30px
+    padding-right: 30px;
 }
+
+/*!*Targeting th action in the table --- SUCCESS*!*/
+/*table.dataTable thead > tr > th.actions {*/
+    /*color: red;*/
+    /*background-color: blue;*/
+    /*!*width: 200px !important;*!*/
+/*}*/
+
 
 /*Niewiadomo*/
 table.dataTable thead > tr > th:active, table.dataTable thead > tr > td:active {
     outline: none
 }
 
-/*Niewiadomo*/
+/*Text next to arrows*/
 table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc, table.dataTable thead .sorting_asc_disabled, table.dataTable thead .sorting_desc_disabled {
     cursor: pointer;
-    position: relative
+    position: relative;
 }
 
-/*Niewiadomo*/
+/*Arrows*/
 table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:before, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:before, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:before, table.dataTable thead .sorting_desc_disabled:after {
     position: absolute;
     bottom: 0.9em;
     display: block;
     opacity: 0.3;
-    color: red;
-    background-color: blue
 }
 
-/*Niewiadomo*/
+/*No idea*/
 table.dataTable thead .sorting:before, table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_desc:before, table.dataTable thead .sorting_asc_disabled:before, table.dataTable thead .sorting_desc_disabled:before {
     right: 1em;
     content: "\2191"
 }
 
-/*Niewiadomo*/
+/*No idea*/
 table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:after {
     right: 0.5em;
     content: "\2193";
 }
 
-/*Niewiadomo - strzalki?*/
+/*No idea*/
 table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_desc:after {
     opacity: 1
 }
 
-/*niewiadomo*/
+/*No idea*/
 table.dataTable thead .sorting_asc_disabled:before, table.dataTable thead .sorting_desc_disabled:after {
     opacity: 0
 }
 
-/*Niewiadomo*/
+/*No idea*/
 div.dataTables_scrollHead table.dataTable {
     margin-bottom: 0 !important
 }
 
-/*Niewiadomo*/
+/*No idea*/
 div.dataTables_scrollBody table {
     border-top: none;
     margin-top: 0 !important;
     margin-bottom: 0 !important
 }
 
-/*Niewiadomo*/
+/*No idea*/
 div.dataTables_scrollBody table thead .sorting:before, div.dataTables_scrollBody table thead .sorting_asc:before, div.dataTables_scrollBody table thead .sorting_desc:before, div.dataTables_scrollBody table thead .sorting:after, div.dataTables_scrollBody table thead .sorting_asc:after, div.dataTables_scrollBody table thead .sorting_desc:after {
     display: none
 }

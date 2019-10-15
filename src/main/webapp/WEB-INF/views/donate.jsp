@@ -6,6 +6,7 @@
 <head>
     <title>Donate</title>
     <%@ include file="dependencies.jsp" %>
+    <link rel="stylesheet" href="../../css/nice-select.css">
 </head>
 <body>
 <sec:authorize access="isAnonymous()">
@@ -26,19 +27,19 @@
                         <h1>Donate things to those in</h1>
                         <span class="uppercase">in dire need</span>
                     </div>
-                    <div class="slogan-title">It take only #steps</div>
+                    <div class="slogan-title">It takes only 4 steps</div>
                     <ul class="slogan-steps">
                         <li>
-                            <div><em>1</em><span>Choose staff</span></div>
+                            <div><em>1</em><span>Choose things to donate</span></div>
                         </li>
                         <li>
-                            <div><em>2</em><span>Choose your fav insti</span></div>
+                            <div><em>2</em><span>Pick up institution</span></div>
                         </li>
                         <li>
-                            <div><em>3</em><span>Choose staff</span></div>
+                            <div><em>3</em><span>Provide the address</span></div>
                         </li>
                         <li>
-                            <div><em>4</em><span>Choose staff</span></div>
+                            <div><em>4</em><span>Submit!</span></div>
                         </li>
 
                     </ul>
@@ -62,10 +63,9 @@
             <div class="col-md-8 justify-content-start">
                 <form:form id="donate-form" class="ml-5" method="post" action="/donate" modelAttribute="donation">
                     <h1>Make donation</h1>
-
-                    <div class="tab">
-                        <p>Krok 1</p>
-                        <p>Podaj liczbe workow i jakie rzeczy oddajesz</p>
+                    <div class="tab pb-3">
+                        <p>Step 1</p>
+                        <p class="pb-3">Provide number of bags and brief description</p>
                         <div class="donate-form-item">
                             <form:input path="numberOfBags" type="text"/>
                             <span data-placeholder="Number of bags"></span>
@@ -76,29 +76,17 @@
                         </div>
                     </div>
 
-                    <div class="tab">
-                        <p>Krok 2</p>
-                        <p>Choose an Institutions</p>
+                    <div class="tab pb-3">
+                        <p>Step 2</p>
+                        <p class="pb-3">Choose an institution you would like to support</p>
 
-                        <div class="select-test pb-5">
-                            <div class="dropdown">
-                                <div class="select">
-                                    <span>Select Institution</span>
-                                </div>
-                                <ul class="dropdown-menu">
-                                    <li id="male">Male</li>
-                                    <li id="female">Female</li>
-                                </ul>
-                            </div>
-
-                            <span class="msg"></span>
+                        <div class="pb-5">
+                            <form:select path="institution" cssClass="wide">
+                                <form:option value="Choose an institution"/>
+                                <form:options cssClass="my-option" items="${institutions}" itemLabel="name"
+                                              itemValue="id"/>
+                            </form:select>
                         </div>
-
-                        <form:select path="institution">
-                            <form:option value="0"/>
-                            <form:options items="${institutions}" itemLabel="name" itemValue="id"/>
-                        </form:select>
-
 
                         <div class="donate-form-item">
                             <form:input path="phoneNumber" type="text"/>
@@ -106,8 +94,9 @@
                         </div>
                     </div>
 
-                    <div class="tab">Step 3
-
+                    <div class="tab pb-3">
+                        <p>Step 3</p>
+                        <p class="pb-3">Provide an address for our courier</p>
                         <div class="donate-form-item">
                             <form:input path="streetName"/>
                             <span data-placeholder="Street name"></span>
@@ -168,5 +157,13 @@
 
 </script>
 <script src="../../js/test.js" type="text/javascript"></script>
+<script src="../../js/jquery.nice-select.js" type="text/javascript"></script>
+
+<script>
+    $(document).ready(function () {
+        $('select').niceSelect();
+    });
+</script>
+
 </body>
 </html>

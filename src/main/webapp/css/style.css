@@ -580,7 +580,7 @@ body {
 
 #organize-collection-form-section .step.finish,
 #make-donation-form-section .step.finish {
-    background-color: #4CAF50;
+    background-color: #ffc107;
 }
 
 #slogan-container {
@@ -824,4 +824,58 @@ body {
     background-repeat: no-repeat;
     background-position: 50% 50%;
     color: #f3f3f3;
+}
+
+#donation-summary-section,
+#collection-summary-section {
+    background: url("../images/header-bg.jpg") no-repeat 200% 50%;
+    background-size: 80vw;
+
+}
+
+.donation-button-edit,
+.collection-button-edit,
+.donation-button-details,
+.collection-button-details {
+    background: #ffffff;
+    border-color: #ffc107;
+    color: #ffc107;
+}
+
+.donation-button-edit:hover,
+.collection-button-edit:hover,
+.donation-button-details:hover,
+.collection-button-details:hover {
+    background: #ffc107;
+    border-color: #ffc107;
+    color: #ffffff;
+}
+
+.collection-button-delete,
+.donation-button-delete {
+    background-color: #ffffff;
+    border-color: #ff4444;
+    color: #ff4444;
+}
+
+.collection-button-delete:hover,
+.donation-button-delete:hover {
+    background-color: #ff4444;
+    border-color: #ff4444;
+    color: #ffffff;
+}
+
+.user-donation-button-details,
+.user-collection-button-details {
+    background-color: #ffffff;
+    border-color: #ffc107;
+    color: #ffc107;
+    margin-left: 70px;
+}
+
+.user-donation-button-details:hover,
+.user-collection-button-details:hover {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #ffffff;
 }
