@@ -10,7 +10,6 @@
 <sec:authorize access="isAnonymous()">
     <%@ include file="header.jsp" %>
 </sec:authorize>
-
 <sec:authorize access="isAuthenticated()">
     <%@ include file="loggedHeader.jsp" %>
 </sec:authorize>
@@ -29,9 +28,9 @@
     </article>
 </section>
 
+<%@ include file="scripts.jsp" %>
 <%@ include file="footer.jsp" %>
 <script>
-
     let seconds = 10;
 
     function countdown() {
@@ -43,9 +42,7 @@
             window.setTimeout("countdown()",1000);
         }
     }
-
     countdown();
-
 </script>
 </body>
 </html>

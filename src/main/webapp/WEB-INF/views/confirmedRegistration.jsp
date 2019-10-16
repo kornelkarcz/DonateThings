@@ -30,7 +30,7 @@
     </div>
 </section>
 
-<%@ include file="footer.jsp" %>
 <%@ include file="scripts.jsp" %>
+<%@ include file="footer.jsp" %>
 </body>
 </html>

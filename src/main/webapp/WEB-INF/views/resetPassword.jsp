@@ -11,7 +11,6 @@
 <sec:authorize access="isAnonymous()">
     <%@ include file="header.jsp" %>
 </sec:authorize>
-
 <sec:authorize access="isAuthenticated()">
     <%@ include file="loggedHeader.jsp" %>
 </sec:authorize>
@@ -21,8 +20,6 @@
         <div class="row align-items-center mb-5">
             <div class="col-md-3"></div>
             <div class="col-md-6">
-
-
                 <form action="/reset-password" modelAttribute="passwordForgotDto" method="post"
                       class="reset-password-form">
                     <h2 class="display-4">Please enter new password</h2>
@@ -39,17 +36,14 @@
 
                     <button class="submit btn btn-warning btn-block mb-1" type="submit">Reset Password</button>
                     <button class="submit btn btn-secondary btn-block mb-1" type="reset">Clear</button>
-
                 </form>
-
-
             </div>
             <div class="col-md-3"></div>
         </div>
     </div>
 </section>
 
-<%@ include file="footer.jsp" %>
 <%@ include file="scripts.jsp" %>
+<%@ include file="footer.jsp" %>
 </body>
 </html>

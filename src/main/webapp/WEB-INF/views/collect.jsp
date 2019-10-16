@@ -111,7 +111,6 @@
                         <span class="step"></span>
                     </div>
 
-
                     </form:form>
                 </div>
                 <div class="col-md-4"></div>
@@ -120,7 +119,7 @@
     </div>
 </section>
 
-<%@ include file="footer.jsp" %>
 <%@ include file="scripts.jsp" %>
+<%@ include file="footer.jsp" %>
 </body>
 </html>

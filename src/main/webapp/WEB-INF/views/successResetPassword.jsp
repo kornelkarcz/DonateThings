@@ -5,12 +5,10 @@
     <title>Success Reset Password</title>
     <%@ include file="dependencies.jsp" %>
 </head>
-
 <body>
 <sec:authorize access="isAnonymous()">
     <%@ include file="header.jsp" %>
 </sec:authorize>
-
 <sec:authorize access="isAuthenticated()">
     <%@ include file="loggedHeader.jsp" %>
 </sec:authorize>
@@ -31,7 +29,7 @@
     </div>
 </section>
 
-<%@ include file="footer.jsp" %>
 <%@ include file="scripts.jsp" %>
+<%@ include file="footer.jsp" %>
 </body>
 </html>

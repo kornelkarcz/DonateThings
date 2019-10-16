@@ -10,7 +10,6 @@
 <sec:authorize access="isAnonymous()">
     <%@ include file="header.jsp" %>
 </sec:authorize>
-
 <sec:authorize access="isAuthenticated()">
     <%@ include file="loggedHeader.jsp" %>
 </sec:authorize>
@@ -119,12 +118,10 @@
             </div>
         </div>
     </div>
-
 </section>
 
 <%@ include file="scripts.jsp" %>
 <%@ include file="footer.jsp" %>
-
 <script>
     $(document).ready(function () {
         $(".user-tables").DataTable({

@@ -5,7 +5,6 @@
 <head>
     <title>All Institution</title>
     <%@ include file="dependencies.jsp" %>
-    <script src="../../js/editInstitution.js"></script>
 </head>
 
 <body>
@@ -62,8 +61,7 @@
     </div>
 </section>
 
-<%@ include file="footer.jsp" %>
 <%@ include file="scripts.jsp" %>
-
+<%@ include file="footer.jsp" %>
 </body>
 </html>

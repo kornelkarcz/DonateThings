@@ -15,7 +15,6 @@
     <%@ include file="loggedHeader.jsp" %>
 </sec:authorize>
 
-
 <section id="donation-summary-section" class="py-5">
     <div class="container">
         <div class="row">
@@ -75,7 +74,7 @@
     </div>
 </section>
 
-
+<%@ include file="scripts.jsp" %>
 <%@ include file="footer.jsp" %>
 </body>
 </html>

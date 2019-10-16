@@ -63,21 +63,7 @@
     </div>
 </section>
 
-<%@ include file="footer.jsp" %>
 <%@ include file="scripts.jsp" %>
-
-<script type="text/javascript">
-    $(".add-institution-form-item input").on("focus", function () {
-        $(this).addClass("focus");
-    });
-
-    $(".add-institution-form-item input").on("blur", function () {
-        if ($(this).val() == "")
-            $(this).removeClass("focus");
-    });
-
-</script>
-
-
+<%@ include file="footer.jsp" %>
 </body>
 </html>
