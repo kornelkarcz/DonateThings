@@ -4,9 +4,6 @@
 <html>
 <head>
     <title>Profile Page</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="../../css/dataTables.bootstrap4.min.css">
     <%@ include file="dependencies.jsp" %>
 </head>
 <body>
@@ -127,11 +124,6 @@
 
 <%@ include file="scripts.jsp" %>
 <%@ include file="footer.jsp" %>
-
-<script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="../../js/dataTables.bootstrap4.min.js"></script>
-<script type="text/javascript" src="../../js/profileDonation.js"></script>
-<script type="text/javascript" src="../../js/profileCollection.js"></script>
 
 <script>
     $(document).ready(function () {

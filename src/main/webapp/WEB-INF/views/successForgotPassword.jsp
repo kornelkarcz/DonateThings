@@ -3,10 +3,8 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
-    <title>Succ Forgot Pass</title>
-    <link rel="stylesheet" href="css/style.css" />
-</head>
-
+    <title>Success Forgot Pass</title>
+    <%@ include file = "dependencies.jsp"%></head>
 <body>
 <sec:authorize access="isAnonymous()">
     <%@ include file="header.jsp" %>
@@ -22,7 +20,8 @@ The reset password link was sent to this email:<p>${email}</p>
 ${user}
 
 <br>
-<a href="/">Back to homepage</a><br>
 
+<%@ include file = "scripts.jsp"%>
+<%@ include file = "footer.jsp"%>
 </body>
 </html>

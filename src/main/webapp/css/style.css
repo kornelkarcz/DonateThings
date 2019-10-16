@@ -51,7 +51,7 @@ body {
     color: #000000;
 }
 
-.option {
+.activity-option {
     color: #333333;
     border: 1px solid #000000;
     width: 45%;
@@ -59,7 +59,7 @@ body {
     font-size: 1.4rem;
 }
 
-.option:hover {
+.activity-option:hover {
     border: 2px solid #ffc107;
     color: #ffc107;
 }

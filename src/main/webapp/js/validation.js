@@ -386,7 +386,7 @@ $(function () {
         messages: {
             numberOfBags: {
                 required: "Please enter number of bags",
-                onlyNumbers: "Please use number only",
+                onlyNumbers: "Please use numbers only",
                 maxlength: "Number of bags should not be longer then 3 digits"
             },
             contentDescription: {
@@ -483,7 +483,7 @@ $(function () {
         messages: {
             numberOfBags: {
                 required: "Please enter number of bags",
-                onlyNumbers: "Please use number only",
+                onlyNumbers: "Please use numbers only",
                 maxlength: "Number of bags should not be longer then 3 digits"
             },
             contentDescription: {

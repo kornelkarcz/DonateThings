@@ -2,8 +2,8 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
-    <%@ include file="dependencies.jsp" %>
     <title>Resend Token</title>
+    <%@ include file="dependencies.jsp" %>
 </head>
 <body>
 <sec:authorize access="isAnonymous()">

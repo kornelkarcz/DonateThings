@@ -75,9 +75,6 @@
 </section>
 <%@ include file="footer.jsp" %>
 <%@ include file="scripts.jsp" %>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js" type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.js" type="text/javascript"></script>
-<script src="../../js/validation.js" type="text/javascript"></script>
 
 <script type="text/javascript">
     $(".form-register-item input").on("focus", function () {

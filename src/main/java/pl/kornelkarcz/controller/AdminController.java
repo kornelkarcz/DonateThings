@@ -35,7 +35,7 @@ public class AdminController {
     }
 
     @GetMapping("/admin/addInstitution")
-    public String addInstitution(Model model, @AuthenticationPrincipal Principal principal) {
+    public String addInstitution(Model model) {
         model.addAttribute("institution", new Institution());
         return "addInstitution";
     }

@@ -11,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 import pl.kornelkarcz.model.Collection;
 import pl.kornelkarcz.model.Donation;
 import pl.kornelkarcz.model.User;
-import pl.kornelkarcz.repository.UserRepository;
 import pl.kornelkarcz.service.CollectionService;
 import pl.kornelkarcz.service.DonationService;
 import pl.kornelkarcz.service.UserService;
@@ -25,7 +24,6 @@ import java.util.List;
 public class ProfileController {
 
     private final UserService userService;
-    private final UserRepository userRepository;
     private final DonationService donationService;
     private final CollectionService collectionService;
 
@@ -57,11 +55,8 @@ public class ProfileController {
     @Transactional
     @PostMapping("/edit-personal-details")
     public String savePersonalDetailsChanges(@ModelAttribute("user") User user, BindingResult result, Model model, @AuthenticationPrincipal Principal principal) {
-        System.out.println(user.getFirstName());
-        System.out.println(user.getLastName());
-        User currentUser = userService.findUserByEmail(principal.getName());
-        System.out.println(currentUser.getId());
 
+        User currentUser = userService.findUserByEmail(principal.getName());
         if (!result.hasErrors()) {
             userService.updatePersonalDetails(user.getFirstName(), user.getLastName(), currentUser.getId());
         }

@@ -4,7 +4,6 @@
 <html>
 <head>
     <title>Homepage</title>
-
     <%@ include file="dependencies.jsp" %>
 </head>
 
@@ -26,10 +25,10 @@
                     <h1 class="display-4">Start Helping</h1>
                     <h2 class="display-4">Give Away Unwanted Things</h2>
                     <div class="d-flex justify-content-around mt-4">
-                        <div id="str" class="align-self-center option py-5 mt-2">
+                        <div id="str" class="align-self-center activity-option py-5 mt-2">
                             <a class="link" href="/donate">Donate Things</a>
                         </div>
-                        <div class="align-self-center option py-5 mt-2">
+                        <div class="align-self-center activity-option py-5 mt-2">
                             <a class="link" href="/organize-collection">Organize Collection</a>
                         </div>
                     </div>
@@ -196,7 +195,7 @@
 </section>
 
 <!-- FOOTER -->
-<%@ include file="footer.jsp"%>
 <%@ include file="scripts.jsp" %>
+<%@ include file="footer.jsp"%>
 </body>
 </html>

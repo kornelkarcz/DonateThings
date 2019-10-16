@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>Success Reset Password</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <%@ include file="dependencies.jsp" %>
 </head>
 
 <body>
@@ -19,7 +19,8 @@
 
 <p>Your password has been reset successfully!</p>
 
-<a href="/">Back to homepage</a><br>
 
+<%@ include file="footer.jsp" %>
+<%@ include file="scripts.jsp" %>
 </body>
 </html>

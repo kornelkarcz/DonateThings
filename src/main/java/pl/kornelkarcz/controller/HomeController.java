@@ -65,6 +65,16 @@ public class HomeController {
         return "403";
     }
 
+    @ModelAttribute("firstName")
+    public String getFirstName(@AuthenticationPrincipal Principal principal) {
+
+        String firstName = "";
+        if (principal != null) {
+            firstName = userService.findUserByEmail(principal.getName()).getFirstName();
+        }
+        return firstName;
+    }
+
     @ModelAttribute("numberOfUsers")
     public long getNumberOfUsers() {
         return userRepository.count();

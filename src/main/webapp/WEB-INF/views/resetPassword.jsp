@@ -34,8 +34,6 @@
     </table>
 </form>
 
-<a href="/register">Register Page</a><br>
-<a href="/forgot-password">Back to homepage</a><br>
 <%@ include file="footer.jsp" %>
 </body>
 </html>

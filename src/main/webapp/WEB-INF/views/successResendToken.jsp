@@ -1,8 +1,8 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
-    <%@ include file="dependencies.jsp"%>
     <title>Token Sent</title>
+    <%@ include file="dependencies.jsp" %>
 </head>
 <body>
 <sec:authorize access="isAnonymous()">
@@ -16,5 +16,9 @@
 <div class="container">
     <h3 class="display-4">${user}, token has been successfully sent to this email: ${email}</h3>
 </div>
+
+
+<%@ include file="footer.jsp" %>
+<%@ include file="scripts.jsp" %>
 </body>
 </html>
