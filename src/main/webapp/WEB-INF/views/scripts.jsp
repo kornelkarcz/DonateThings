@@ -187,3 +187,14 @@
             $(this).removeClass("focus");
     });
 </script>
+<%--Change password form--%>
+<script type="text/javascript">
+    $(".change-password-form-item input").on("focus", function () {
+        $(this).addClass("focus");
+    });
+
+    $(".change-password-form-item input").on("blur", function () {
+        if ($(this).val() == "")
+            $(this).removeClass("focus");
+    });
+</script>

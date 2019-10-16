@@ -591,6 +591,34 @@ $(function () {
         }
     });
 
+    $('.change-password-form').validate({
+        rules: {
+            oldPassword: {
+                required: true,
+            },
+            newPassword: {
+                required: true,
+                strongPassword: true,
+            },
+            matchingPassword: {
+                required: true,
+                equalTo: '#newPassword'
+            }
+        },
+        messages: {
+            oldPassword: {
+                required: 'Please enter your old password.'
+            },
+            newPassword: {
+                required: 'Please enter new password.'
+            },
+            matchingPassword: {
+                required: ' Re-enter new password.',
+                equalTo: 'Passwords do not match'
+            }
+        }
+    });
+
     $('input[name="address.postalCode"]').mask('00-000');
     $('input[name="phoneNumber"]').mask('000-000-000');
 });

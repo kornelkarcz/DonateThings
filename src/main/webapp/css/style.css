@@ -254,7 +254,17 @@ body {
     min-height: 600px;
 }
 
+#change-password-form-section
 #reset-password-form-section {
+    background-image: url("../images/form-bg.jpg");
+    background-position: 100% 50%;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: 90vw;
+    min-height: 600px;
+}
+
+#change-password-form-section {
     background-image: url("../images/form-bg.jpg");
     background-position: 100% 50%;
     position: relative;
@@ -277,6 +287,12 @@ body {
     position: relative;
 }
 
+#change-password-form-section .change-password-form {
+    background: transparent;
+    margin-top: 40px;
+    position: relative;
+}
+
 #register-page .form-register-item,
 #login-section .form-login-item,
 #reset-password-form-section .reset-password-form-item,
@@ -285,6 +301,7 @@ body {
 #edit-collection-section .edit-collection-form-item,
 #adding-institution-section .add-institution-form-item,
 #forgot-password-section .form-forgot-password-item,
+#change-password-form-section .change-password-form-item,
 #main-footer .form-footer-item {
     border-bottom: 2px solid #adadad;
     position: relative;
@@ -299,6 +316,7 @@ body {
 #edit-collection-section .edit-collection-form-item input,
 #adding-institution-section .add-institution-form-item input,
 #forgot-password-section .form-forgot-password-item input,
+#change-password-form-section .change-password-form-item input,
 #main-footer .form-footer-item input {
     font-size: 15px;
     color: #000000;
@@ -318,6 +336,7 @@ body {
 #edit-collection-section .edit-collection-form-item span::before,
 #adding-institution-section .add-institution-form-item span::before,
 #forgot-password-section .form-forgot-password-item span::before,
+#change-password-form-section .change-password-form-item span::before,
 #main-footer .form-footer-item span::before {
     content: attr(data-placeholder);
     position: absolute;
@@ -337,6 +356,7 @@ body {
 #edit-collection-section .edit-collection-form-item span::after,
 #adding-institution-section .add-institution-form-item span::after,
 #forgot-password-section .form-forgot-password-item span::after,
+#change-password-form-section .change-password-form-item span::after,
 #main-footer .form-footer-item span::after {
     content: '';
     position: absolute;
@@ -356,6 +376,7 @@ body {
 #edit-collection-section .edit-collection-form-item .focus + span::before,
 #adding-institution-section .add-institution-form-item .focus + span::before,
 #forgot-password-section .form-forgot-password-item .focus + span::before,
+#change-password-form-section .change-password-form-item .focus + span::before,
 #main-footer .form-footer-item .focus + span::before {
     top: -5px;
 }
@@ -368,6 +389,7 @@ body {
 #edit-collection-section .edit-collection-form-item .focus + span::after,
 #adding-institution-section .add-institution-form-item .focus + span::after,
 #forgot-password-section .form-forgot-password-item .focus + span::after,
+#change-password-form-section .change-password-form-item .focus + span::after,
 #main-footer .form-footer-item .focus + span::after {
     width: 100%;
 }
