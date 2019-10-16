@@ -37,7 +37,7 @@ public class ProfileController {
 
         if (isEnabled) {
             modelAndView.addObject("firstName", loggedUser.getFirstName());
-            modelAndView.setViewName("profilePage");
+            modelAndView.setViewName("user/profilePage");
         } else {
             return new ModelAndView("redirect:/resend-token");
         }
@@ -49,7 +49,7 @@ public class ProfileController {
     public String getEditPersonalDetailsPage(Model model, @AuthenticationPrincipal Principal principal) {
         User loggedUser = userService.findUserByEmail(principal.getName());
         model.addAttribute("user", loggedUser);
-        return "editPersonalDetails";
+        return "user/editPersonalDetails";
     }
 
     @Transactional
@@ -60,19 +60,19 @@ public class ProfileController {
         if (!result.hasErrors()) {
             userService.updatePersonalDetails(user.getFirstName(), user.getLastName(), currentUser.getId());
         }
-        return "profilePage";
+        return "user/profilePage";
     }
 
     @GetMapping("/donation/details/{id}")
     public String getDonationDetails(Model model, @PathVariable Long id){
         model.addAttribute("donation", donationService.findById(id).get());
-        return "profileDonationDetails";
+        return "donation/profileDonationDetails";
     }
 
     @GetMapping("/collection/details/{id}")
     public String getCollectionDetails(Model model, @PathVariable Long id) {
         model.addAttribute("collection", collectionService.findById(id).get());
-        return "profileCollectionDetails";
+        return "collection/profileCollectionDetails";
     }
 
     @ModelAttribute("userDetails")

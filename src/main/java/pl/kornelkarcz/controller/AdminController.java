@@ -31,13 +31,13 @@ public class AdminController {
 
     @GetMapping("/admin")
     public String showAdminPanel() {
-        return "admin";
+        return "admin/admin";
     }
 
     @GetMapping("/admin/addInstitution")
     public String addInstitution(Model model) {
         model.addAttribute("institution", new Institution());
-        return "addInstitution";
+        return "institution/addInstitution";
     }
 
     @PostMapping("/admin/addInstitution")
@@ -54,7 +54,7 @@ public class AdminController {
     @GetMapping("/admin/institution/edit/{id}")
     public String updateInstitution(Model model, @PathVariable Long id) {
         model.addAttribute("institution", institutionService.findById(id));
-        return "editInstitution";
+        return "institution/editInstitution";
     }
 
     @PostMapping("/admin/institution/edit")
@@ -70,7 +70,7 @@ public class AdminController {
     @GetMapping("/admin/institution/details/{id}")
     public String getInstitutionDetails(Model model, @PathVariable Long id) {
         model.addAttribute("institution", institutionService.findById(id).get());
-        return "detailsInstitution";
+        return "institution/detailsInstitution";
     }
 
     @GetMapping("/admin/institution/delete/{id}")
@@ -82,7 +82,7 @@ public class AdminController {
     @GetMapping("/admin/donation/edit/{id}")
     public String updateDonation(Model model, @PathVariable Long id) {
         model.addAttribute("donation", donationService.findById(id).get());
-        return "editDonation";
+        return "donation/editDonation";
     }
 
     @PostMapping("/admin/donation/edit")
@@ -97,7 +97,7 @@ public class AdminController {
     @GetMapping("/admin/donation/details/{id}")
     public String getDonationDetails(Model model, @PathVariable Long id) {
         model.addAttribute("donation", donationService.findById(id).get());
-        return "detailsDonation";
+        return "donation/detailsDonation";
     }
 
     @GetMapping("/admin/donation/delete/{id}")
@@ -109,7 +109,7 @@ public class AdminController {
     @GetMapping("/admin/collection/edit/{id}")
     public String updateCollection(Model model, @PathVariable Long id) {
         model.addAttribute("collection", collectionService.findById(id).get());
-        return "editCollection";
+        return "collection/editCollection";
     }
 
     @PostMapping("/admin/collection/edit")
@@ -124,7 +124,7 @@ public class AdminController {
     @GetMapping("/admin/collection/details/{id}")
     public String getCollectionDetails(Model model, @PathVariable Long id) {
         model.addAttribute("collection", collectionService.findById(id).get());
-        return "detailsCollection";
+        return "collection/detailsCollection";
     }
 
     @GetMapping("/admin/collection/delete/{id}")
@@ -136,7 +136,7 @@ public class AdminController {
     @GetMapping("/admin/user/details/{id}")
     public String getUserDetails(Model model, @PathVariable Long id) {
         model.addAttribute("user", userService.findById(id).get());
-        return "userDetails";
+        return "user/userDetails";
     }
 
     @ModelAttribute("firstName")

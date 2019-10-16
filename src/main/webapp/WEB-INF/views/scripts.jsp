@@ -59,6 +59,7 @@
 <script src="${pageContext.request.contextPath}/js/editInstitution.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/js/collection.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/js/donation.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/userButtons.js"></script>
 
 <%--Form animation scripts--%>
 <%--Reset password--%>

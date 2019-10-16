@@ -43,7 +43,7 @@ public class HomeController {
         CurrentUser loggedUser = (CurrentUser) ((Authentication) principal).getPrincipal();
         String userInfo = loggedUser.toString();
         model.addAttribute("userInfo", userInfo);
-        return "userDetails";
+        return "user/userDetails";
     }
 
     @GetMapping("/403")

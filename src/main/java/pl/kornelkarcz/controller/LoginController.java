@@ -51,7 +51,7 @@ public class LoginController {
 
     @GetMapping("/login")
     public String getLoginPage() {
-        return "login";
+        return "login/login";
     }
 
     @GetMapping("/loginSuccess")
@@ -64,7 +64,7 @@ public class LoginController {
         model.addAttribute("firstName", name);
         String successLogin = "Hello, " + id + "," + name + ", you have successfully logged in";
         model.addAttribute("logSuccessMessage", successLogin);
-        return "loginSuccess";
+        return "login/loginSuccess";
     }
 
     @GetMapping("/register")
@@ -77,7 +77,7 @@ public class LoginController {
 
         UserDto userDto = new UserDto();
         model.addAttribute("user", userDto);
-        return "register";
+        return "register/register";
     }
 
     @PostMapping("/register")
@@ -98,10 +98,10 @@ public class LoginController {
             eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, request.getLocale(), appUrl));
         } catch (Exception me) {
             me.printStackTrace();
-            return new ModelAndView("register", "user", userDto);
+            return new ModelAndView("register/register", "user", userDto);
         }
         if (bindingResult.hasErrors()) {
-            return new ModelAndView("register", "user", userDto);
+            return new ModelAndView("register/register", "user", userDto);
         } else {
             return new ModelAndView("index", "user", userDto);
         }
@@ -136,7 +136,7 @@ public class LoginController {
 
     @GetMapping("/activation-success")
     public String showRegistrationSuccessPage() {
-        return "confirmedRegistration";
+        return "register/confirmedRegistration";
     }
 
     private User createUserAccount(UserDto accountDto, BindingResult bindingResult) {
@@ -151,7 +151,7 @@ public class LoginController {
 
     @GetMapping("/forgot-password")
     public ModelAndView displayResetPassword() {
-        return new ModelAndView("forgotPassword", "emailDto", new EmailDto());
+        return new ModelAndView("user/forgotPassword", "emailDto", new EmailDto());
     }
 
     @PostMapping("/forgot-password")
@@ -167,7 +167,7 @@ public class LoginController {
 
         String email = emailDto.getEmail();
         model.addAttribute("email", email);
-        modelAndView.setViewName("successForgotPassword");
+        modelAndView.setViewName("user/successForgotPassword");
 
         User user = userService.findUserByEmail(email);
         modelAndView.addObject("user", user.toString());
@@ -177,7 +177,7 @@ public class LoginController {
             eventPublisher.publishEvent(new OnResetPassword(user, request.getLocale(), appUrl));
         } catch (Exception me) {
             me.printStackTrace();
-            return new ModelAndView("successForgotPassword", "user", user);
+            return new ModelAndView("user/successForgotPassword", "user", user);
         }
 
         return modelAndView;
@@ -210,9 +210,9 @@ public class LoginController {
 
 
         modelAndView.addObject("email", user.getEmail());
-        modelAndView.setViewName("resetPassword");
+        modelAndView.setViewName("user/resetPassword");
 
-        return new ModelAndView("resetPassword", "passwordForgotDto", new PasswordForgotDto());
+        return new ModelAndView("user/resetPassword", "passwordForgotDto", new PasswordForgotDto());
     }
 
     @Transactional
@@ -237,20 +237,20 @@ public class LoginController {
 
     @GetMapping("/success-reset-password")
     public String getCheckView() {
-        return "successResetPassword";
+        return "user/successResetPassword";
     }
 
     @GetMapping("/logout_success")
     public ModelAndView getLogout(ModelAndView modelAndView) {
         modelAndView.addObject("message", "See you again soon!");
-        modelAndView.setViewName("logout");
+        modelAndView.setViewName("login/logout");
         return modelAndView;
     }
 
     @GetMapping("/change-password")
     public String changePassword(Model model) {
         model.addAttribute("changePasswordDto", new ChangePasswordDto());
-        return "changePassword";
+        return "user/changePassword";
     }
 
     @Transactional
@@ -264,14 +264,14 @@ public class LoginController {
         } else {
             model.addAttribute("errors", bindingResult.getAllErrors());
             System.out.println(bindingResult.getAllErrors().toString());
-            return "changePassword";
+            return "user/changePassword";
         }
     }
 
 
     @GetMapping("/resend-token")
     public String showResendTokenPage() {
-        return "resendToken";
+        return "register/resendToken";
     }
 
     @Transactional
@@ -283,7 +283,7 @@ public class LoginController {
 
         String email = currentUser.getUser().getEmail();
         model.addAttribute("email", email);
-        modelAndView.setViewName("successResendToken");
+        modelAndView.setViewName("register/successResendToken");
 
         User user = userService.findUserByEmail(email);
         modelAndView.addObject("user", user.getFirstName());
@@ -293,7 +293,7 @@ public class LoginController {
             eventPublisher.publishEvent(new OnResendTokenEvent(user, request.getLocale(), appUrl));
         } catch (Exception me) {
             me.printStackTrace();
-            return new ModelAndView("successResendToken", "user", user);
+            return new ModelAndView("register/successResendToken", "user", user);
         }
         return modelAndView;
     }

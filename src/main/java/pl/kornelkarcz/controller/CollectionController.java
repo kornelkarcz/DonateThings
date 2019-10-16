@@ -34,7 +34,7 @@ public class CollectionController {
     @GetMapping("/organize-collection")
     public String showCollectionPage(Model model) {
         model.addAttribute("collection", new Collection());
-        return "collect";
+        return "collection/collect";
     }
 
     @PostMapping("/organize-collection")
@@ -64,7 +64,7 @@ public class CollectionController {
         Collection lastCollection = collectionService.findByUserIdLastCollection(id);
         model.addAttribute("lastCollection", lastCollection);
 
-        return "collection-summary";
+        return "collection/collection-summary";
     }
 
 

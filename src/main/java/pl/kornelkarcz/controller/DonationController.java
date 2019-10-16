@@ -34,7 +34,7 @@ public class DonationController {
     @GetMapping("/donate")
     public String showDonationPage(Model model) {
         model.addAttribute("donation", new Donation());
-        return "donate";
+        return "donation/donate";
     }
 
     @PostMapping("/donate")
@@ -64,7 +64,7 @@ public class DonationController {
         Donation lastDonation = donationService.findByUserIdLastDonation(id);
         model.addAttribute("lastDonation", lastDonation);
 
-        return "donation-summary";
+        return "donation/donation-summary";
     }
 
     @ModelAttribute("firstName")
