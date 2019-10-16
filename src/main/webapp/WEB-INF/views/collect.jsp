@@ -1,7 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>Collect</title>
@@ -118,29 +117,10 @@
                 <div class="col-md-4"></div>
             </div>
         </div>
+    </div>
 </section>
 
 <%@ include file="footer.jsp" %>
 <%@ include file="scripts.jsp" %>
-
-<script type="text/javascript">
-    $(".collect-form-item input").on("focus", function () {
-        $(this).addClass("focus");
-    });
-
-    $(".collect-form-item input").on("blur", function () {
-        if ($(this).val() == "")
-            $(this).removeClass("focus");
-    });
-
-</script>
-<script src="../../js/collect.js" type="text/javascript"></script>
-<script src="../../js/jquery.nice-select.js" type="text/javascript"></script>
-
-<script>
-    $(document).ready(function () {
-        $('select').niceSelect();
-    });
-</script>
 </body>
 </html>

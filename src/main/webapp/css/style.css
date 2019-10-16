@@ -233,34 +233,19 @@ body {
     background-position: 50% 50%;
     position: relative;
     background-repeat: no-repeat;
-    background-size: 110vw;
+    background-size: 120vw;
     min-height: 700px;
     padding-bottom: 45px;
 }
 
-
-#register-page .form-register,
-#login-section .form-login,
-#adding-institution-section .add-institution-form {
-    background: transparent;
-    margin-top: 60px;
-    position: relative;
-}
-
 #login-section .form-login h2,
+#reset-password-form-section .reset-password-form h2,
 #adding-institution-section .add-institution-form h2 {
     text-align: center;
     margin-bottom: 60px;
 }
 
-#register-page .form-register-item,
-#login-section .form-login-item {
-    border-bottom: 2px solid #adadad;
-    position: relative;
-    margin: 30px 0;
-}
-
-#all-user-section, #all-institutions-section, #login-section {
+#all-user-section, #all-institutions-section, #login-section, #reset-password-form-section {
     background-image: url("../images/form-bg.jpg");
     background-position: bottom left 20vh;
     position: relative;
@@ -269,8 +254,18 @@ body {
     min-height: 600px;
 }
 
+#reset-password-form-section {
+    background-image: url("../images/form-bg.jpg");
+    background-position: 100% 50%;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: 90vw;
+    min-height: 600px;
+}
+
 #register-page .form-register,
 #login-section .form-login,
+#reset-password-form-section .reset-password-form,
 #edit-personal-details-section .form-edit-personal-details,
 #edit-donation-section .edit-donation-form,
 #edit-collection-section .edit-collection-form,
@@ -284,6 +279,7 @@ body {
 
 #register-page .form-register-item,
 #login-section .form-login-item,
+#reset-password-form-section .reset-password-form-item,
 #edit-personal-details-section .edit-personal-details-item,
 #edit-donation-section .edit-donation-form-item,
 #edit-collection-section .edit-collection-form-item,
@@ -297,6 +293,7 @@ body {
 
 #register-page .form-register-item input,
 #login-section .form-login-item input,
+#reset-password-form-section .reset-password-form-item input,
 #edit-personal-details-section .edit-personal-details-item input,
 #edit-donation-section .edit-donation-form-item input,
 #edit-collection-section .edit-collection-form-item input,
@@ -315,6 +312,7 @@ body {
 
 #register-page .form-register-item span::before,
 #login-section .form-login-item span::before,
+#reset-password-form-section .reset-password-form-item span::before,
 #edit-personal-details-section .edit-personal-details-item span::before,
 #edit-donation-section .edit-donation-form-item span::before,
 #edit-collection-section .edit-collection-form-item span::before,
@@ -333,6 +331,7 @@ body {
 
 #register-page .form-register-item span::after,
 #login-section .form-login-item span::after,
+#reset-password-form-section .reset-password-form-item span::after,
 #edit-personal-details-section .edit-personal-details-item span::after,
 #edit-donation-section .edit-donation-form-item span::after,
 #edit-collection-section .edit-collection-form-item span::after,
@@ -351,6 +350,7 @@ body {
 
 #register-page .form-register-item .focus + span::before,
 #login-section .form-login-item .focus + span::before,
+#reset-password-form-section .reset-password-form-item .focus + span::before,
 #edit-personal-details-section .edit-personal-details-item .focus + span::before,
 #edit-donation-section .edit-donation-form-item .focus + span::before,
 #edit-collection-section .edit-collection-form-item .focus + span::before,
@@ -362,6 +362,7 @@ body {
 
 #register-page .form-register-item .focus + span::after,
 #login-section .form-login-item .focus + span::after,
+#reset-password-form-section .reset-password-form-item .focus + span::after,
 #edit-personal-details-section .edit-personal-details-item .focus + span::after,
 #edit-donation-section .edit-donation-form-item .focus + span::after,
 #edit-collection-section .edit-collection-form-item .focus + span::after,
@@ -832,25 +833,28 @@ body {
     background-size: 80vw;
 
 }
-
+.institution-button-edit,
 .donation-button-edit,
 .collection-button-edit,
 .donation-button-details,
-.collection-button-details {
+.collection-button-details,
+.institution-button-details {
     background: #ffffff;
     border-color: #ffc107;
     color: #ffc107;
 }
-
+.institution-button-edit:hover,
 .donation-button-edit:hover,
 .collection-button-edit:hover,
 .donation-button-details:hover,
-.collection-button-details:hover {
+.collection-button-details:hover,
+.institution-button-details:hover {
     background: #ffc107;
     border-color: #ffc107;
     color: #ffffff;
 }
 
+.institution-button-delete,
 .collection-button-delete,
 .donation-button-delete {
     background-color: #ffffff;
@@ -858,6 +862,7 @@ body {
     color: #ff4444;
 }
 
+.institution-button-delete:hover,
 .collection-button-delete:hover,
 .donation-button-delete:hover {
     background-color: #ff4444;

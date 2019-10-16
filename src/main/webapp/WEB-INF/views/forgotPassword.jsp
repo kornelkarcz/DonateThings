@@ -5,9 +5,7 @@
     <title>Forgot Password</title>
     <%@ include file="dependencies.jsp" %>
 </head>
-
 <body>
-
 <%@ include file="header.jsp" %>
 
 <section id="forgot-password-section" class="p-4">
@@ -32,18 +30,7 @@
 </section>
 
 <%@ include file="footer.jsp" %>
-
-<script type="text/javascript">
-    $(".form-forgot-password-item input").on("focus", function () {
-        $(this).addClass("focus");
-    });
-
-    $(".form-forgot-password-item input").on("blur", function () {
-        if ($(this).val() == "")
-            $(this).removeClass("focus");
-    });
-
-</script>
+<%@ include file="scripts.jsp" %>
 
 </body>
 </html>

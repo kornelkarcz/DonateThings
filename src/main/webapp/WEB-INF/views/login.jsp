@@ -42,17 +42,5 @@
 
 <%@ include file="footer.jsp"%>
 <%@ include file="scripts.jsp" %>
-
-<script type="text/javascript">
-    $(".form-login-item input").on("focus", function () {
-        $(this).addClass("focus");
-    });
-
-    $(".form-login-item input").on("blur", function () {
-        if ($(this).val() == "")
-            $(this).removeClass("focus");
-    });
-
-</script>
 </body>
 </html>

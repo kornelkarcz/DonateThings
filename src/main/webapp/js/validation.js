@@ -556,6 +556,41 @@ $(function () {
         }
     });
 
+    $('.reset-password-form').validate({
+        rules: {
+            newPassword: {
+                required: true,
+                strongPassword: true
+            },
+            matchingPassword: {
+                required: true,
+                equalTo: '#newPassword'
+            }
+        },
+        messages: {
+            newPassword: {
+                required: 'Please enter new password.'
+            },
+            matchingPassword: {
+                required: 'Please re-enter new password.',
+                equalTo: 'Passwords do not match'
+            }
+        }
+    });
+
+    $('.form-forgot-password').validate({
+        rules: {
+            email: {
+                required: true,
+                email: true
+            }
+        },
+        messages: {
+            required: 'Please enter your email',
+            email: 'Please enter valid email'
+        }
+    });
+
     $('input[name="address.postalCode"]').mask('00-000');
     $('input[name="phoneNumber"]').mask('000-000-000');
 });

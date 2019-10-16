@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    let editButtons = document.querySelectorAll(".row .button-edit");
+    let editButtons = document.querySelectorAll(".row .institution-button-edit");
 
     for (let i = 0; i < editButtons.length; i++) {
         let button = editButtons[i];
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
     }
 
-    let deleteButtons = document.querySelectorAll(".row .button-delete");
+    let deleteButtons = document.querySelectorAll(".row .institution-button-delete");
 
     for (let i = 0; i < deleteButtons.length; i++) {
         let button = deleteButtons[i];
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
     }
 
-    let detailsButtons = document.querySelectorAll(".row .button-details");
+    let detailsButtons = document.querySelectorAll(".row .institution-button-details");
 
     for (let i = 0; i < deleteButtons.length; i++) {
         let button = detailsButtons[i];

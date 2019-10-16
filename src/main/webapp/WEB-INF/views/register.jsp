@@ -73,19 +73,7 @@
         </div>
     </div>
 </section>
-<%@ include file="footer.jsp" %>
 <%@ include file="scripts.jsp" %>
-
-<script type="text/javascript">
-    $(".form-register-item input").on("focus", function () {
-        $(this).addClass("focus");
-    });
-
-    $(".form-register-item input").on("blur", function () {
-        if ($(this).val() == "")
-            $(this).removeClass("focus");
-    });
-
-</script>
+<%@ include file="footer.jsp" %>
 </body>
 </html>

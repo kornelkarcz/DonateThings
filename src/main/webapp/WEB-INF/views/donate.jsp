@@ -1,7 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>Donate</title>
@@ -11,7 +10,6 @@
 <sec:authorize access="isAnonymous()">
     <%@ include file="header.jsp" %>
 </sec:authorize>
-
 <sec:authorize access="isAuthenticated()">
     <%@ include file="loggedHeader.jsp" %>
 </sec:authorize>
@@ -144,18 +142,5 @@
 
 <%@ include file="footer.jsp" %>
 <%@ include file="scripts.jsp" %>
-
-<script type="text/javascript">
-    $(".donate-form-item input").on("focus", function () {
-        $(this).addClass("focus");
-    });
-
-    $(".donate-form-item input").on("blur", function () {
-        if ($(this).val() == "")
-            $(this).removeClass("focus");
-    });
-
-</script>
-<script src="../../js/test.js" type="text/javascript"></script>
 </body>
 </html>

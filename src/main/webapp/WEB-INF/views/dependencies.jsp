@@ -7,6 +7,6 @@
 <%--Custom css stylesheet--%>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 <%--Nice select stylesheet--%>
-<link rel="stylesheet" href="../../css/nice-select.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/nice-select.css">
 <%--Data tables stylesheet--%>
 <link rel="stylesheet" href="../../css/dataTables.bootstrap4.min.css">

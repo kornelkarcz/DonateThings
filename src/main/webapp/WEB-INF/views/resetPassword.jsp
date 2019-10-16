@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>Enter New Password</title>
-    <%@ include file = "dependencies.jsp"%>
+    <%@ include file="dependencies.jsp" %>
 </head>
 
 <body>
@@ -15,25 +15,41 @@
 <sec:authorize access="isAuthenticated()">
     <%@ include file="loggedHeader.jsp" %>
 </sec:authorize>
-<h1>Please pass your new pass</h1>
 
-<form name="r" action="/reset-password" modelAttribute="passwordForgotDto" method="post">
-    <table>
-        <tr>
-            <td>Password</td>
-            <td><input type="password" name="newPassword" value=""/></td>
-        </tr>
-        <tr>
-            <td>Matching Password</td>
-            <td><input type="password" name="matchingPassword" value=""/></td>
-        </tr>
-        <tr>
-            <td><input type="reset" value="Clear"/></td>
-            <td><input type="submit" value="Reset Password"/></td>
-        </tr>
-    </table>
-</form>
+<section id="reset-password-form-section">
+    <div class="container">
+        <div class="row align-items-center mb-5">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+
+
+                <form action="/reset-password" modelAttribute="passwordForgotDto" method="post"
+                      class="reset-password-form">
+                    <h2 class="display-4">Please enter new password</h2>
+
+                    <div class="reset-password-form-item">
+                        <input type="password" name="newPassword" value=""/>
+                        <span data-placeholder="New Password"></span>
+                    </div>
+
+                    <div class="reset-password-form-item">
+                        <input type="password" name="matchingPassword" value=""/>
+                        <span data-placeholder="Repeat New Password"></span>
+                    </div>
+
+                    <button class="submit btn btn-warning btn-block mb-1" type="submit">Reset Password</button>
+                    <button class="submit btn btn-secondary btn-block mb-1" type="reset">Clear</button>
+
+                </form>
+
+
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</section>
 
 <%@ include file="footer.jsp" %>
+<%@ include file="scripts.jsp" %>
 </body>
 </html>

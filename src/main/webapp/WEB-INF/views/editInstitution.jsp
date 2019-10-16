@@ -66,21 +66,5 @@
 
 <%@ include file="footer.jsp" %>
 <%@ include file="scripts.jsp" %>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(".add-institution-form-item input").addClass("focus");
-    });
-
-    $(".add-institution-form-item input").on("focus", function () {
-        $(this).addClass("focus");
-    });
-
-    $(".add-institution-form-item input").on("blur", function () {
-        if ($(this).val() == "")
-            $(this).removeClass("focus");
-    });
-
-</script>
 </body>
 </html>

@@ -1,6 +1,5 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>Edit Collection</title>
@@ -10,14 +9,13 @@
 <sec:authorize access="isAnonymous()">
     <%@ include file="header.jsp" %>
 </sec:authorize>
-
 <sec:authorize access="isAuthenticated()">
     <%@ include file="loggedHeader.jsp" %>
 </sec:authorize>
 
 <section id="edit-collection-section">
     <div class="container">
-        <div class="row align-items-center">
+        <div class="row-align-items">
             <div class="col-md-2"></div>
             <div class="col-md-7">
                 <form:form action="/admin/collection/edit" method="post" modelAttribute="collection"
@@ -30,18 +28,18 @@
                     <span data-placeholder="Content Description"></span>
                     <form:errors path="contentDescription" cssClass="error" element="div"/>
                 </div>
-                <div class="edit-collection-form-item">
+                <div class="edit-collection-form-item" style="margin-bottom: 25px !important;">
                     <form:input path="phoneNumber" type="text"/>
                     <span data-placeholder="Phone number"></span>
                     <form:errors path="phoneNumber" cssClass="error" element="div"/>
                 </div>
-                <div class="edit-collection-form-item">
-                    <form:select path="institution">
-                        <form:option value="0"/>
-                        <form:options items="${institutions}" itemLabel="name" itemValue="id"/>
-                    </form:select>
-                </div>
-                <div class="edit-collection-form-item">
+
+                <form:select path="institution" cssClass="wide">
+                    <%--<form:option value="0"/>--%>
+                    <form:options cssClass="my-option" items="${institutions}" itemLabel="name" itemValue="id"/>
+                </form:select>
+
+                <div class="edit-collection-form-item" style="margin-top: 100px !important;">
                     <form:input path="streetName" type="text"/>
                     <span data-placeholder="Street name"></span>
                     <form:errors path="streetName" cssClass="error" element="div"/>
@@ -78,25 +76,10 @@
         </div>
         <div class="col-md-3"></div>
     </div>
+    </div>
 </section>
 
-<%@ include file="footer.jsp" %>
 <%@ include file="scripts.jsp" %>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(".edit-collection-form-item input").addClass("focus");
-    });
-
-    $(".edit-collection-form-item input").on("focus", function () {
-        $(this).addClass("focus");
-    });
-
-    $(".edit-collection-form-item input").on("blur", function () {
-        if ($(this).val() == "")
-            $(this).removeClass("focus");
-    });
-
-</script>
+<%@ include file="footer.jsp" %>
 </body>
 </html>

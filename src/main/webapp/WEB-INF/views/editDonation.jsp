@@ -10,7 +10,6 @@
 <sec:authorize access="isAnonymous()">
     <%@ include file="header.jsp" %>
 </sec:authorize>
-
 <sec:authorize access="isAuthenticated()">
     <%@ include file="loggedHeader.jsp" %>
 </sec:authorize>
@@ -35,18 +34,18 @@
                     <span data-placeholder="Content Description"></span>
                     <form:errors path="contentDescription" cssClass="error" element="div"/>
                 </div>
-                <div class="edit-donation-form-item">
+                <div class="edit-donation-form-item" style="margin-bottom: 25px !important;">
                     <form:input path="phoneNumber" type="text"/>
                     <span data-placeholder="Phone number"></span>
                     <form:errors path="phoneNumber" cssClass="error" element="div"/>
                 </div>
-                <div class="edit-donation-form-item">
-                    <form:select path="institution">
-                        <form:option value="0"/>
-                        <form:options items="${institutions}" itemLabel="name" itemValue="id"/>
+
+                    <form:select path="institution" cssClass="wide">
+                        <%--<form:option value="0"/>--%>
+                        <form:options cssClass="my-option" items="${institutions}" itemLabel="name" itemValue="id"/>
                     </form:select>
-                </div>
-                <div class="edit-donation-form-item">
+
+                <div class="edit-donation-form-item" style="margin-top: 100px !important;">
                     <form:input path="streetName" type="text"/>
                     <span data-placeholder="Street name"></span>
                     <form:errors path="streetName" cssClass="error" element="div"/>
@@ -86,23 +85,7 @@
 
 </section>
 
-<%@ include file="footer.jsp" %>
 <%@ include file="scripts.jsp" %>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(".edit-donation-form-item input").addClass("focus");
-    });
-
-    $(".edit-donation-form-item input").on("focus", function () {
-        $(this).addClass("focus");
-    });
-
-    $(".edit-donation-form-item input").on("blur", function () {
-        if ($(this).val() == "")
-            $(this).removeClass("focus");
-    });
-
-</script>
+<%@ include file="footer.jsp" %>
 </body>
 </html>

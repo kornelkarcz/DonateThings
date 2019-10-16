@@ -3,10 +3,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
-    <title>Profile Page</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="../../css/dataTables.bootstrap4.min.css">
+    <title>Admin Page</title>
     <%@ include file="dependencies.jsp" %>
 </head>
 <body>
@@ -97,19 +94,21 @@
                                     <td class="align-middle text-center">${institution.name}</td>
                                     <td class="align-middle text-center">${institution.address.city}</td>
                                     <td>
-                                        <button class="donation-button-details btn">Details</button>
+                                        <button class="institution-button-details btn">Details</button>
                                     </td>
                                     <td>
-                                        <button class="donation-button-edit btn">Edit</button>
+                                        <button class="institution-button-edit btn">Edit</button>
                                     </td>
                                     <td>
-                                        <button class="donation-button-delete btn">Delete</button>
+                                        <button class="institution-button-delete btn">Delete</button>
                                     </td>
                                 </tr>
                                 </tbody>
                                 </c:forEach>
                             </table>
-                            <a href="/admin/addInstitution" class="btn btn-warning btn-block">Add Institution</a>
+                            <div class="pt-3">
+                                <a href="/admin/addInstitution" class="btn btn-warning btn-block">Add Institution</a>
+                            </div>
                         </div>
                         <div id="ele-3" class="admin-element">
                             <table class="table admin-tables">
@@ -174,9 +173,9 @@
                                             </button>
                                         </td>
                                         <td>
-                                        <button class="collection-button-delete btn">
-                                            Delete
-                                        </button>
+                                            <button class="collection-button-delete btn">
+                                                Delete
+                                            </button>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -192,12 +191,6 @@
 
 <%@ include file="scripts.jsp" %>
 <%@ include file="footer.jsp" %>
-
-<script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="../../js/dataTables.bootstrap4.min.js"></script>
-<script src="../../js/editInstitution.js" type="text/javascript"></script>
-<script src="../../js/collection.js" type="text/javascript"></script>
-<script src="../../js/donation.js" type="text/javascript"></script>
 
 <script>
     $(document).ready(function () {
@@ -247,11 +240,6 @@
                 $("#admin-option-" + i).removeClass('paint-yellow');
             }
         }
-    }
-
-    function redirect() {
-        console.log("Please redirect");
-        window.location = "https://www.google.pl/";
     }
 </script>
 </body>

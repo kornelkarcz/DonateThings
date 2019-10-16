@@ -49,25 +49,8 @@
     </div>
 </section>
 
-
 <%@ include file="footer.jsp" %>
 <%@ include file="scripts.jsp" %>
 
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(".edit-personal-details-item input").addClass("focus");
-    });
-
-    $(".edit-personal-details-item input").on("focus", function () {
-        $(this).addClass("focus");
-    });
-
-    $(".edit-personal-details-item input").on("blur", function () {
-        if ($(this).val() == "")
-            $(this).removeClass("focus");
-    });
-
-</script>
 </body>
 </html>

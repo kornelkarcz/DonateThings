@@ -49,15 +49,14 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        $(".form-footer-item input").on("focus", function () {
-            $(this).addClass("focus");
-        });
-
-        $(".form-footer-item input").on("blur", function () {
-            if ($(this).val() == "")
-                $(this).removeClass("focus");
-        });
-
-    </script>
 </footer>
+<script type="text/javascript">
+    $(".form-footer-item input").on("focus", function () {
+        $(this).addClass("focus");
+    });
+
+    $(".form-footer-item input").on("blur", function () {
+        if ($(this).val() == "")
+            $(this).removeClass("focus");
+    });
+</script>
