@@ -33,7 +33,7 @@ public class ProfileController {
 
         User loggedUser = userService.findUserByEmail(principal.getName());
         boolean isEnabled = loggedUser.getEnabled();
-        System.out.println(isEnabled);
+
 
         if (isEnabled) {
             modelAndView.addObject("firstName", loggedUser.getFirstName());

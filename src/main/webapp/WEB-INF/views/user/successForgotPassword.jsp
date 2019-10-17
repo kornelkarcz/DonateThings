@@ -12,6 +12,9 @@
 <sec:authorize access="isAuthenticated()">
     <%@ include file="../loggedHeader.jsp" %>
 </sec:authorize>
+<sec:authorize access="hasRole('ADMIN')">
+    <%@ include file="../adminHeader.jsp" %>
+</sec:authorize>
 
 <section id="forgot-password-section" class="py-5">
     <div class="container">

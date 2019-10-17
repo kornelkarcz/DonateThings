@@ -300,7 +300,7 @@ public class LoginController {
 
     @GetMapping("/activate-account")
     public String activateAccount(WebRequest request, ModelAndView modelAndView,
-                                        @RequestParam("token") String token, Model model) {
+                                  @RequestParam("token") String token, Model model) {
 
         Locale locale = request.getLocale();
         model.addAttribute("token", token);
@@ -325,5 +325,14 @@ public class LoginController {
         user.setEnabled(true);
         userService.saveRegisteredUser(user);
         return "redirect:/activation-success";
+    }
+
+    @ModelAttribute("firstName")
+    public String getFirstName(@AuthenticationPrincipal Principal principal) {
+        String firstName = "";
+        if (principal != null) {
+            firstName = userService.findUserByEmail(principal.getName()).getFirstName();
+        }
+        return firstName;
     }
 }

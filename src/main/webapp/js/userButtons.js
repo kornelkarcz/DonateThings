@@ -9,4 +9,9 @@ document.addEventListener("DOMContentLoaded", function () {
             window.location = "http://localhost:8080/admin/user/details/" + id;
         })
     }
+
+
+    let editButtons = document.querySelectorAll(".user-button-edit");
+
+    let deleteButtons = document.querySelectorAll(".user-button-delete");
 });

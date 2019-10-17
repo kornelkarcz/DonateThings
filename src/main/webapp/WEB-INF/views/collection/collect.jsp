@@ -10,9 +10,11 @@
 <sec:authorize access="isAnonymous()">
     <%@ include file="../header.jsp" %>
 </sec:authorize>
-
 <sec:authorize access="isAuthenticated()">
     <%@ include file="../loggedHeader.jsp" %>
+</sec:authorize>
+<sec:authorize access="hasRole('ADMIN')">
+    <%@ include file="../adminHeader.jsp" %>
 </sec:authorize>
 
 <section id="make-donation-instruction-section" class="py-5">

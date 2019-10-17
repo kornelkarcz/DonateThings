@@ -10,9 +10,11 @@
 <sec:authorize access="isAnonymous()">
     <%@ include file="../header.jsp" %>
 </sec:authorize>
-
 <sec:authorize access="isAuthenticated()">
     <%@ include file="../loggedHeader.jsp" %>
+</sec:authorize>
+<sec:authorize access="hasRole('ADMIN')">
+    <%@ include file="../adminHeader.jsp" %>
 </sec:authorize>
 
 
@@ -57,22 +59,22 @@
                                 </thead>
                                 <tbody>
                                 <c:forEach items="${users}" var="user">
-                                <tr>
-                                    <td class="align-middle text-center">${user.id}</td>
-                                    <td class="align-middle text-center">${user.firstName}</td>
-                                    <td class="align-middle text-center">${user.lastName}</td>
-                                    <td class="align-middle text-center">
-                                        <button class="user-button-details btn btn-warning">Details</button>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <a href="" class="btn btn-primary">Edit</a>
-                                    </td>
-                                    <td>
-                                        <a href="">Delete</a>
-                                    </td>
-                                </tr>
-                                </tbody>
+                                    <tr>
+                                        <td class="align-middle text-center">${user.id}</td>
+                                        <td class="align-middle text-center">${user.firstName}</td>
+                                        <td class="align-middle text-center">${user.lastName}</td>
+                                        <td class="align-middle text-center">
+                                            <button class="user-button-details btn">Details</button>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <button class="user-button-edit btn">Edit</button>
+                                        </td>
+                                        <td>
+                                            <button class="user-button-delete btn">Delete</button>
+                                        </td>
+                                    </tr>
                                 </c:forEach>
+                                </tbody>
                             </table>
                         </div>
                         <div id="ele-2" class="admin-element">

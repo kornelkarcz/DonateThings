@@ -12,12 +12,19 @@
     <%@ include file="../loggedHeader.jsp" %>
 </sec:authorize>
 
-<div class="container">
-    <h3 class="display-4">${user}, token has been successfully sent to this email: ${email}</h3>
-</div>
+<section id="resend-token-success-section" class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-4 text-center">
+                <p class="resend-token-message">Dear ${firstName}, token has been successfully sent to this email: ${email}</p>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</section>
 
-
-<%@ include file="../footer.jsp" %>
 <%@ include file="../scripts.jsp" %>
+<%@ include file="../footer.jsp" %>
 </body>
 </html>

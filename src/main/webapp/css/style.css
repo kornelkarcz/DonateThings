@@ -853,29 +853,35 @@ body {
 #collection-summary-section {
     background: url("../images/header-bg.jpg") no-repeat 200% 50%;
     background-size: 80vw;
-
 }
+
+.user-button-edit,
 .institution-button-edit,
 .donation-button-edit,
 .collection-button-edit,
 .donation-button-details,
 .collection-button-details,
-.institution-button-details {
+.institution-button-details,
+.user-button-details {
     background: #ffffff;
     border-color: #ffc107;
     color: #ffc107;
 }
+
+.user-button-edit:hover,
 .institution-button-edit:hover,
 .donation-button-edit:hover,
 .collection-button-edit:hover,
 .donation-button-details:hover,
 .collection-button-details:hover,
-.institution-button-details:hover {
+.institution-button-details:hover,
+.user-button-details:hover {
     background: #ffc107;
     border-color: #ffc107;
     color: #ffffff;
 }
 
+.user-button-delete,
 .institution-button-delete,
 .collection-button-delete,
 .donation-button-delete {
@@ -884,6 +890,7 @@ body {
     color: #ff4444;
 }
 
+.user-button-delete:hover,
 .institution-button-delete:hover,
 .collection-button-delete:hover,
 .donation-button-delete:hover {
@@ -910,4 +917,20 @@ body {
 .custom-error-class {
     color: #ff4444;
     font-style: italic;
+}
+
+#resend-token-section,
+#resend-token-success-section {
+    background-image: url("../images/toy-car.jpeg");
+    background-position: 0% 50%;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: 35vw;
+    min-height: 600px;
+}
+
+.resend-token-message {
+    font-weight: 200;
+    font-size: 20px;
+    margin-top: 170px;
 }

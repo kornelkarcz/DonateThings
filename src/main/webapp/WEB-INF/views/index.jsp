@@ -14,6 +14,10 @@
 <sec:authorize access="isAuthenticated()">
     <%@ include file="loggedHeader.jsp" %>
 </sec:authorize>
+<sec:authorize access="hasRole('ADMIN')">
+    <%@ include file="adminHeader.jsp" %>
+</sec:authorize>
+
 <!-- HOME SECTION -->
 <section id="home-section" class="template-section py-5">
     <div class="overlay">

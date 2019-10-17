@@ -11,6 +11,9 @@
 <sec:authorize access="isAuthenticated()">
     <%@include file="../loggedHeader.jsp" %>
 </sec:authorize>
+<sec:authorize access="hasRole('ADMIN')">
+    <%@ include file="../adminHeader.jsp" %>
+</sec:authorize>
 <h1>Success</h1>
 
 <p>${logSuccessMessage}</p>

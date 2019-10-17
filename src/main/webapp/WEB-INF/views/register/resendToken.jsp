@@ -13,22 +13,25 @@
     <%@ include file="../loggedHeader.jsp" %>
 </sec:authorize>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h3>It seems that you have not activated your account!</h3>
-            <hr>
-            <h4>Click below to get another token!</h4>
 
-            <form:form action="/resend-token" method="post">
-                <input class="btn btn-warning" name="submit" type="submit" value="Resend Token"/>
-            </form:form>
-            <br>
-            <a class="btn btn-warning" href="${pageContext.request.contextPath}/">Back to homepage</a>
+<section id="resend-token-section" class="py-5">
+    <div class="container">
+        <div class="row pt-5">
+            <div class="col-md-5"></div>
+            <div class="col-md-4 text-center">
+                <h3>It seems that you have not activated your account!</h3>
+                <hr>
+                <h4 class="mb-3">Click below to get another token!</h4>
+
+                <form:form action="/resend-token" method="post">
+                    <input class="btn btn-warning btn-block" name="submit" type="submit" value="Resend Token"/>
+                </form:form>
+                <a class="btn btn-secondary btn-block" href="${pageContext.request.contextPath}/">Back to homepage</a>
+            </div>
+            <div class="col-md-3"></div>
         </div>
     </div>
-
-</div>
+</section>
 
 <%@ include file="../scripts.jsp" %>
 <%@ include file="../footer.jsp" %>
