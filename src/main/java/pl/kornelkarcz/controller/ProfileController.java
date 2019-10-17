@@ -59,6 +59,7 @@ public class ProfileController {
         User currentUser = userService.findUserByEmail(principal.getName());
         if (!result.hasErrors()) {
             userService.updatePersonalDetails(user.getFirstName(), user.getLastName(), currentUser.getId());
+            return "redirect:/profile/";
         }
         return "user/profilePage";
     }

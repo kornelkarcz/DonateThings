@@ -144,4 +144,9 @@ public class UserService implements IUserService {
     public List<String> getUsersEmails() {
         return userRepository.getUsersEmails();
     }
+
+    @Override
+    public void deleteUserById(Long id) {
+        userRepository.deleteUserById(id);
+    }
 }

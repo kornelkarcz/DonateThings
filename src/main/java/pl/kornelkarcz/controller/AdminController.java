@@ -3,6 +3,7 @@ package pl.kornelkarcz.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -137,6 +138,33 @@ public class AdminController {
     public String getUserDetails(Model model, @PathVariable Long id) {
         model.addAttribute("user", userService.findById(id).get());
         return "user/userDetails";
+    }
+
+    @GetMapping("/admin/user/edit/{id}")
+    public String editUser(Model model, @PathVariable Long id) {
+
+        String userEmail = userService.findById(id).get().getEmail();
+        model.addAttribute("editedUser", userService.findUserByEmail(userEmail));
+
+        return "admin/editUser";
+    }
+
+    @Transactional
+    @PostMapping("/admin/user/edit")
+    public String editUser(@ModelAttribute("editedUser") User user, BindingResult result) {
+
+        if (!result.hasErrors()) {
+            userService.updatePersonalDetails(user.getFirstName(), user.getLastName(), user.getId());
+            return "redirect:/admin";
+        }
+        return "admin/admin";
+    }
+
+    @Transactional
+    @GetMapping("/admin/user/delete/{id}")
+    public String deleteUser(@PathVariable Long id) {
+        userService.deleteUserById(id);
+        return "redirect:/admin";
     }
 
     @ModelAttribute("firstName")

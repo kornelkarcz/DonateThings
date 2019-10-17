@@ -29,4 +29,6 @@ public interface IUserService {
     void updatePersonalDetails(String firstName, String lastName, Long id);
 
     List<String> getUsersEmails();
+
+    void deleteUserById(Long id);
 }
