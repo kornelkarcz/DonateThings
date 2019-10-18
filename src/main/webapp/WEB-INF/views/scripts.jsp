@@ -27,11 +27,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/profileDonation.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/profileCollection.js"></script>
 
-<%--Multistep form script--%>
-<script src="${pageContext.request.contextPath}/js/multistepForm.js" type="text/javascript"></script>
-<%--Collect form script--%>
-<script src="${pageContext.request.contextPath}/js/collect.js" type="text/javascript"></script>
-<%--Donation form script--%>
 <script src="${pageContext.request.contextPath}/js/donation.js" type="text/javascript"></script>
 
 

@@ -18,4 +18,5 @@ public interface CollectionRepository extends JpaRepository<Collection, Long> {
     @Query(value = "select * from collections where user_id = :userId", nativeQuery = true)
     List<Collection> getUserAllCollections(@Param("userId") Long userId);
 
+    Collection getFirstByUser_Id(Long id);
 }

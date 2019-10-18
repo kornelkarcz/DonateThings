@@ -39,14 +39,23 @@ public class CollectionListener implements ApplicationListener<OnCollectionEvent
         SimpleMailMessage email = new SimpleMailMessage();
         email.setTo(recipient);
         email.setSubject(subject);
-        email.setText("Thank you for your collection.");
+        email.setText("Dear " + user.getFirstName()
+                + ",\n\nThank you for organizing collection. We are very happy you have decided to support people who need help.\n\n"
+                + "Please be advised that other users will be informed about collection so that they can reach you regarding details."
+                + "\n\n"
+                + "Kind regards,\nDonateThings Team"
+        );
         mailSender.send(email);
 
         String notificationSubject = "New Collection Organized";
-        String notificationText = "Dear User, please be informed that new collection is being organized";
 
-        for (String tempEmail : usersEmail){
+        for (String tempEmail : usersEmail) {
             SimpleMailMessage notification = new SimpleMailMessage();
+            String recipientFirstName = userService.findUserByEmail(tempEmail).getFirstName();
+            String notificationText = "Dear " + recipientFirstName + "," +
+                    "\n\nplease be informed that new collection is being organized by " + user.getFirstName() + " " + user.getLastName()
+                    + ".\n\nIf you are interested, you may contact organizer using this mail: " + recipient
+                    + ".\n\nKind regards,\nDonateThings Team";
 
             if (tempEmail.equals(recipient)) {
                 continue;

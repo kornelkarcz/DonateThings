@@ -6,9 +6,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import pl.kornelkarcz.event.collect.OnCollectionEvent;
 import pl.kornelkarcz.model.Collection;
@@ -18,12 +16,14 @@ import pl.kornelkarcz.service.CollectionService;
 import pl.kornelkarcz.service.InstitutionService;
 import pl.kornelkarcz.service.UserService;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
+@SessionAttributes("collectionId")
 public class CollectionController {
 
     private final UserService userService;
@@ -39,29 +39,35 @@ public class CollectionController {
 
     @PostMapping("/organize-collection")
     public String registerCollection(@Valid Collection collection, BindingResult result,
-                                     @AuthenticationPrincipal Principal principal, WebRequest request) {
+                                     @AuthenticationPrincipal Principal principal, WebRequest request, Model model) {
         if (!result.hasErrors()) {
             collection.setUser(userService.findUserByEmail(principal.getName()));
             collectionService.save(collection);
-        }
 
-        User logged = userService.findUserByEmail(principal.getName());
-        List<String> usersEmails = userService.getUsersEmails();
+            Long collectionId = collection.getId();
+            model.addAttribute("collectionId", collectionId);
 
-        try {
-            eventPublisher.publishEvent(new OnCollectionEvent(logged, usersEmails, request.getLocale()));
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "redirect:/collection/summary";
+            User logged = userService.findUserByEmail(principal.getName());
+            List<String> usersEmails = userService.getUsersEmails();
+
+            try {
+                eventPublisher.publishEvent(new OnCollectionEvent(logged, usersEmails, request.getLocale()));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            return "redirect:/";
         }
         return "redirect:/collection/summary";
+
     }
 
     @GetMapping("/collection/summary")
-    public String showLastCollection(@AuthenticationPrincipal Principal principal, Model model) {
+    public String showLastCollection(Model model, HttpSession session) {
 
-        Long id = userService.findUserByEmail(principal.getName()).getId();
-        Collection lastCollection = collectionService.findByUserIdLastCollection(id);
+        Long sessionAttribute = (Long) session.getAttribute("collectionId");
+
+        Collection lastCollection = collectionService.findById(sessionAttribute).get();
         model.addAttribute("lastCollection", lastCollection);
 
         return "collection/collection-summary";

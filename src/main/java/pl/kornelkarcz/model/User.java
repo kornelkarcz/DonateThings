@@ -1,7 +1,6 @@
 package pl.kornelkarcz.model;
 
 import lombok.Data;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -10,7 +9,6 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "user")
-@ToString
 public class User {
 
     @Id

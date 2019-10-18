@@ -1,8 +1,6 @@
 package pl.kornelkarcz.model;
 
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
 import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
@@ -12,8 +10,6 @@ import javax.validation.constraints.Pattern;
 @Data
 @Entity
 @Table(name = "donations")
-@ToString
-@RequiredArgsConstructor
 public class Donation {
 
     @Id

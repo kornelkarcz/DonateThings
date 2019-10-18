@@ -9,14 +9,16 @@ import java.util.List;
 
 public interface DonationRepository extends JpaRepository<Donation, Long> {
 
-    @Query(value = "select * from donations where user_id = :userId order by id desc limit 1", nativeQuery = true)
-    Donation findByUserIdLastDonation(@Param("userId") Long userId);
+//    @Query(value = "select d from Donation  d where d.user.id = ?1 order by d.id desc")
+//    Donation findLastDonation(Long id);
+
 
     @Query(value = "select count(distinct institution_id) from donations", nativeQuery = true)
     Long countDistinctByInstitution();
 
     @Query(value = "select * from donations where user_id = :userId", nativeQuery = true)
     List<Donation> getUserAllDonations(@Param("userId") Long userId);
+
 
 }
 

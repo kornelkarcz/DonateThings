@@ -41,7 +41,11 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
         SimpleMailMessage email = new SimpleMailMessage();
         email.setTo(recipientAddress);
         email.setSubject(subject);
-        email.setText("http://localhost:8080" + confirmationUrl);
+        email.setText("Dear " + user.getFirstName()
+                + ",\n\nThank you for registering at Donate Thing. We are very happy you have decided to join our community. Click the link below to activate your account.\n\n"
+                + "http://localhost:8080"
+                + confirmationUrl + "\n\n"
+                + "Kind regards,\nDonateThings Team");
         mailSender.send(email);
 
     }

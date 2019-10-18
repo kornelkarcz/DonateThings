@@ -34,14 +34,18 @@ public class ResetPasswordListener implements ApplicationListener<OnResetPasswor
         userService.createResetPasswordToken(user, token);
 
         String recipientAddress = user.getEmail();
-        String subject = "Rest Password";
+        String subject = "Reset Password";
         String resetPasswordUrl = event.getAppUrl() + "/confirm-reset?token=" + token;
         String message = messages.getMessage("message.resetPass", null, event.getLocale());
 
         SimpleMailMessage email = new SimpleMailMessage();
         email.setTo(recipientAddress);
         email.setSubject(subject);
-        email.setText("http://localhost:8080" + resetPasswordUrl);
+        email.setText("Dear " + user.getFirstName()
+                + ",\n\nThank you for being with us. Please find below reset password link.\n\n"
+                + "http://localhost:8080"
+                + resetPasswordUrl + "\n\n"
+                + "Kind regards,\nDonateThings Team");
         mailSender.send(email);
 
     }

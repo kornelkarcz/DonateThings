@@ -37,8 +37,11 @@ public class DonationListener implements ApplicationListener<OnDonationEvent> {
         SimpleMailMessage email = new SimpleMailMessage();
         email.setTo(recipientAddress);
         email.setSubject(subject);
-        email.setText("Thank you for your donation. The currier will contact you to arrange reception of donation.\n" +
-                "Please check your email.");
+        email.setText("Dear " + user.getFirstName()
+                        + ",\n\nThank you for making donation. We are very happy you have decided to support people who need help.\n\n"
+                        + "Please be advised that you will be contacted by our courier to arrange collection of your donation."
+                        + "\n\n"
+                        + "Kind regards,\nDonateThings Team");
         mailSender.send(email);
     }
 

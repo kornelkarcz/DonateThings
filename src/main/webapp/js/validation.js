@@ -194,10 +194,10 @@ $(function () {
                 maxlength: 30,
                 letterswithbasicpunc: true
             },
-            postalCode: {
-                required: true,
-                onlyNumbers: true
-            },
+            // postalCode: {
+            //     required: true,
+            //     onlyNumbers: true
+            // },
             institution: {
                 required: true
             }
@@ -236,10 +236,10 @@ $(function () {
                 maxlength: 'City name should not be longer than 30 letters',
                 letterswithbasicpunc: "Please use only letters and basic punctuation"
             },
-            postalCode: {
-                required: 'Please enter a postal code of institution.',
-                onlyNumbers: "Please use only numbers"
-            },
+            // postalCode: {
+            //     required: 'Please enter a postal code of institution.',
+            //     onlyNumbers: "Please use only numbers"
+            // },
             institution: {
                 required: 'Please select institution.'
             }
@@ -375,10 +375,10 @@ $(function () {
                 maxlength: 30,
                 letterswithbasicpunc: true
             },
-            postalCode: {
-                required: true,
-                onlyNumbers: true
-            },
+            // postalCode: {
+            //     required: true,
+            //     onlyNumbers: true
+            // },
             institution: {
                 required: true
             }
@@ -422,10 +422,10 @@ $(function () {
                 maxlength: 'City name should not be longer than 30 letters',
                 letterswithbasicpunc: "Please use only letters and basic punctuation"
             },
-            postalCode: {
-                required: 'Please enter a postal code of institution.',
-                onlyNumbers: "Please use only numbers"
-            },
+            // postalCode: {
+            //     required: 'Please enter a postal code of institution.',
+            //     onlyNumbers: "Please use only numbers"
+            // },
             institution: {
                 required: 'Please select institution.'
             }

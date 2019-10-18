@@ -8,8 +8,8 @@ import pl.kornelkarcz.repository.DonationRepository;
 import java.util.List;
 import java.util.Optional;
 
-@Service
 @Data
+@Service
 public class DonationService {
 
     private final DonationRepository donationRepository;
@@ -26,10 +26,6 @@ public class DonationService {
         donationRepository.save(donation);
     }
 
-    public Donation findByUserIdLastDonation(Long id) {
-        return donationRepository.findByUserIdLastDonation(id);
-    }
-
     public Long countDistinctByInstitution() {
         return donationRepository.countDistinctByInstitution();
     }
@@ -41,4 +37,8 @@ public class DonationService {
     public void delete(Long id) {
         donationRepository.deleteById(id);
     }
+
+//    public Donation findLastDonation() {
+//        return donationRepository.findFirstByOrOrderByDonationId();
+//    }
 }

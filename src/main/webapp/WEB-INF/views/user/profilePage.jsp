@@ -42,6 +42,7 @@
                 </div>
                 <div class="row p-5">
                     <div class="col-md-12">
+                        <%--<h1>${lastCollection}</h1>--%>
                         <div id="ele-1" class="profile-element">
                             <table class="table">
                                 <tr>

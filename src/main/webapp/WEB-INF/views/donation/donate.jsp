@@ -135,14 +135,13 @@
                     </div>
 
                 </form:form>
-
-                <span id="test-span"></span>
             </div>
             <div class="col-md-4"></div>
         </div>
     </div>
 </section>
 
+<script src="${pageContext.request.contextPath}/js/multistepForm.js"></script>
 <%@ include file="../scripts.jsp" %>
 <%@ include file="../footer.jsp" %>
 </body>

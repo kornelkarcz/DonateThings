@@ -41,4 +41,8 @@ public class CollectionService {
     public void delete(Long id) {
         collectionRepository.deleteById(id);
     }
+
+    public Collection getFirstByUser_Id(Long id) {
+        return collectionRepository.getFirstByUser_Id(id);
+    }
 }

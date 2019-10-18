@@ -44,7 +44,11 @@ public class ResendTokenListener implements ApplicationListener<OnResendTokenEve
         SimpleMailMessage email = new SimpleMailMessage();
         email.setTo(recipientAddress);
         email.setSubject(subject);
-        email.setText("http://localhost:8080" + confirmationUrl);
+        email.setText("Dear " + user.getFirstName()
+                + ",\n\nThank you for registering at Donate Thing. We are very happy you have decided to join our community. Below you can find new verification link..\n\n"
+                + "http://localhost:8080"
+                + confirmationUrl + "\n\n"
+                + "Kind regards,\nDonateThings Team");
         mailSender.send(email);
 
     }

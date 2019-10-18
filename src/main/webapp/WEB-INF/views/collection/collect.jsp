@@ -59,26 +59,27 @@
             <div class="col-md-8 justify-content-start">
                 <form:form id="organize-collection-form" class="ml-5" method="post" action="/organize-collection"
                            modelAttribute="collection">
-                <h1 class="display-5">Organize collection</h1>
-                <div class="tab pb-3">
-                    <p>Step 1</p>
-                    <div class="collect-form-item">
-                        <form:input path="contentDescription" type="text"/>
-                        <span data-placeholder="Description of collection"></span>
-                    </div>
-                    <div class="collect-form-item">
-                        <form:input path="phoneNumber" type="text"/>
-                        <span data-placeholder="Phone number"></span>
-                    </div>
-                    <div class="collect-form-item">
-                        <form:input path="comment" type="text"/>
-                        <span data-placeholder="Comment"></span>
-                    </div>
-                    <form:select path="institution" cssClass="wide">
-                        <form:option value="Choose an institution"/>
-                        <form:options cssClass="my-option" items="${institutions}" itemLabel="name" itemValue="id"/>
-                    </form:select>
+                    <h1 class="display-5">Organize collection</h1>
+                    <div class="tab pb-3">
+                        <p>Step 1</p>
+                        <div class="collect-form-item">
+                            <form:input path="contentDescription" type="text"/>
+                            <span data-placeholder="Description of collection"></span>
+                        </div>
+                        <div class="collect-form-item">
+                            <form:input path="phoneNumber" type="text"/>
+                            <span data-placeholder="Phone number"></span>
+                        </div>
+                        <div class="collect-form-item">
+                            <form:input path="comment" type="text"/>
+                            <span data-placeholder="Comment"></span>
+                        </div>
+                        <form:select path="institution" cssClass="wide">
+                            <form:option value="Choose an institution"/>
+                            <form:options cssClass="my-option" items="${institutions}" itemLabel="name" itemValue="id"/>
+                        </form:select>
 
+                    </div>
                     <div class="tab pb-3">
                         <p>Step 2</p>
                         <div class="collect-form-item">
@@ -113,14 +114,14 @@
                         <span class="step"></span>
                     </div>
 
-                    </form:form>
-                </div>
-                <div class="col-md-4"></div>
+                </form:form>
             </div>
+            <div class="col-md-4"></div>
         </div>
     </div>
 </section>
 
+<script src="${pageContext.request.contextPath}/js/multistepCollectionForm.js"></script>
 <%@ include file="../scripts.jsp" %>
 <%@ include file="../footer.jsp" %>
 </body>

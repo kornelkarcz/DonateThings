@@ -4,6 +4,7 @@ showTab(currentTab); // Display the current tab
 function showTab(n) {
     // This function will display the specified tab of the form ...
     var x = document.getElementsByClassName("tab");
+    console.log(x);
     x[n].style.display = "block";
     // ... and fix the Previous/Next buttons:
     if (n == 0) {
@@ -32,7 +33,10 @@ function nextPrev(n) {
     // if you have reached the end of the form... :
     if (currentTab >= x.length) {
         //...the form gets submitted:
-        document.getElementById("organize-collection-form").submit();
+        document.getElementById("organize-collection-form").submit(function (event) {
+            $("#test-span").text("The form is being submitted").show();
+            return;
+        });
         return false;
     }
     // Otherwise, display the correct tab:
