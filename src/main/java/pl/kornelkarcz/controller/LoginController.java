@@ -54,18 +54,18 @@ public class LoginController {
         return "login/login";
     }
 
-    @GetMapping("/loginSuccess")
-    public String loginSuccess(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
-
-        User loggedUser = currentUser.getUser();
-        model.addAttribute("loggedUser", loggedUser);
-        Long id = loggedUser.getId();
-        String name = loggedUser.getFirstName();
-        model.addAttribute("firstName", name);
-        String successLogin = "Hello, " + id + "," + name + ", you have successfully logged in";
-        model.addAttribute("logSuccessMessage", successLogin);
-        return "login/loginSuccess";
-    }
+//    @GetMapping("/loginSuccess")
+//    public String loginSuccess(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
+//
+//        User loggedUser = currentUser.getUser();
+//        model.addAttribute("loggedUser", loggedUser);
+//        Long id = loggedUser.getId();
+//        String name = loggedUser.getFirstName();
+//        model.addAttribute("firstName", name);
+//        String successLogin = "Hello, " + id + "," + name + ", you have successfully logged in";
+//        model.addAttribute("logSuccessMessage", successLogin);
+//        return "login/loginSuccess";
+//    }
 
     @GetMapping("/register")
     public String getRegisterPage(Model model, @AuthenticationPrincipal Principal principal) {
@@ -84,15 +84,26 @@ public class LoginController {
     public ModelAndView createNewUser(@ModelAttribute("user") @Valid UserDto userDto, BindingResult bindingResult,
                                       WebRequest request, Model model) {
         ModelAndView modelAndView = new ModelAndView();
-
         User registered = new User();
-        if (!bindingResult.hasErrors()) {
-            System.out.println(userDto.toString());
-            registered = createUserAccount(userDto, bindingResult);
-        }
-        if (registered == null) {
-            bindingResult.rejectValue("email", "message.regError");
-        }
+
+
+            if (!bindingResult.hasErrors()) {
+//                System.out.println(userDto.toString());
+                registered = createUserAccount(userDto, bindingResult);
+            }
+
+            if (registered == null) {
+//            bindingResult.rejectValue("email", "message.regError");
+//                bindingResult.rejectValue("email", "Taki email istnieje");
+                ModelAndView customMAV = new ModelAndView();
+                customMAV.setViewName("register/register");
+                customMAV.addObject("user", userDto);
+                customMAV.addObject("error", "You have provided existing email");
+//                return new  ModelAndView("register/register", "user", userDto);
+                return customMAV;
+            }
+
+
         try {
             String appUrl = request.getContextPath();
             eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, request.getLocale(), appUrl));

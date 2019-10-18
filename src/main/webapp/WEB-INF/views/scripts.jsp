@@ -5,9 +5,11 @@
 <%--Bootstrap--%>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <%--jQuery Validation Plugin--%>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"
+        type="text/javascript"></script>
 <%--jQuery Validation Plugin additional methods--%>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.js"
+        type="text/javascript"></script>
 <%--jQuery Mask--%>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js" type="text/javascript"></script>
 <%--Script for validation--%>
@@ -33,7 +35,7 @@
 <script>
     $('#year').text(new Date().getFullYear());
 
-    $("body").scrollspy({ target: "#main-nav", offset: 100});
+    $("body").scrollspy({target: "#main-nav", offset: 100});
 
     $("#main-nav a").on('click', function (event) {
         if (this.hash !== "") {
@@ -81,6 +83,15 @@
 </script>
 <%--Register--%>
 <script type="text/javascript">
+    $(document).ready(function () {
+        let inputVar = $(".form-register-item input");
+        for (let i = 0; i < inputVar.length; i++) {
+            if (inputVar[i].value != "") {
+                $(".form-register-item input").addClass("focus");
+            }
+        }
+    });
+
     $(".form-register-item input").on("focus", function () {
         $(this).addClass("focus");
     });

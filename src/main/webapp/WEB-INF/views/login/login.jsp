@@ -19,7 +19,9 @@
             <div class="col-md-6">
                 <form action="/perform_login" method='POST' class="form-login">
                     <h2 class="display-4">Please login</h2>
-
+                    <c:if test="${not empty param.error}">
+                        <span style="text-align: center; color: #ff4444">Incorrect email or password</span>
+                    </c:if>
                     <div class="form-login-item">
                         <input type='text' name='email' value=''/>
                         <span data-placeholder="Login"></span>

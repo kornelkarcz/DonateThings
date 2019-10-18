@@ -21,7 +21,11 @@
             <div class="col-md-5"></div>
             <div class="col-md-6">
                 <h2 class="display-4">Create an account</h2>
+                <c:if test="${not empty error}">
+                    <span style="text-align: center; color: #ff4444">${error}</span>
+                </c:if>
                 <form:form method="post" modelAttribute="user" action="/register" class="form-register">
+                <div id="email.errors" class="error"></div>
                 <div class="row justify-content-center mt-5">
                     <div class="col-md-8">
                         <div class="form-register-item">
@@ -56,7 +60,7 @@
                         <div class="form-register-item">
                             <form:input path="matchingPassword" type='password'
                                         name='matchingPassword'/>
-                            <span data-placeholder="Confrim Password"></span>
+                            <span data-placeholder="Confirm Password"></span>
                             <form:errors path="matchingPassword" cssClass="error" element="div"/>
                         </div>
                     </div>

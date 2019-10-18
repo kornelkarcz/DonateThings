@@ -45,14 +45,11 @@ public class UserService implements IUserService {
         }
         User user = new User();
 
-//        final User user = new User();
         user.setFirstName(userDto.getFirstName());
         user.setLastName(userDto.getLastName());
         user.setEmail(userDto.getEmail());
         user.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
         user.setEnabled(false);
-//        user.setRoleSet(user.getRoleSet().add(roleRepository.getOne(1L)));
-//        user.getRoleSet().add(roleRepository.getOne(1L));
 
         Role userRole = roleRepository.findByName("ROLE_USER");
         user.setRoleSet(new HashSet<Role>(Arrays.asList(userRole)));
