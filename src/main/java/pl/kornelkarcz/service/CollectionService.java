@@ -26,10 +26,6 @@ public class CollectionService {
         collectionRepository.save(collection);
     }
 
-    public Collection findByUserIdLastCollection(Long id) {
-        return collectionRepository.findByUserIdLastCollection(id);
-    }
-
     public Long countDistinctByInstitution() {
         return collectionRepository.countDistinctByInstitution();
     }
@@ -42,7 +38,4 @@ public class CollectionService {
         collectionRepository.deleteById(id);
     }
 
-    public Collection getFirstByUser_Id(Long id) {
-        return collectionRepository.getFirstByUser_Id(id);
-    }
 }

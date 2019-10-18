@@ -38,7 +38,4 @@ public class DonationService {
         donationRepository.deleteById(id);
     }
 
-//    public Donation findLastDonation() {
-//        return donationRepository.findFirstByOrOrderByDonationId();
-//    }
 }
