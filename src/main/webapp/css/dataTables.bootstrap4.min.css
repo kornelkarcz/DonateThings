@@ -80,8 +80,8 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 
 /*W ten sposob oznaczam wszystkie navigation button*/
 div.dataTables_wrapper div.dataTables_paginate ul.pagination > li > a {
-    color: red;
-    background-color: blue
+    color: #ffc107;
+    background-color: #ffffff;
 }
 
 /*!*Tak jak wyzej*!*/

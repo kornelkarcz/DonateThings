@@ -70,7 +70,7 @@
                                             <button class="user-button-edit btn">Edit</button>
                                         </td>
                                         <td>
-                                            <button class="user-button-delete btn">Delete</button>
+                                            <button class="user-button-delete btn" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -102,7 +102,7 @@
                                         <button class="institution-button-edit btn">Edit</button>
                                     </td>
                                     <td>
-                                        <button class="institution-button-delete btn">Delete</button>
+                                        <button class="institution-button-delete btn" onclick="return confirm('Are you sure you want to delete this institution?')">Delete</button>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -138,7 +138,7 @@
                                             <button class="donation-button-edit btn">Edit</button>
                                         </td>
                                         <td>
-                                            <button class="donation-button-delete btn">Delete
+                                            <button class="donation-button-delete btn" onclick="return confirm('Are you sure you want to delete this donation?')">Delete
                                             </button>
                                         </td>
                                     </tr>
@@ -175,7 +175,7 @@
                                             </button>
                                         </td>
                                         <td>
-                                            <button class="collection-button-delete btn">
+                                            <button class="collection-button-delete btn" onclick="return confirm('Are you sure you want to delete this collection?')">
                                                 Delete
                                             </button>
                                         </td>

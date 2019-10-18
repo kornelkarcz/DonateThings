@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    let detailsButtons = document.querySelectorAll(".row .collection-button-details");
+    let detailsButtons = document.querySelectorAll(".user-collection-button-details");
 
     for (let i = 0; i < detailsButtons.length; i++) {
         let button = detailsButtons[i];

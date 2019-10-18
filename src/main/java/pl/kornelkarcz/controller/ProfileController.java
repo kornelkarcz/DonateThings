@@ -97,10 +97,4 @@ public class ProfileController {
         Long userId = userService.findUserByEmail(principal.getName()).getId();
         return collectionService.getUserAllCollections(userId);
     }
-
-    @ModelAttribute("lastCollection")
-    public Collection getLastCollection(@AuthenticationPrincipal Principal principal) {
-        Long userId = userService.findUserByEmail(principal.getName()).getId();
-        return collectionService.findByUserIdLastCollection(userId);
-    }
 }

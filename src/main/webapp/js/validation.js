@@ -32,6 +32,12 @@ $(function () {
             || /^\d{3}-\d{3}-\d{3}$/.test(value);
     }, 'Mobile phone number should consist of 9 digits');
 
+    $.validator.addMethod('postalCode', function (value, element) {
+        return this.optional(element)
+            || /^\d{2}(-\d{3})$/.test(value);
+
+    }, 'Please enter Polish postal code');
+
     $('.addInstitutionForm').validate({
         rules: {
             name: {
@@ -66,7 +72,7 @@ $(function () {
             },
             'address.postalCode': {
                 required: true,
-                onlyNumbers: true
+                postalCode: true
             }
 
         },
@@ -100,8 +106,7 @@ $(function () {
                 letterswithbasicpunc: "Please use only letters and basic punctuation"
             },
             'address.postalCode': {
-                required: 'Please enter a postal code of institution.',
-                onlyNumbers: "Please use only numbers"
+                required: 'Please enter a postal code of institution.'
             }
         }
     });
@@ -194,10 +199,10 @@ $(function () {
                 maxlength: 30,
                 letterswithbasicpunc: true
             },
-            // postalCode: {
-            //     required: true,
-            //     onlyNumbers: true
-            // },
+            postalCode: {
+                required: true,
+                postalCode: true
+            },
             institution: {
                 required: true
             }
@@ -236,10 +241,9 @@ $(function () {
                 maxlength: 'City name should not be longer than 30 letters',
                 letterswithbasicpunc: "Please use only letters and basic punctuation"
             },
-            // postalCode: {
-            //     required: 'Please enter a postal code of institution.',
-            //     onlyNumbers: "Please use only numbers"
-            // },
+            postalCode: {
+                required: 'Please enter a postal code of institution.'
+            },
             institution: {
                 required: 'Please select institution.'
             }
@@ -284,7 +288,7 @@ $(function () {
             },
             postalCode: {
                 required: true,
-                onlyNumbers: true
+                postalCode: true
             },
             institution: {
                 required: true
@@ -325,8 +329,7 @@ $(function () {
                 letterswithbasicpunc: "Please use only letters and basic punctuation"
             },
             postalCode: {
-                required: 'Please enter a postal code of institution.',
-                onlyNumbers: "Please use only numbers"
+                required: 'Please enter a postal code of institution.'
             },
             institution: {
                 required: 'Please select institution.'
@@ -375,10 +378,10 @@ $(function () {
                 maxlength: 30,
                 letterswithbasicpunc: true
             },
-            // postalCode: {
-            //     required: true,
-            //     onlyNumbers: true
-            // },
+            postalCode: {
+                required: true,
+                postalCode: true
+            },
             institution: {
                 required: true
             }
@@ -422,10 +425,9 @@ $(function () {
                 maxlength: 'City name should not be longer than 30 letters',
                 letterswithbasicpunc: "Please use only letters and basic punctuation"
             },
-            // postalCode: {
-            //     required: 'Please enter a postal code of institution.',
-            //     onlyNumbers: "Please use only numbers"
-            // },
+            postalCode: {
+                required: 'Please enter a postal code of institution.'
+            },
             institution: {
                 required: 'Please select institution.'
             }
@@ -474,7 +476,7 @@ $(function () {
             },
             postalCode: {
                 required: true,
-                onlyNumbers: true
+                postalCode: true
             },
             institution: {
                 required: true
@@ -520,8 +522,7 @@ $(function () {
                 letterswithbasicpunc: "Please use only letters and basic punctuation"
             },
             postalCode: {
-                required: 'Please enter a postal code of institution.',
-                onlyNumbers: "Please use only numbers"
+                required: 'Please enter a postal code of institution.'
             },
             institution: {
                 required: 'Please select institution.'
@@ -620,5 +621,6 @@ $(function () {
     });
 
     $('input[name="address.postalCode"]').mask('00-000');
+    $('input[name="postalCode"]').mask('00-000');
     $('input[name="phoneNumber"]').mask('000-000-000');
 });

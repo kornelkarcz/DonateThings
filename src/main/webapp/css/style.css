@@ -806,7 +806,11 @@ body {
 
 /*Institution details page*/
 #user-details-page,
-#institution-details-page {
+#institution-details-page,
+#profile-collection-details-page,
+#profile-donation-details-page,
+#donation-details-page,
+#collection-details-page {
     position: relative;
     min-height: 650px;
     background: #F6F4F5 url("../images/shoes.jpeg") no-repeat;
