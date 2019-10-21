@@ -5,23 +5,24 @@
             <div class="col-md-7"></div>
             <div class="col-md-5">
                 <h2 class="display-4">Contact Us</h2>
-                <form action="#" method="post" class="form-footer">
+
+                <form:form action="/" method="post" class="form-footer" modelAttribute="message">
                     <div class="row mt-5">
                         <div class="col-md-6">
                             <div class="form-footer-item">
-                                <input type="text"/>
-                                <span data-placeholder="First Name"></span>
+                                <form:input path="name" type="text"/>
+                                <span data-placeholder="Name"></span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-footer-item">
-                                <input type="text"/>
-                                <span data-placeholder="Last Name"></span>
+                                <form:input path="email" type="email"/>
+                                <span data-placeholder="Email"></span>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-footer-item">
-                                <input type="text"/>
+                                <form:input path="messageBody" type="text"/>
                                 <span data-placeholder="Message"></span>
                             </div>
                         </div>
@@ -31,11 +32,14 @@
                             </div>
                         </div>
                     </div>
-                </form>
+                </form:form>
+
             </div>
         </div>
         <div class="row d-flex justify-content-around mt-5">
-            <div id="copyright" class="ml-auto">Copyright &copy; <span id="year"></span> Donate Things</div>
+            <div id="copyright" class="ml-auto">
+                Copyright &copy; <span id="year"></span> Donate Things
+            </div>
             <div class="ml-auto">
                 <a id="twitter-icon" class="mr-2" href="https://www.twitter.com">
                     <i class="fab fa-twitter fa-2x"></i>
@@ -51,6 +55,16 @@
     </div>
 </footer>
 <script type="text/javascript">
+    $('#year').text(new Date().getFullYear());
+
+    $(document).ready(function () {
+        let inputVar = $(".form-footer-item input");
+        for (let i = 0; i < inputVar.length; i++) {
+            console.log(inputVar[i].valueOf());
+            inputVar[i].value = "";
+        }
+    });
+
     $(".form-footer-item input").on("focus", function () {
         $(this).addClass("focus");
     });

@@ -1,18 +1,26 @@
 package pl.kornelkarcz.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.context.request.WebRequest;
 import pl.kornelkarcz.config.CurrentUser;
+import pl.kornelkarcz.event.adminMessage.OnAdminMessageEvent;
+import pl.kornelkarcz.model.Message;
 import pl.kornelkarcz.repository.DonationRepository;
 import pl.kornelkarcz.repository.UserRepository;
 import pl.kornelkarcz.service.DonationService;
+import pl.kornelkarcz.service.MessageService;
 import pl.kornelkarcz.service.UserService;
 
+import javax.validation.Valid;
 import java.security.Principal;
 
 @Controller
@@ -23,9 +31,13 @@ public class HomeController {
     private final UserRepository userRepository;
     private final DonationRepository donationRepository;
     private final DonationService donationService;
+    private final MessageService messageService;
+    private final ApplicationEventPublisher eventPublisher;
 
     @GetMapping("/")
     public String showHomepage(Model model, @AuthenticationPrincipal Principal principal) {
+
+        model.addAttribute("message", new Message());
 
         if (principal != null) {
             String username = principal.getName();
@@ -34,6 +46,22 @@ public class HomeController {
 
         String message = "Hello Anonymous User!";
         model.addAttribute("helloMessage", message);
+        return "index";
+    }
+
+    @PostMapping("/")
+    public String sendMessageToAdmin(@ModelAttribute("message") @Valid Message message, BindingResult bindingResult, WebRequest request) {
+
+        if (!bindingResult.hasErrors()) {
+            messageService.save(message);
+        }
+
+        try {
+            eventPublisher.publishEvent(new OnAdminMessageEvent(message.getName(), message.getMessageBody(), request.getLocale()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return "index";
     }
 

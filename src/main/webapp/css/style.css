@@ -938,3 +938,8 @@ body {
     font-size: 20px;
     margin-top: 170px;
 }
+
+#copyright {
+    display: inline-block;
+    color: #000;
+}

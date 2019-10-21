@@ -33,8 +33,6 @@
 
 
 <script>
-    $('#year').text(new Date().getFullYear());
-
     $("body").scrollspy({target: "#main-nav", offset: 100});
 
     $("#main-nav a").on('click', function (event) {
