@@ -28,5 +28,5 @@ Future features development:
 - notifying users about new collections only if they are interested in receiving such notifications regarding particular city
 
 Technologies used:
-    - Java EE, Spring (Boot, MVC, Data, Security), Hibernate, MySQL
-    - HTML/JSP, CSS, JS, third-parties plug-ins (DataTables, NiceSelect, jQuery Validation, jQuery Mask)
+- Java EE, Spring (Boot, MVC, Data, Security), Hibernate, MySQL
+- HTML/JSP, CSS, JS, third-parties plug-ins (DataTables, NiceSelect, jQuery Validation, jQuery Mask)
