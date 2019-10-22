@@ -28,7 +28,7 @@ public class MessageListener implements ApplicationListener<OnAdminMessageEvent>
         String subject = "Inquiry to Admin";
 
         SimpleMailMessage email = new SimpleMailMessage();
-        email.setTo("kornel.karcz@gmail.com");
+        email.setTo("bw39276@gmail.com");
         email.setSubject(subject);
         email.setText(message);
         mailSender.send(email);
