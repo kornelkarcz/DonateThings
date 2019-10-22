@@ -11,16 +11,16 @@ The application solves problem of:
      - registering requires user to confirm registration and activate its account by clicking the link that is delivered to user's email
      - changing password and resetting password in the case of forgetting its password. In the latter case a user receives an email with password resetting link
             - browsing through user's donations and collections 
-        - what things they want to donate
-        - which institution they would like to support
-        - what kind of collection they would like to organize
-        - receives an notification regarding organized collections by other users - the notification is sent to user's email
-    - as a Admin:
-        - all functions listed for a Donor
-        - editing users' details
-        - managing all donations and collections - editing, deleting, reviewing
-        - adding, editing and deleting institution
-        - receiving emails from non-logged users. Non-logged user may contact the administrator via an form that is placed in the footer of the main page
+   - what things they want to donate
+   - which institution they would like to support
+   - what kind of collection they would like to organize
+   - receives an notification regarding organized collections by other users - the notification is sent to user's email
+  - as a Admin:
+     - all functions listed for a Donor
+     - editing users' details
+     - managing all donations and collections - editing, deleting, reviewing
+     - adding, editing and deleting institution
+     - receiving emails from non-logged users. Non-logged user may contact the administrator via an form that is placed in the footer of the main page
        
 Future features development:
 - enable user to choose a preferable date of pick-up
