@@ -8,8 +8,8 @@ The application solves problem of:
  Main features of the application:
  - as a Donor:
    - individual account:
-    - registering requires user to confirm registration and activate its account by clicking the link that is delivered to user's email
-    - changing password and resetting password in the case of forgetting its password. In the latter case a user receives an email with password resetting link
+     - registering requires user to confirm registration and activate its account by clicking the link that is delivered to user's email
+     - changing password and resetting password in the case of forgetting its password. In the latter case a user receives an email with password resetting link
             - browsing through user's donations and collections 
         - what things they want to donate
         - which institution they would like to support
